@@ -54,5 +54,4 @@ public:
 	{
 		vec.push_back(data);
 	}
-
 };

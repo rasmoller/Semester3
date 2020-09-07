@@ -28,12 +28,23 @@ public:
 			{
 				temp = temp->next;
 			}
-			temp->next = new Node(data, temp->next);
+			
+			if (temp->next == nullptr)
+			{
+				temp->next = new Node(data, temp->next, temp);
+				tail = temp->next;
+			}
+			else
+			{
+				Node* newNode = new Node(data, temp->next, temp);
+				temp->next->previous = newNode;
+				temp->next = newNode;
+			}
 			++size;
 		}
 		else if (index > length()) 
 		{
-			throw(std::out_of_range("Out Of Range"));
+			throw(std::out_of_range("Out Of Range - Insert"));
 		}
 		else
 		{
@@ -58,7 +69,7 @@ public:
 		}
 		else if (index >= length()) 
 		{
-			throw(std::out_of_range("Out Of Range"));
+			throw(std::out_of_range("Out Of Range - remove"));
 		}
 		else
 		{
@@ -70,38 +81,38 @@ public:
 
 	unsigned int length() const
 	{
-		int len = 0;
-		/* YOUR CODE HERE */
-		Node* temp = head;
-		while (temp != nullptr) 
-		{
-			temp = temp->next;
-			len++;
-		}
-		return len;
+		return size;
 	}
 
 	T& at(unsigned int index)
 	{
-		/* YOUR CODE HERE (and remove the line below!) */
+		/* YOUR CODE HERE */
 		Node* temp = head;
 		for (size_t i = 0; i < index; i++)
 		{
-			temp = temp->next;
 			if (temp == nullptr)
 			{
-				throw(std::out_of_range("OOR"));
+				throw(std::out_of_range("OOR at"));
 			}
+			temp = temp->next;
 		}
-		return temp->data; // Just to make the file compile!
+		return temp->data;
 	}
 
 	void headInsert(const T& data)
 	{
-		Node* newNode = new Node(data, nullptr);
+		Node* newNode = new Node(data, nullptr, nullptr);
 		newNode->data = data;
 		newNode->next = head;
 		head = newNode;
+		if (newNode->next == nullptr) 
+		{
+			tail = newNode;
+		}
+		else
+		{
+			newNode->next->previous = newNode;
+		}
 
 		// Or simply: 
 		// head = new Node(data, head);
@@ -113,6 +124,10 @@ public:
 	{
 		/* YOUR CODE HERE */
 		Node* temp = head;
+		if (temp != tail)
+		{
+			head->next->previous = nullptr;
+		}
 		head = head->next;
 		delete temp;
 		--size;
@@ -126,8 +141,58 @@ public:
 			headRemove();
 		}
 	}
+	
+	void tailInsert(const T& data)
+	{
+		tail->next = new Node(data, nullptr, tail);
+		tail = tail->next;
+		++size;
+	}
 
+	void tailRemove()
+	{
+		if (tail == nullptr)
+		{
+			throw(std::out_of_range("OOR TR"));
+		}
+		Node* temp = tail;
+		if (temp == head) {
+			head = nullptr;
+			tail = nullptr;
+			delete temp;
+		}
+		else
+		{
+			temp->previous->next = nullptr;
+			tail = temp->previous;
+			delete temp;
+		}
+		--size;
+	}
 
+	T& getHead() 
+	{
+		if (head != nullptr)
+		{
+			return head->data;
+		}
+		else
+		{
+			throw(std::out_of_range("No head!"));
+		}
+	}
+
+	T& getTail()
+	{
+		if (tail != nullptr)
+		{
+			return tail->data;
+		}
+		else
+		{
+			throw(std::out_of_range("No Tail!"));
+		}
+	}
 private:
 
 	class Node
@@ -136,11 +201,12 @@ private:
 		// Node Constructor
 		// If d not given, use template type and create instance of type
 		// If n not given, set n = nullptr
-		Node(const T& d = T(), Node* n = nullptr) : data(d), next(n) {}
+		Node(const T& d = T(), Node* n = nullptr, Node* p = nullptr) : data(d), next(n), previous(p) {}
 
 		// Public attributes
 		T data;
 		Node* next;
+		Node* previous;
 	};
 
 	// Precondition: index < size
@@ -156,5 +222,6 @@ private:
 
 
 	Node* head;
+	Node* tail;
 	unsigned int size;
 };

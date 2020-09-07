@@ -10,17 +10,21 @@ public:
 	void push(const T& elm)
 	{
 		/* YOUR CODE HERE */
+		list.headInsert(elm);
 	}
 
 	void pop()
 	{
 		/* YOUR CODE HERE */
+		list.tailRemove();
 	}
 
 	T front()
 	{
 		T dataValue = 0;
 		/* YOUR CODE HERE */
+
+		dataValue = list.getTail();
 		return dataValue;
 	}
 
@@ -28,10 +32,12 @@ public:
 	{
 		bool isItEmpty = true;
 		/* YOUR CODE HERE */
+		isItEmpty = !list.length();
+		//isItEmpty = (list.length() != 0 ? true : false);
 		return isItEmpty;
 	}
 
 private:
-	VectorList<T> list;
-	//LinkedList<T> list;
+	//VectorList<T> list;
+	LinkedList<T> list;
 };
