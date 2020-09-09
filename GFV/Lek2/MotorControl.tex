@@ -3,8 +3,9 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
-\usepackage[]{amsthm} %lets us use \begin{proof}
-\usepackage[]{amssymb} %gives us the character \varnothing
+\usepackage{subfiles}
+\usepackage{amsthm} %lets us use \begin{proof}
+\usepackage{amssymb} %gives us the character \varnothing
 
 
 \begin{document}
@@ -40,7 +41,6 @@
 \end{titlepage}
 
 \newpage
-\tableofcontents
 \newpage
 
 \setcounter{page}{1}
@@ -52,10 +52,12 @@ I følgende journal vil der blive gennemgået øvelsen ``Motor Control'' og delo
 \begin{itemize}
 \item Think
 
-I ``Think'' vil der blive forklaret hvilke tanker gruppen har gjort sig i forhold til delopgaven og, hvordan teorien der er blevet lært indgår i delopgaven.\\
+I ``Think'' vil der blive forklaret hvilke tanker gruppen har gjort sig i forhold til delopgaven og, hvordan teorien der er blevet lært indgår i delopgaven. Derudover vil der væres spørgsmål direkte fra opgaven som vil blive besvaret under ``Reflect'' afsnittet\\
 Dette inkludere f.eks.:
 \begin{itemize}
-\item
+\item Multisim opstillinger
+\item Pseudo kode
+\item Spørgsmål fra delopgaven
 \end{itemize}
 
 \item Do
@@ -63,41 +65,37 @@ Dette inkludere f.eks.:
 I ``Do'' vil der blive gennemgået opstilling samt dokumentation for opstilling
 Dette inkludere f.eks.:
 \begin{itemize}
-\item
+\item Billeder af opstilling
+\item Tilslutning af strøm og forbindelser
+\item Kode stumper for relevante dele
 \end{itemize}
-
-
 
 \item Document
 
+Under ``Document'' vil der blive fremvist den data som gruppen får ud af opstillingen.
 
 Dette inkludere f.eks.:
 \begin{itemize}
-\item
+\item Billeder
+\item Målinger
 \end{itemize}
 
 
 \item Reflect
 
+I ``Reflect'' vil der blive undret og overvejet om gruppens målinger ser korrekte ud og hvad der kan konkluderes på baggrund af delopgaven
 
 Dette inkludere f.eks.:
 \begin{itemize}
-\item
+\item Svar på spørgsmål
+\item Diskussion
+\item Konklusion
 \end{itemize}
 
+%End of introduction and start of subpages
 
 \end{itemize}
 
-
-\section{Think}
-
-
-\section{Do}
-
-
-\section{Document}
-
-
-\section{Reflect}
+\subfile{Ex1.tex}
 
 \end{document}
