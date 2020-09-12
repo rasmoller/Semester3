@@ -6,9 +6,26 @@
 \usepackage{subfiles}
 \usepackage{amsthm} %lets us use \begin{proof}
 \usepackage{amssymb} %gives us the character \varnothing
-\setlength{\parskip = 1em}
-\setlength{\parindent = 0em}
+\usepackage[top=3cm, bottom=3cm, left=2.5cm, right=2.5cm]{geometry}
+\pagestyle{plain}
 
+\setlength{\parskip}{1em}
+\setlength{\parindent}{0em}
+
+% Commands
+\newcommand{\pic}[4]{
+	\begin{figure}[!htbp]
+		\centering
+		\includegraphics[width=#2\textwidth]{#1}
+		\caption{#3}
+		\label{#4}
+	\end{figure}
+	\hspace*{\fill}
+}
+%\pic{Picture path}{Size of page}{Caption}{Label}
+
+
+%% --- DOCUMENT ---
 
 \begin{document}
 %Front page
