@@ -1,20 +1,46 @@
 \documentclass[../main.tex]{subfiles}
 
+
 \begin{document}
 
 
 
 \subsection{Think}
-HELLOOOOO
+I denne øvelse skal vi arbejde med PWM kontrol af en DC-motor. Den første del af øvelsen vil her omhandle ændring af rotationshastigheden af DC-motoren, ved ændring af duty-cyclen af PWM.\newline
+Formålet med øvelsen er at implementere disse funktioner vha. PSoC microcontroller med tilhørende PSoC Creator software. 
 
 \subsection{Do}
-WITH
+Som driver for vores DC-motor benytter vi en MOSFET-transistor. Vores PSoC kan kun give en VCC på 5V, og vi benytter derfor en separat strømforsyning til at drive motoren.
+
+Til programmering af PSoC benyttes som sagt PSoC Creator. Øvelsen kræver at vi benytter et PWM signal til at styre DC-motorens hastighed, og bruger UART til at kommunikere ændringer af PWM til PSoC fra konsollen.
+
+Til øvelsen er vi blevet givet en skabelon at arbejde ud fra. Her ser vi i top designet vores UART og PWM blok som vi skal benytte. PWM-blokken bliver givet en PWM-clock på 50kHz, og PWM-signalet bliver koblet til en pin, Pin\_PWM. Pin\_PWM bliver så koblet til den fysiske pin, [INDSÆT PIN NUMMER HER], på PSoC.
+
+%[INDSÆT BILLEDE AF TOP DESIGN OG PINS]
+
+UART-blokken tildeles en pin-in, Rx\_1 til signalet PSoC skal modtage fra konsollen, og en pin-out, Tx\_1, til signalet som skal sende PWM ud på Pin\_PWM. UART interrupt bliver desuden aktiveret for RX, da vi gerne vil kunne [BESKRIV HVAD INTERRUPT BLIVER BRUGT TIL]
+
+Til faktisk at ændre hastigheden af DC-motoren implementere vi funktionerne ’decreaseSpeed()’ og ’increaseSpeed()’. Begge funktioner indledes med ’UART\_1\_Putstring()’, der lader os printe en string til konsollen. Herved sikre vi at den korrekte funktion bliver eksekveret. 
+
+%[INDSÆT IMPLEMENTERING AF KODE]
+
+I ’decreaseSpeed()’ stiller vi så en if-sætning der checker om ’UART\_1\_ReadCompare()’ er større end 0. ’ReadCompare()’ retunerer [FORKLAR HVORDAN DECREASESPEED() VIRKER]
+Skal være større end 0, forbi vil ikke gøre mindre end 0
+
+Til sidst implementeres en Switch-funktion, så vi kan styre hastigheden med input fra keyboardet.
 
 \subsection{Document}
-YOUUUU
+Vha. vores Analog Discovery måler vi hvordan PWM signalet ændre sig af at kører ’decreaseSpeed()’ og ’increaseSpeed()’.
+
+%[INDSÆT BILLEDER AF PWM SIGNALER HER]
+
+Vi ser at ved at kører funktioner kan vi ændre på duty-cyclen af PWM-signalet. Funktionerne ændre signalet i små trin, og vi kan derfor frit stille på hastigheden. Vi ser at PWM-signalet svinger fra 0 til 5V, da PSoC levere en VCC på 5V.
+
+Funktionerne printer desuden de korrekte beskeder i konsollen, så vi har styr over hvlke ændringer der er blevet foretaget til duty-cyclen.
 
 \subsection{Reflect}    
-XD
+Vi så fra vores målinger af PWM-signalet den opførsel forventede af vores funktioner. Signalet steg og fald som vi specificerede, og beskederne blev printet rigtigt i konsollen.
 
+Desuden så vi også at vores if-sætninger sikrede at ’WriteCompare()’ ikke sendte ugyldige værdier, som vi ser på graferne da PWM-signalet ikke falder under 0.
 
 \end{document}
