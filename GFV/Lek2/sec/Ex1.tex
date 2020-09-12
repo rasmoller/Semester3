@@ -14,6 +14,8 @@ Formålet med øvelsen er at implementere disse funktioner vha. PSoC microcontro
 \subsection{Do}
 Som driver for vores DC-motor benytter vi en MOSFET-transistor. Vores PSoC kan kun give en VCC på 5V, og vi benytter derfor en separat strømforsyning til at drive motoren.
 
+\pic{opstilling32.jpeg}{0.8}{Implementering med MOSFET}{MOSPimp}
+
 Til programmering af PSoC benyttes som sagt PSoC Creator. Øvelsen kræver at vi benytter et PWM signal til at styre DC-motorens hastighed, og bruger UART til at kommunikere ændringer af PWM til PSoC fra konsollen.
 
 Til øvelsen er vi blevet givet en skabelon at arbejde ud fra. Her ser vi i top designet vores UART og PWM blok som vi skal benytte. PWM-blokken bliver givet en PWM-clock på 50kHz, og PWM-signalet bliver koblet til en pin, Pin\_PWM. Pin\_PWM bliver så koblet til den fysiske pin, 63, på PSoC.
