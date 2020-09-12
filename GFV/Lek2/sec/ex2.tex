@@ -36,11 +36,11 @@ Efter en string sendes til konsollen køres ’stop()’ som sagt i begge funkti
 \subsection{Document}
 Ved at parallelkoble vores Analog-Discovery til PWM signalet kunne vi se hvordan signalet så ud efter retningen af DC-motoren blev ændret:
 
-%[INDSÆT BILLEDE AF PWM SIGNAL GRAFER]
+\pic{HBroFrem.png}{0.8}{DC-motor fremad PWM}{LabelHFrem}
 
 På det første billede ser vi en klar graf for et PWM signal, lignende dem fra del 1. Vi ser dog store ”spikes” i signalet, når signalet går fra høj til lav spænding. Dette formoder vi skyldes støj fra H-broen, da vi både har VCC til DC-motoren og H-broen selv. Vi ser også at hele signalet er forskudt med ca. 5V på y-aksen. Dette skyldes også de 5V VCC vi sætter til h-broens logiske kontrol.
 
-%[INDSÆT BILLEDE AF INVERTEREDE PWM-SIGNAL]
+\pic{HBroTilbage.png}{0.8}{DM-motor bagud PWM}{LabelHTilbage}
 
 På målingen af PWM-signalet efter vi har ændret retningen af DM-motoren ser vi som forventet en spejling af signalet fra tidligere i x-aksen. Vi har igen ”spikes” når PWM-signalet stiger, med en forskydning på y-aksen med 5V.
 

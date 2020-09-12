@@ -33,9 +33,9 @@ Til sidst implementeres en Switch-funktion, så vi kan styre hastigheden med inp
 
 \subsection{Document}
 Vha. vores Analog Discovery måler vi hvordan PWM signalet ændre sig af at kører ’decreaseSpeed()’ og ’increaseSpeed()’.
-\pic{Lav PWM måling.png}{0.8}{Caption}{Label}
-\pic{MiddelPWM.png}{0.8}{Caption}{Label}
-\pic{HøjPWM.png}{0.8}{Caption}{Label}
+\pic{Lav PWM måling.png}{0.8}{PWM lav Duty-cycle}{PWML}
+\pic{MiddelPWM.png}{0.8}{PWM mellem Duty-cycle}{PWMM}
+\pic{HøjPWM.png}{0.8}{PWM høj Duty-cycle}{PWMH}
 Vi ser at ved at kører funktioner kan vi ændre på duty-cyclen af PWM-signalet. Funktionerne ændre signalet i små trin, og vi kan derfor frit stille på hastigheden. Vi ser at PWM-signalet svinger fra 0 til 5V, da PSoC levere en VCC på 5V.
 
 Funktionerne printer desuden de korrekte beskeder i konsollen, så vi har styr over hvlke ændringer der er blevet foretaget til duty-cyclen.
