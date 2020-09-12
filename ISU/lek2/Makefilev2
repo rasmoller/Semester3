@@ -1,0 +1,20 @@
+# A string list of all the cpp files you want compiled
+SRC = hello.cpp
+# OBJ will take all .cpp endings from SRC and replace them with .o
+OBJ=$(SRC:.cpp=.o) 
+EXE=hello
+
+all: $(EXE)
+
+$(EXE): $(OBJ)
+	@echo "Linking: "$@
+	$(CXX) $^ -o $@ $(CXXFLAGS)
+
+%.o: %.cpp
+	@echo "Compiling: "$@
+	@$(CXX) -c  $< $(CXXFLAGS)
+
+clean:
+	rm -f $(EXE) $(OBJ)
+
+.PHONY: clean all
