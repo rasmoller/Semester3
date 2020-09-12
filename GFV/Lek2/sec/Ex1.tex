@@ -18,7 +18,8 @@ Til programmering af PSoC benyttes som sagt PSoC Creator. Øvelsen kræver at vi
 
 Til øvelsen er vi blevet givet en skabelon at arbejde ud fra. Her ser vi i top designet vores UART og PWM blok som vi skal benytte. PWM-blokken bliver givet en PWM-clock på 50kHz, og PWM-signalet bliver koblet til en pin, Pin\_PWM. Pin\_PWM bliver så koblet til den fysiske pin, [INDSÆT PIN NUMMER HER], på PSoC.
 
-%[INDSÆT BILLEDE AF TOP DESIGN OG PINS]
+\pic{Oev1_TD.png}{0.8}{Top design for øvelse 1}{TD11}
+\pic{Oev1_P.png}{0.8}{Pins for øvelse 1}{Pins1D}
 
 UART-blokken tildeles en pin-in, Rx\_1 til signalet PSoC skal modtage fra konsollen, og en pin-out, Tx\_1, til signalet som skal sende PWM ud på Pin\_PWM. UART interrupt bliver desuden aktiveret for RX, da vi gerne vil kunne [BESKRIV HVAD INTERRUPT BLIVER BRUGT TIL]
 
