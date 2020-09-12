@@ -8,13 +8,44 @@
 Del 2 af opgaven adskiller sig fra første del ved at vi nu skal forsøge at styre rotations retnings af DC-motoren, dog stadig med funktionen til at styre motorens hastighed bevaret.
 
 \subsection{Do}
-WITH
+For at opnå kontrol af både hastighed og retning af dc-motoren benyttes den udleverede H-bro i stedet for MOSFET-driveren. PWM-signalet føres igennem H-broen, der så lader os styre polariteten af signalet. H-broen indeholder fire relæ, hvor relæ 1 og 4 styres gennem et I/O signal fra IN1, og relæ 2 og 3 styres fra IN2, som ses på figuren. IN1 og IN2 tilkobles direkte til PSoC, [SIG NOGET OM SIGNALET DER SENDES]
+
+%[INDSÆT FIGUR MED H-BRO]
+
+Denne fordeling sikre at vi ikke kan kortslutte systemet, da der ville ske en kortslutning hvis eksempelvis relæ 1 og 2 var tændt samtidigt. Derfor ønsker vi heller ikke at alle relæerne skal være tændt på samme tid, hvilket vi kommer til at tage forhold for når koden til PSoC skal skrives. 
+
+DC-motoren tilkobles en power supply til 230V strømstik, da de 5V VCC PSoC kan levere ikke vil være tilstrækkelige. H-bro logik-driveren har dog brug for et 5V VCC, der tage direkte fra PSoC.
+
+Vi benytter igen skabelon-filen givet til os til øvelsen. Vi kan stadig benytte funktionerne ’decreaseSpeed()’ og ’increaseSpeed()’, men skal nu implementere ’driveForwards()’ og ’driveBackwards’. I vores top design implementerer vi de to pins IN1 og IN2, og kobler dem til pin [INDSÆT PIN NUMRE HER], så vi kan sende signaler fra dem gennem PSoC’en.
+
+%[INDSÆT BILLEDE AF TOPDESIGN.cysh]
+
+Vi kan nu benytte funktionerne ’IN1\_Write()’ og ’IN2\_Write()’ til at sende logiske ’1’ og ’0’ til de to pins. Vi implementere først funktionen ’stop()’, som vi skal bruge.
+
+%[INDSÆT BILLEDE AF stop() IMPLEMENTERING]
+
+Vi sender først stringen ”stop” til konsollen, så vi kan teste om funktionen bliver eksekveret korrekt. Derefter skrives der er logisk ’0’ til både IN1 og IN2, så alle relæerne slukkes. Ved at starte både ’decreaseSpeed()’ og ’increaseSpeed()’ med ’stop()’ sikre vi at det ikke er muligt at åbne de forkerte relæ på sammme tid, da alle relæ slukkes hver gang du ændre retning.
+
+%[INDSÆT IMPLEMENTERING AF driveForwards() og driveBackwards()]
+
+Efter en string sendes til konsollen køres ’stop()’ som sagt i begge funktioner. Derefter benytter ’CyDelay(50)’ til at vente 50ms, da vi ikke vil beskadige DC-motoren ved at skifte retning for pludseligt.
+ 
+’driveForwards()’ sender så et logisk ’1’ til IN1, og logisk ’0’ til IN2, der sætter retningen af PWM signalet. De modsatte logiske signaler sendes til IN1 og IN2 for ’driveBackwards()’, for at ændre retningen på PWM.
 
 \subsection{Document}
-YOUUUU
+Ved at parallelkoble vores Analog-Discovery til PWM signalet kunne vi se hvordan signalet så ud efter retningen af DC-motoren blev ændret:
+
+%[INDSÆT BILLEDE AF PWM SIGNAL GRAFER]
+
+På det første billede ser vi en klar graf for et PWM signal, lignende dem fra del 1. Vi ser dog store ”spikes” i signalet, når signalet går fra høj til lav spænding. Dette formoder vi skyldes støj fra H-broen, da vi både har VCC til DC-motoren og H-broen selv. Vi ser også at hele signalet er forskudt med ca. 5V på y-aksen. Dette skyldes også de 5V VCC vi sætter til h-broens logiske kontrol.
+
+%[INDSÆT BILLEDE AF INVERTEREDE PWM-SIGNAL]
+
+På målingen af PWM-signalet efter vi har ændret retningen af DM-motoren ser vi som forventet en spejling af signalet fra tidligere i x-aksen. Vi har igen ”spikes” når PWM-signalet stiger, med en forskydning på y-aksen med 5V.
 
 \subsection{Reflect}    
-XD
+Som vi så fra vores målinger skaber en ændring af retningen på DC-motoren en spejling af PWM-signalet på y-aksen. Dette giver også mening, da vi jo blot ændre retningen af signalet med H-broen.
 
+Vi kunne desværre ikke undersøge videre om vores ”spikes” i målingerne faktisk skyldes støj, da vi blev udleveret printboards med alle komponenter allerede loddet, ergo kunne vi ikke ændre meget i opstillingen. 
 
 \end{document}
