@@ -19,15 +19,16 @@ DC-motoren tilkobles en power supply til 230V strømstik, da de 5V VCC PSoC kan 
 
 Vi benytter igen skabelon-filen givet til os til øvelsen. Vi kan stadig benytte funktionerne ’decreaseSpeed()’ og ’increaseSpeed()’, men skal nu implementere ’driveForwards()’ og ’driveBackwards’. I vores top design implementerer vi de to pins IN1 og IN2, og kobler dem til pin [INDSÆT PIN NUMRE HER], så vi kan sende signaler fra dem gennem PSoC’en.
 
-%[INDSÆT BILLEDE AF TOPDESIGN.cysh]
+\pic{Oev2_TD.png}{0.8}{Top design for øvelse 2}{TP2D}
+\pic{Oev2_PIN.png}{0.8}{Pins for øvelse 2}{TP2PP}
 
 Vi kan nu benytte funktionerne ’IN1\_Write()’ og ’IN2\_Write()’ til at sende logiske ’1’ og ’0’ til de to pins. Vi implementere først funktionen ’stop()’, som vi skal bruge.
 
-%[INDSÆT BILLEDE AF stop() IMPLEMENTERING]
+\pic{Oev2_STOP.png}{0.8}{Implementering af stop()}{STOPimp}
 
 Vi sender først stringen ”stop” til konsollen, så vi kan teste om funktionen bliver eksekveret korrekt. Derefter skrives der er logisk ’0’ til både IN1 og IN2, så alle relæerne slukkes. Ved at starte både ’decreaseSpeed()’ og ’increaseSpeed()’ med ’stop()’ sikre vi at det ikke er muligt at åbne de forkerte relæ på sammme tid, da alle relæ slukkes hver gang du ændre retning.
 
-%[INDSÆT IMPLEMENTERING AF driveForwards() og driveBackwards()]
+\pic{Oev2_DRIVE.png}{0.8}{Implementering af driveForwards() og driveBackwards()}{PeepeePoopoo}
 
 Efter en string sendes til konsollen køres ’stop()’ som sagt i begge funktioner. Derefter benytter ’CyDelay(50)’ til at vente 50ms, da vi ikke vil beskadige DC-motoren ved at skifte retning for pludseligt.
  

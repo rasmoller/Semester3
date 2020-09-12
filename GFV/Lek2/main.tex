@@ -8,6 +8,7 @@
 \usepackage{amssymb} %gives us the character \varnothing
 \usepackage[top=3cm, bottom=3cm, left=2.5cm, right=2.5cm]{geometry}
 \usepackage{graphicx}
+\usepackage{float}
 \pagestyle{plain}
 
 \setlength{\parskip}{1em}
@@ -15,7 +16,7 @@
 
 % Commands
 \newcommand{\pic}[4]{
-	\begin{figure}[!htbp]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[width=#2\textwidth]{#1}
 		\caption{#3}
