@@ -3,15 +3,13 @@
 
 \begin{document}
 
-
-
 \subsection{Think}
 Del 2 af opgaven adskiller sig fra første del ved at vi nu skal forsøge at styre rotations retnings af DC-motoren, dog stadig med funktionen til at styre motorens hastighed bevaret.
 
 \subsection{Do}
 For at opnå kontrol af både hastighed og retning af dc-motoren benyttes den udleverede H-bro i stedet for MOSFET-driveren. PWM-signalet føres igennem H-broen, der så lader os styre polariteten af signalet. H-broen indeholder fire relæ, hvor relæ 1 og 4 styres gennem et I/O signal fra IN1, og relæ 2 og 3 styres fra IN2, som ses på figuren. IN1 og IN2 tilkobles direkte til PSoC, [SIG NOGET OM SIGNALET DER SENDES]
 
-%[INDSÆT FIGUR MED H-BRO]
+\pic{opstilling21}{0.5}{Opstilling med DC-motor og H-bro}{fig:hbro}
 
 Denne fordeling sikre at vi ikke kan kortslutte systemet, da der ville ske en kortslutning hvis eksempelvis relæ 1 og 2 var tændt samtidigt. Derfor ønsker vi heller ikke at alle relæerne skal være tændt på samme tid, hvilket vi kommer til at tage forhold for når koden til PSoC skal skrives. 
 
