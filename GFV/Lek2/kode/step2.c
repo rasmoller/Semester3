@@ -24,8 +24,6 @@ void counterRotation();
 
 void handleByteReceived(uint8_t byteReceived);
 
-uint8 stepCount = 0;
-
 const int fullStep[8][4] = { 
     {1, 1, 0, 0},
     {0, 1, 1, 0},

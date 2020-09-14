@@ -7,13 +7,11 @@
 Del 2 af opgaven adskiller sig fra første del ved at vi nu skal forsøge at styre rotations retnings af DC-motoren, dog stadig med funktionen til at styre motorens hastighed bevaret.
 
 \subsection{Do}
-For at opnå kontrol af både hastighed og retning af dc-motoren benyttes den udleverede H-bro i stedet for MOSFET-driveren. PWM-signalet føres igennem H-broen, der så lader os styre polariteten af signalet. H-broen indeholder fire relæ, hvor relæ 1 og 4 styres gennem et I/O signal fra IN1, og relæ 2 og 3 styres fra IN2, som ses på figuren. IN1 og IN2 tilkobles direkte til PSoC, [SIG NOGET OM SIGNALET DER SENDES]
-
-\pic{opstilling21}{0.5}{Opstilling med DC-motor og H-bro}{fig:hbro}
-
-Denne fordeling sikre at vi ikke kan kortslutte systemet, da der ville ske en kortslutning hvis eksempelvis relæ 1 og 2 var tændt samtidigt. Derfor ønsker vi heller ikke at alle relæerne skal være tændt på samme tid, hvilket vi kommer til at tage forhold for når koden til PSoC skal skrives. 
+For at opnå kontrol af både hastighed og retning af dc-motoren benyttes den udleverede H-bro i stedet for MOSFET-driveren som i exercise 1. PWM-signalet føres igennem H-broen, der så lader os styre polariteten af signalet. H-broen indeholder fire transitorer, som hænger sammen i par, der altid er modsat. Dermed er det ikke muligt nogensinde at skabe en kortslutning. Åbningen af transistorerne styres desuden også af et signal på EnA, der styres på samme måde som med transistoren i Exercise 1.
 
 DC-motoren tilkobles en power supply til 230V strømstik, da de 5V VCC PSoC kan levere ikke vil være tilstrækkelige. H-bro logik-driveren har dog brug for et 5V VCC, der tage direkte fra PSoC.
+
+\pic{opstilling21}{0.5}{Opstilling med DC-motor og H-bro}{fig:hbro}
 
 Vi benytter igen skabelon-filen givet til os til øvelsen. Vi kan stadig benytte funktionerne ’decreaseSpeed()’ og ’increaseSpeed()’, men skal nu implementere ’driveForwards()’ og ’driveBackwards’. I vores top design implementerer vi de to pins IN1 og IN2, og kobler dem til pin [INDSÆT PIN NUMRE HER], så vi kan sende signaler fra dem gennem PSoC’en.
 

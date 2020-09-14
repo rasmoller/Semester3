@@ -16,12 +16,20 @@ Her fra har vi altså konkluderet, at det er pin 1-4 vil skal kontrollere på st
 Til programmerings delen, har vi tænkt os at kopieret det meste af interrupt rutinen fra Exercise 1 og 2.
 
 \subsection{Do}
-Til at styre vores 
+
+Opstilling af stepper motoren er som beskrevet her under i figur \ref{fig:sm1} og \ref{fig:sm2}
 
 \pic{opstilling31}{0.5}{Opstilling af steppermotor 1/2}{fig:sm1}
 
 \pic{opstilling32}{0.5}{Opstilling af stepper motor 2/2}{fig:sm2}
 
+Her under ses et udsnit af implementeringen af hvordan der skiftes mellem at køre den ene eller den anden vej. Interruptrutinen starter denne switch-case, der håndterer modtagelsen af chars fra UART. Alt efter hvilken char der er modtaget, sættes et globalt flag, der så håndteres i funktionen move().
+
+\lstinputlisting[language=C, frame=single, linerange={102-114}]{../kode/step2.c}
+
+Funktionen move() er den centrale funktion for implementeringen af stepper motoren. Funktionen håndtere hvilken retning steppermotoren kører, samt hilket mode motoren kører i. Funktionen køres konstant i vores uendelige for-løkke, men med et delay efter, som også kan ændre størelse i interruptrutinen.
+
+\lstinputlisting[language=C, frame=single, linerange={183-215}]{../kode/step2.c}
 
 \subsection{Document}
 YOUUUU
