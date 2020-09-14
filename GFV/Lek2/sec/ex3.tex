@@ -7,9 +7,12 @@
 I denne øvelse ønsker vi at eksperimentere med hvordan en stepper motor fungerer. Igennem 4 MOSFETS og vores PSoC, vil vi implementere en række af de mest almindelige funktionaliteter, en stepper motor har. Dette inkluderer start, stop, skift retning, skift hastighed, samt udfør en fuld rotation.
 
 \subsection{Think}
-Første overvejelse er hvordan forbindelsen mellem PSoC, MOSFETs og stepper motoren sættes op. Her har vi undersøgt datasheetet til vores stepper motor, som er af typen "SP2575M0206-A". Dette kan ses på billeder \ref{fig:step}
+Første overvejelse er hvordan forbindelsen mellem PSoC, MOSFETs og stepper motoren sættes op. Her har vi undersøgt datasheetet til vores stepper motor, som er af typen "SP2575M0206-A". Dette kan ses på billede \ref{fig:step}
 
 \pic{stepper}{0.3}{Forbindelser til steppermotor}{fig:step}
+
+Hertil skal vi også implementere de 3 forskellige "drives": Full-step, half-step og wave-drive.
+\pic{StepWireDia}{0.5}{Steps i full-step drive}{fig:FullStepDia}
 
 Her fra har vi altså konkluderet, at det er pin 1-4 vil skal kontrollere på stepper motoren. På MOSFET printet er der sat op, så stepper motoren nemt kan sættes på. Her sættes der forbindelse til common $V_cc$ for steppermotoren fra pin 5 og 6, direkte til PSoC'ens 5V output. Dette kan vi, da vores testforsøg, ikke bruger særlig meget strøm. Forbindelse fra pin 1-4 fra stepper motoren til GND styres af de 4 MOSFETS, der kontrolleres af 4 pins fra PSoC'en. Vi har valgt at stille det op med output 2.1 til pin 1, output 2.2 til pin 2 osv. Desuden er vi også opmærksomme på at sikre en fælles GND.
 
@@ -24,10 +27,17 @@ Til at styre vores
 
 
 \subsection{Document}
-YOUUUU
+
 
 \subsection{Reflect}
-XD
+Et spørgsmål man kan stille er om der kan mærkes forskel på de forskellige modes.
+Principelt burde man kunne mærke forskel på de forskellige modes, da full-step består af halvt så mange steps som half-step. 
+Dette burde betyde en forøgning i hastighed, men denne hastighedsændring har dog ikke været tydelig i vores observationer af motoren.
 
+Efter øvelsen har vi opdaget af DC motoren er nemmere at sætte op og tilslutte, men tilgengæld er der også mindre kontrol og præcision ved den.
+Derfor er det vigtigt at man inden man vælger, hvilken motor man skal bruge, at man vurdere om det er kræft eller præcision.
+
+Efter øvelsen har vi også oplevet at stepper motoren har en hastighedsbegrænsning.
+Den sættes af, hvor hurtigt du kan skifte mellem de forskellige steps og denne begrænsning sættes derefter af PSoC'en eller den mikrocontroller du bruger til styring.
 
 \end{document}
