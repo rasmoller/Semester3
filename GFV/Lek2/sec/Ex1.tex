@@ -4,11 +4,14 @@
 \begin{document}
 
 \subsection{Introduction}
-I denne øvelse skal vi arbejde med PWM kontrol af en DC-motor. Den første del af øvelsen vil her omhandle ændring af rotationshastigheden af DC-motoren, ved ændring af duty-cyclen på et PWM signal. 
+I denne øvelse skal vi arbejde med PWM kontrol af en DC-motor. Den første del af øvelsen vil her omhandle ændring af rotationshastigheden af DC-motoren, ved ændring af duty-cyclen på et PWM signal.
+
 Formålet med øvelsen er at implementere disse funktioner vha. PSoC microcontroller med tilhørende PSoC Creator software. 
 
 \subsection{Think}
-I øvelsen skal vi variere hastigheden på en el-drevet motor, og vi forventer derfor at skulle benytter et PWM-signal til at lavere spænding. Da vi gerne vil ændre duty-cyclen på vore PWM siganl i små trin, vil incrementering af en variabel, hvor igennem PWM-signalet styre formodentligt også til at blive implementeret. Via vores PSoC vil vi implementere en UART, og der kan give information om den nuværende tilstand af signalet, samt til at modtage ændringer i PWM-signalet.
+I øvelsen skal vi variere hastigheden på en el-drevet motor, og vi forventer derfor at skulle benytter et PWM-signal til at modificere hastigheden af rotation. Da vi gerne vil ændre duty-cyclen på vores PWM signal i små trin, vil incrementering af en variabel hvor igennem PWM-signalet styres, også blive implementeret.
+
+Via vores PSoC vil vi implementere en UART, der kan give information om den nuværende tilstand af signalet, samt til at modtage ændringer i PWM-signalet.
 
 \subsection{Do}
 Som driver for vores DC-motor benytter vi en MOSFET-transistor. Vores PSoC kan kun give en VCC på 5V, og vi benytter derfor en separat strømforsyning til at drive motoren.
@@ -17,14 +20,14 @@ Som driver for vores DC-motor benytter vi en MOSFET-transistor. Vores PSoC kan k
 
 Til programmering af PSoC benyttes som sagt PSoC Creator. Øvelsen kræver at vi benytter et PWM signal til at styre DC-motorens hastighed, og bruger UART til at kommunikere ændringer af PWM til PSoC fra konsollen.
 
-Til øvelsen er vi blevet givet en skabelon at arbejde ud fra. Her ser vi i top designet vores UART og PWM blok som vi skal benytte. PWM-blokken bliver givet en PWM-clock på 50kHz, og PWM-signalet bliver koblet til en pin, Pin\_PWM. Pin\_PWM bliver så koblet til den fysiske pin 63 eller 2.1, på PSoC. PWM sættes til at have en periode på 100, og med en default CompareValue på 50.
+Til øvelsen er vi blevet givet en skabelon at arbejde ud fra. Her ser vi i top designet vores UART og PWM blokke som vi skal benytte. PWM-blokken bliver givet et input PWM-clock på 50kHz, og PWM-signalet bliver koblet til en pin, Pin\_PWM. Pin\_PWM bliver så koblet til den fysiske pin 63 eller 2.1, på PSoC. PWM sættes til at have en periode på 100, og med en default CompareValue på 50.
 
     \pic{Oev1_TD.png}{0.8}{Top design for øvelse 1}{TD11}
     \pic{Oev1_P.png}{0.8}{Pins for øvelse 1}{Pins1D}
 
 UART-blokken tildeles en pin-in, Rx\_1 til signalet PSoC skal modtage fra konsollen, og en pin-out, Tx\_1 til at sende beskeder tilbage til computeren. UART interrupt bliver desuden aktiveret for RX, da vi gerne vil kunne styre PWM-signalet uafhængigt af, hvad PSoC'en laver.
 
-Til faktisk at ændre hastigheden af DC-motoren implementere vi funktionerne ’decreaseSpeed()’ og ’increaseSpeed()’. Begge funktioner indledes med ’UART\_1\_Putstring()’, der lader os printe en string til konsollen. Herved før vi en streng tilbage på computeren, så vi kan sikre den korrekte funktion bliver eksekveret.
+Til faktisk at ændre hastigheden af DC-motoren implementere vi funktionerne ’decreaseSpeed()’ og ’increaseSpeed()’. Begge funktioner indledes med ’UART\_1\_Putstring()’, der lader os printe en string til konsollen. Herved får vi en streng tilbage på computeren, så vi kan sikre den korrekte funktion bliver eksekveret.
 
     \pic{Oev1_CD.png}{0.8}{Implementering af decreaseSpeed() og increaseSpeed()}{Pins1CD}
 
@@ -44,7 +47,7 @@ Vi ser at ved at kører funktioner kan vi ændre på duty-cyclen af PWM-signalet
 Funktionerne printer desuden de korrekte beskeder i konsollen, så vi har styr over hvlke ændringer der er blevet foretaget til duty-cyclen.
 
 \subsection{Reflect}    
-Vi så fra vores målinger af PWM-signalet den opførsel forventede af vores funktioner. Signalet steg og fald som vi specificerede, og beskederne blev printet rigtigt i konsollen.
+Vi så fra vores målinger af PWM-signalet den opførsel vi forventede af vores funktioner. Signalet steg og faldt som vi specificerede, og beskederne blev printet rigtigt i konsollen.
 
 Desuden så vi også at vores if-sætninger sikrede at ’WriteCompare()’ ikke sendte ugyldige værdier, som vi ser på graferne da PWM-signalet ikke falder under 0.
 
