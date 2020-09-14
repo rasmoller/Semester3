@@ -1,48 +1,44 @@
 \documentclass[../main.tex]{subfiles}
 \graphicspath{{fig/}{../fig/}}
 
-
 \begin{document}
 
-
 \subsection{Introduction}
-I denne øvelse skal vi arbejde med PWM kontrol af en DC-motor. Den første del af øvelsen vil her omhandle ændring af rotationshastigheden af DC-motoren, ved ændring af duty-cyclen af PWM.
-
+I denne øvelse skal vi arbejde med PWM kontrol af en DC-motor. Den første del af øvelsen vil her omhandle ændring af rotationshastigheden af DC-motoren, ved ændring af duty-cyclen på et PWM signal. 
 Formålet med øvelsen er at implementere disse funktioner vha. PSoC microcontroller med tilhørende PSoC Creator software. 
 
 \subsection{Think}
-I øvelsen skal vi variere hastigheden på en el-drevet motor, og vi forventer derfor at skulle benytter et PWM-signal til at lavere spænding. Da vi sikkert gerne vil ændre spændingen i små trin, kommer en incrementering af en variabel, hvor igennem PWM-signalet styre formodentligt også til at blive implementeret.
-
-Da vi kun har adgang til C-kode til at programmere vores PSoC, virker den nemmeste måde at styre vores PWM-signal fra PSoC fra vores computer til at være UART, og vi bliver derfor nok også nødt til at implementere både RX og TX moduler.
+I øvelsen skal vi variere hastigheden på en el-drevet motor, og vi forventer derfor at skulle benytter et PWM-signal til at lavere spænding. Da vi gerne vil ændre duty-cyclen på vore PWM siganl i små trin, vil incrementering af en variabel, hvor igennem PWM-signalet styre formodentligt også til at blive implementeret. Via vores PSoC vil vi implementere en UART, og der kan give information om den nuværende tilstand af signalet, samt til at modtage ændringer i PWM-signalet
 
 \subsection{Do}
 Som driver for vores DC-motor benytter vi en MOSFET-transistor. Vores PSoC kan kun give en VCC på 5V, og vi benytter derfor en separat strømforsyning til at drive motoren.
 
-\pic{opstilling32.jpeg}{0.8}{Implementering med MOSFET}{MOSPimp}
+    \pic{opstilling32.jpeg}{0.8}{Implementering med MOSFET}{MOSPimp}
 
 Til programmering af PSoC benyttes som sagt PSoC Creator. Øvelsen kræver at vi benytter et PWM signal til at styre DC-motorens hastighed, og bruger UART til at kommunikere ændringer af PWM til PSoC fra konsollen.
 
-Til øvelsen er vi blevet givet en skabelon at arbejde ud fra. Her ser vi i top designet vores UART og PWM blok som vi skal benytte. PWM-blokken bliver givet en PWM-clock på 50kHz, og PWM-signalet bliver koblet til en pin, Pin\_PWM. Pin\_PWM bliver så koblet til den fysiske pin, 63, på PSoC.
+Til øvelsen er vi blevet givet en skabelon at arbejde ud fra. Her ser vi i top designet vores UART og PWM blok som vi skal benytte. PWM-blokken bliver givet en PWM-clock på 50kHz, og PWM-signalet bliver koblet til en pin, Pin\_PWM. Pin\_PWM bliver så koblet til den fysiske pin 63 eller 2.1, på PSoC. PWM sættes til at have en periode på 100, og med en default CompareValue på 50.
 
-\pic{Oev1_TD.png}{0.8}{Top design for øvelse 1}{TD11}
-\pic{Oev1_P.png}{0.8}{Pins for øvelse 1}{Pins1D}
+    \pic{Oev1_TD.png}{0.8}{Top design for øvelse 1}{TD11}
+    \pic{Oev1_P.png}{0.8}{Pins for øvelse 1}{Pins1D}
 
-UART-blokken tildeles en pin-in, Rx\_1 til signalet PSoC skal modtage fra konsollen, og en pin-out, Tx\_1, til signalet som skal sende PWM ud på Pin\_PWM. UART interrupt bliver desuden aktiveret for RX, da vi gerne vil kunne [BESKRIV HVAD INTERRUPT BLIVER BRUGT TIL]
+UART-blokken tildeles en pin-in, Rx\_1 til signalet PSoC skal modtage fra konsollen, og en pin-out, Tx\_1 til at sende beskeder tilbage til computeren. UART interrupt bliver desuden aktiveret for RX, da vi gerne vil kunne styre PWM-signalet uafhængigt af, hvad PSoC'en laver.
 
-Til faktisk at ændre hastigheden af DC-motoren implementere vi funktionerne ’decreaseSpeed()’ og ’increaseSpeed()’. Begge funktioner indledes med ’UART\_1\_Putstring()’, der lader os printe en string til konsollen. Herved sikre vi at den korrekte funktion bliver eksekveret. 
+Til faktisk at ændre hastigheden af DC-motoren implementere vi funktionerne ’decreaseSpeed()’ og ’increaseSpeed()’. Begge funktioner indledes med ’UART\_1\_Putstring()’, der lader os printe en string til konsollen. Herved før vi en streng tilbage på computeren, så vi kan sikre den korrekte funktion bliver eksekveret.
 
-\pic{Oev1_CD.png}{0.8}{Implementering af decreaseSpeed() og increaseSpeed()}{Pins1CD}
+    \pic{Oev1_CD.png}{0.8}{Implementering af decreaseSpeed() og increaseSpeed()}{Pins1CD}
 
-I ’decreaseSpeed()’ stiller vi så en if-sætning der checker om ’UART\_1\_ReadCompare()’ er større end 0. ’ReadCompare()’ retunerer [FORKLAR HVORDAN DECREASESPEED() VIRKER]
-Skal være større end 0, forbi vil ikke gøre mindre end 0
+I ’decreaseSpeed()’ checker vi den nuværende værdi af vores CompareValue på PWM\_1. Hvis værdien ikke er under 0, dercrementeres den med 1. På den måde sænkes tiden hvor transistoren er åben, og den gennemsnitlige spænding til DC-motoren falder. Omvendt checker 'increaseSpeed()' om værdien af compareValue er over 100, ellers incrementerer den compareValue.
 
-Til sidst implementeres en Switch-funktion, så vi kan styre hastigheden med input fra keyboardet.
+Der udnyttes den givne interrupt rutine, til at kalde vores funktioner igennem switch-casen.
 
 \subsection{Document}
 Vha. vores Analog Discovery måler vi hvordan PWM signalet ændre sig af at kører ’decreaseSpeed()’ og ’increaseSpeed()’.
-\pic{PWM_mesure}{0.8}{PWM lav Duty-cycle}{PWML}
-\pic{MiddelPWM.png}{0.8}{PWM mellem Duty-cycle}{PWMM}
-\pic{High_PWM}{0.8}{PWM høj Duty-cycle}{PWMH}
+
+    \pic{PWM_mesure}{0.8}{PWM lav Duty-cycle}{PWML}
+    \pic{MiddelPWM.png}{0.8}{PWM mellem Duty-cycle}{PWMM}
+    \pic{High_PWM}{0.8}{PWM høj Duty-cycle}{PWMH}
+
 Vi ser at ved at kører funktioner kan vi ændre på duty-cyclen af PWM-signalet. Funktionerne ændre signalet i små trin, og vi kan derfor frit stille på hastigheden. Vi ser at PWM-signalet svinger fra 0 til 5V, da PSoC levere en VCC på 5V.
 
 Funktionerne printer desuden de korrekte beskeder i konsollen, så vi har styr over hvlke ændringer der er blevet foretaget til duty-cyclen.
