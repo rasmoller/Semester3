@@ -17,13 +17,14 @@ Her vil vi med en aktiveringskombination af IN1 og IN2 bestemme hvilken retning 
 For at slukke for motoren kobler vi et signal til ENA pinen for at styre om den skal stoppe eller starte. Til styring gennem UART og kontrol af hastigheden genbruger vi bare de elementer fra 'Exercise 1'.
 
 \subsection{Do}
-For at opnå kontrol af både hastighed og retning af DC-motoren benyttes den udleverede H-bro i stedet for MOSFET-driveren. PWM-signalet føres igennem H-broen, der så lader os styre polariteten af signalet. H-broen indeholder fire relæer, hvor relæ 1 og 2 styres gennem et I/O signal fra IN1 og IN2, og relæ 3 og 4 styres fra IN3 og IN4 (vi bruger dog kun IN1 og IN2), som ses på figuren. IN1 og IN2 tilkobles direkte til PSoC, [SIG NOGET OM SIGNALET DER SENDES]
 
-%[INDSÆT FIGUR MED H-BRO]
+For at opnå kontrol af både hastighed og retning af dc-motoren benyttes den udleverede H-bro i stedet for MOSFET-driveren som i exercise 1. PWM-signalet føres igennem H-broen, der så lader os styre polariteten af signalet. H-broen indeholder fire transitorer, som hænger sammen i par, der altid er modsat. Dermed er det ikke muligt nogensinde at skabe en kortslutning. Åbningen af transistorerne styres desuden også af et signal på EnA, der styres på samme måde som med transistoren i Exercise 1.
 
-DC-motoren tilkobles en 9V power supply, da de 5V VCC PSoC'en kan levere ikke vil være tilstrækkelig. H-bro logik-driveren har dog brug for et 5V VCC, denne tages direkte fra PSoC.
+DC-motoren tilkobles en power supply til 230V strømstik, da de 5V VCC PSoC kan levere ikke vil være tilstrækkelige. H-bro logik-driveren har dog brug for et 5V VCC, der tage direkte fra PSoC.
 
-Vi benytter igen skabelon-filen givet til os til øvelsen. Vi kan stadig benytte funktionerne ’decreaseSpeed()’ og ’increaseSpeed()’, men skal nu implementere ’driveForwards()’ og ’driveBackwards’. I vores top design implementerer vi de to pins IN1 og IN2, og kobler dem til pin2.3 og pin2.4, så vi kan sende signaler fra dem gennem PSoC’en.
+\pic{opstilling21}{0.5}{Opstilling med DC-motor og H-bro}{fig:hbro}
+
+Vi benytter igen skabelon-filen givet til os til øvelsen. Vi kan stadig benytte funktionerne ’decreaseSpeed()’ og ’increaseSpeed()’, men skal nu implementere ’driveForwards()’ og ’driveBackwards’. I vores top design implementerer vi de to pins IN1 og IN2, og kobler dem til pin [INDSÆT PIN NUMRE HER], så vi kan sende signaler fra dem gennem PSoC’en.
 
 \pic{Oev2_TD.png}{0.6}{Top design for øvelse 2}{TP2D}
 \pic{Oev2_PIN.png}{0.7}{Pins for øvelse 2}{TP2PP}
