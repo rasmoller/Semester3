@@ -5,11 +5,15 @@
 \begin{document}
 
 
-
-\subsection{Think}
+\subsection{Introduction}
 I denne øvelse skal vi arbejde med PWM kontrol af en DC-motor. Den første del af øvelsen vil her omhandle ændring af rotationshastigheden af DC-motoren, ved ændring af duty-cyclen af PWM.
 
 Formålet med øvelsen er at implementere disse funktioner vha. PSoC microcontroller med tilhørende PSoC Creator software. 
+
+\subsection{Think}
+I øvelsen skal vi variere hastigheden på en el-drevet motor, og vi forventer derfor at skulle benytter et PWM-signal til at lavere spænding. Da vi sikkert gerne vil ændre spændingen i små trin, kommer en incrementering af en variabel, hvor igennem PWM-signalet styre formodentligt også til at blive implementeret.
+
+Da vi kun har adgang til C-kode til at programmere vores PSoC, virker den nemmeste måde at styre vores PWM-signal fra PSoC fra vores computer til at være UART, og vi bliver derfor nok også nødt til at implementere både RX og TX moduler.
 
 \subsection{Do}
 Som driver for vores DC-motor benytter vi en MOSFET-transistor. Vores PSoC kan kun give en VCC på 5V, og vi benytter derfor en separat strømforsyning til at drive motoren.
