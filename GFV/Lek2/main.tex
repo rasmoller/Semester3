@@ -8,6 +8,8 @@
 \usepackage[top=3cm, bottom=3cm, left=2.5cm, right=2.5cm]{geometry}
 \usepackage{graphicx}
 \usepackage{float}
+\usepackage[labelfont=bf,listformat=simple]{caption}
+
 \graphicspath{{fig/}}
 \pagestyle{plain}
 
@@ -26,11 +28,13 @@
 }
 %\pic{Picture path}{picture size as page size}{Caption}{Label}
 
-
-%% --- DOCUMENT ---
+%% --------- DOCUMENT ---------------
 
 \begin{document}
-%Front page
+
+% ===========================================
+%                Front page
+% ===========================================
 \begin{titlepage}
     
     \begin{center}
@@ -66,14 +70,16 @@
 
 \setcounter{page}{1}
 
-%Start of document
+% ===========================================
+%            Start of document
+% ===========================================
 
 \section{Introduktion}
 I følgende journal vil der blive gennemgået øvelsen ``Motor Control'' og delopgaverne vil blive gennemgået hver for sig. Disse delopgaver er valgt at blive opdelt i følgende emner:
 \begin{itemize}
 \item Think
 
-I ``Think'' vil der blive forklaret hvilke tanker gruppen har gjort sig i forhold til delopgaven og, hvordan teorien der er blevet lært indgår i delopgaven. Derudover vil der væres spørgsmål direkte fra opgaven som vil blive besvaret under ``Reflect'' afsnittet\\
+I "Think" vil der blive forklaret hvilke tanker gruppen har gjort sig i forhold til delopgaven og, hvordan teorien der er blevet lært indgår i delopgaven. Derudover vil der væres spørgsmål direkte fra opgaven som vil blive besvaret under "Reflect" afsnittet\\
 Dette inkludere f.eks.:
 \begin{itemize}
 \item Multisim opstillinger
@@ -83,8 +89,9 @@ Dette inkludere f.eks.:
 
 \item Do
 
-I ``Do'' vil der blive gennemgået opstilling samt dokumentation for opstilling
+I "Do" vil der blive gennemgået opstilling samt dokumentation for opstilling
 Dette inkludere f.eks.:
+
 \begin{itemize}
 \item Billeder af opstilling
 \item Tilslutning af strøm og forbindelser
@@ -93,7 +100,7 @@ Dette inkludere f.eks.:
 
 \item Document
 
-Under ``Document'' vil der blive fremvist den data som gruppen får ud af opstillingen.
+Under "Document" vil der blive fremvist den data som gruppen får ud af opstillingen.
 
 Dette inkludere f.eks.:
 \begin{itemize}
@@ -113,8 +120,11 @@ Dette inkludere f.eks.:
 \item Konklusion
 \end{itemize}
 
-%End of introduction and start of subpages
 \end{itemize}
+
+% ===========================================
+% End of introduction and start of subpages
+% ===========================================
 
 \section{Exercise 1}
 \subfile{sec/ex1.tex}
