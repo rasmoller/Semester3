@@ -8,7 +8,7 @@ Del 2 af opgaven adskiller sig fra første del ved at vi nu skal forsøge at sty
 
 \subsection{Think}
 For at ændre på retningen af en DC motor skal man vende strømmens retning. 
-Dette vil resultere i, at strømmen løber modsat igennem spolen i motoren og dette betyder, at man får et magnetfelt genereret som er modsatrettet.
+Dette vil resultere i, at strømmen løber modsat igennem motorens spole og dette betyder, at man for et magnetfelt genereret som er modsatrettet.
 Derfor ender motoren med, at trække armaturet den modsatte vej i forhold til hvad den gjorde før.
 
 Til at gøre dette er det optimalt at bruge en H-bro og her har vi fået udleveret en "H-Bridge L298".
@@ -17,26 +17,24 @@ Her vil vi med en aktiveringskombination af IN1 og IN2 bestemme hvilken retning 
 For at slukke for motoren kobler vi et signal til ENA pinen for at styre om den skal stoppe eller starte. Til styring gennem UART og kontrol af hastigheden genbruger vi bare de elementer fra 'Exercise 1'.
 
 \subsection{Do}
-For at opnå kontrol af både hastighed og retning af dc-motoren benyttes den udleverede H-bro i stedet for MOSFET-driveren. PWM-signalet føres igennem H-broen, der så lader os styre polariteten af signalet. H-broen indeholder fire relæ, hvor relæ 1 og 4 styres gennem et I/O signal fra IN1, og relæ 2 og 3 styres fra IN2, som ses på figuren. IN1 og IN2 tilkobles direkte til PSoC, hvorfra vi vil benyttes dem til at styre retningen af PWM-signalet gennem H-broen.
+For at opnå kontrol af både hastighed og retning af DC-motoren benyttes den udleverede H-bro i stedet for MOSFET-driveren. PWM-signalet føres igennem H-broen, der så lader os styre polariteten af signalet. H-broen indeholder fire relæer, hvor relæ 1 og 2 styres gennem et I/O signal fra IN1 og IN2, og relæ 3 og 4 styres fra IN3 og IN4 (vi bruger dog kun IN1 og IN2), som ses på figuren. IN1 og IN2 tilkobles direkte til PSoC, [SIG NOGET OM SIGNALET DER SENDES]
 
 %[INDSÆT FIGUR MED H-BRO]
 
-Denne fordeling sikre at vi ikke kan kortslutte systemet, da der ville ske en kortslutning hvis eksempelvis relæ 1 og 2 var tændt samtidigt. Derfor ønsker vi heller ikke at alle relæerne skal være tændt på samme tid, hvilket vi kommer til at tage forhold for når koden til PSoC skal skrives. 
+DC-motoren tilkobles en 9V power supply, da de 5V VCC PSoC'en kan levere ikke vil være tilstrækkelig. H-bro logik-driveren har dog brug for et 5V VCC, denne tages direkte fra PSoC.
 
-DC-motoren tilkobles en power supply til 230V strømstik, da de 5V VCC PSoC kan levere ikke vil være tilstrækkelige. H-bro logik-driveren har dog brug for et 5V VCC, der tages direkte fra PSoC.
+Vi benytter igen skabelon-filen givet til os til øvelsen. Vi kan stadig benytte funktionerne ’decreaseSpeed()’ og ’increaseSpeed()’, men skal nu implementere ’driveForwards()’ og ’driveBackwards’. I vores top design implementerer vi de to pins IN1 og IN2, og kobler dem til pin2.3 og pin2.4, så vi kan sende signaler fra dem gennem PSoC’en.
 
-Vi benytter igen skabelon-filen givet til os til øvelsen. Vi kan stadig benytte funktionerne ’decreaseSpeed()’ og ’increaseSpeed()’, men skal nu implementere ’driveForwards()’ og ’driveBackwards’. I vores top design implementerer vi de to pins IN1 og IN2, og kobler dem til pin 65 og 66 respektivt, så vi kan sende signaler fra dem gennem PSoC’en.
-
-\pic{Oev2_TD.png}{0.8}{Top design for øvelse 2}{TP2D}
-\pic{Oev2_PIN.png}{0.8}{Pins for øvelse 2}{TP2PP}
+\pic{Oev2_TD.png}{0.6}{Top design for øvelse 2}{TP2D}
+\pic{Oev2_PIN.png}{0.7}{Pins for øvelse 2}{TP2PP}
 
 Vi kan nu benytte funktionerne ’IN1\_Write()’ og ’IN2\_Write()’ til at sende logiske ’1’ og ’0’ til de to pins. Vi implementere først funktionen ’stop()’, som vi skal bruge.
 
-\pic{Oev2_STOP.png}{0.8}{Implementering af stop()}{STOPimp}
+\pic{Oev2_STOP.png}{0.6}{Implementering af stop()}{STOPimp}
 
 Vi sender først stringen ”stop” til konsollen, så vi kan teste om funktionen bliver eksekveret korrekt. Derefter skrives der er logisk ’0’ til både IN1 og IN2, så alle relæerne slukkes. Ved at starte både ’decreaseSpeed()’ og ’increaseSpeed()’ med ’stop()’ sikre vi at det ikke er muligt at åbne de forkerte relæ på sammme tid, da alle relæ slukkes hver gang du ændre retning.
 
-\pic{Oev2_DRIVE.png}{0.8}{Implementering af driveForwards() og driveBackwards()}{PeepeePoopoo}
+\pic{Oev2_DRIVE.png}{0.7}{Implementering af driveForwards() og driveBackwards()}{PeepeePoopoo}
 
 Efter en string sendes til konsollen køres ’stop()’ som sagt i begge funktioner. Derefter benyttes ’CyDelay(50)’ til at vente 50ms, da vi ikke vil beskadige DC-motoren ved at skifte retning for pludseligt.
  
