@@ -3,8 +3,17 @@
 
 \begin{document}
 
+\subsection{Introduktion}
+I denne øvelse ønsker vi at eksperimentere med hvordan en stepper motor fungerer. Igennem 4 MOSFETS og vores PSoC, vil vi implementere en række af de mest almindelige funktionaliteter, en stepper motor har. Dette inkluderer start, stop, skift retning, skift hastighed, samt udfør en fuld rotation.
+
 \subsection{Think}
-I denne øvelse ønsker vi at eksperimentere med hvordan en stepper motor fungerer. Igennem 4 MOSFETS og vores PSoC, vil vi implementere en række af de mest almindelige funktionaliteter, en stepper motor har. Dette inkluderer start, stop, skift retning, skrft hastighed, samt udfør en fuld rotation.
+Første overvejelse er hvordan forbindelsen mellem PSoC, MOSFETs og stepper motoren sættes op. Her har vi undersøgt datasheetet til vores stepper motor, som er af typen "SP2575M0206-A". Dette kan ses på billeder \ref{fig:step}
+
+\pic{stepper}{0.3}{Forbindelser til steppermotor}{fig:step}
+
+Her fra har vi altså konkluderet, at det er pin 1-4 vil skal kontrollere på stepper motoren. På MOSFET printet er der sat op, så stepper motoren nemt kan sættes på. Her sættes der forbindelse til common $V_cc$ for steppermotoren fra pin 5 og 6, direkte til PSoC'ens 5V output. Dette kan vi, da vores testforsøg, ikke bruger særlig meget strøm. Forbindelse fra pin 1-4 fra stepper motoren til GND styres af de 4 MOSFETS, der kontrolleres af 4 pins fra PSoC'en. Vi har valgt at stille det op med output 2.1 til pin 1, output 2.2 til pin 2 osv. Desuden er vi også opmærksomme på at sikre en fælles GND.
+
+Til programmerings delen, har vi tænkt os at kopieret det meste af interrupt rutinen fra Exercise 1 og 2.
 
 \subsection{Do}
 Til at styre vores 
@@ -17,7 +26,7 @@ Til at styre vores
 \subsection{Document}
 YOUUUU
 
-\subsection{Reflect}    
+\subsection{Reflect}
 XD
 
 
