@@ -22,21 +22,25 @@ Til programmerings delen, har vi tænkt os at kopieret det meste af interrupt ru
 
 Opstilling af stepper motoren er som beskrevet her under i figur \ref{fig:sm1} og \ref{fig:sm2}
 
-\pic{opstilling31}{0.5}{Opstilling af steppermotor 1/2}{fig:sm1}
+    \pic{opstilling31}{0.5}{Opstilling af steppermotor 1/2}{fig:sm1}
 
-\pic{opstilling32}{0.5}{Opstilling af stepper motor 2/2}{fig:sm2}
+    \pic{opstilling32}{0.5}{Opstilling af stepper motor 2/2}{fig:sm2}
 
 Her under ses et udsnit af implementeringen af hvordan der skiftes mellem at køre den ene eller den anden vej. Interruptrutinen starter denne switch-case, der håndterer modtagelsen af chars fra UART. Alt efter hvilken char der er modtaget, sættes et globalt flag, der så håndteres i funktionen move().
 
-\lstinputlisting[language=C, frame=single, linerange={102-114}]{../kode/step2.c}
+    \lstinputlisting[language=C, frame=single, linerange={102-114}]{../kode/step2.c}
 
 Funktionen move() er den centrale funktion for implementeringen af stepper motoren. Funktionen håndtere hvilken retning steppermotoren kører, samt hilket mode motoren kører i. Funktionen køres konstant i vores uendelige for-løkke, men med et delay efter, som også kan ændre størelse i interruptrutinen.
 
-\lstinputlisting[language=C, frame=single, linerange={183-215}]{../kode/step2.c}
+    \lstinputlisting[language=C, frame=single, linerange={183-215}]{../kode/step2.c}
 
 \subsection{Document}
 
-[UART fobindelse og at den kan dreje rundt]
+Som det ses på billede \ref{fig:uart3} har vi været i stand til at etablere en forbindelse til PSoC'en. Vi kan sende kommandoer til den, og vi får samtdig et svar tilbage, der fortæller hvilken kommando er blevet udført.
+
+    \pic{uart_3}{0.4}{UART forbindelse til PSoC}{fig:uart3}
+
+Vi har desuden observeret er motoren opfører sig som forventet ud fra hvilke kommandoer bliver sendt. Vi har ændret hastigheden, stoppet, startet og kørt en fuld omgang. Dog har der ikke været en tydelig visning af de forskellige step metoder.
 
 \subsection{Reflect}
 Et spørgsmål man kan stille er om der kan mærkes forskel på de forskellige modes.
