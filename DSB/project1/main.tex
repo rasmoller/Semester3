@@ -1,6 +1,6 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
-\usepackage[english]{babel}
+%\usepackage[english]{babel}
 \usepackage{subfiles}
 \usepackage{amsthm} %lets us use \begin{proof}
 \usepackage{amssymb} %gives us the character \varnothing
@@ -14,13 +14,30 @@
 \usepackage{enumitem}
 \usepackage{float}
 
+% Standard lst
+\lstset{
+numbers=left, 
+numberstyle=\small, 
+numbersep=8pt, 
+frame = single, 
+language=matlab, 
+framexleftmargin=15pt,
+extendedchars=true,
+literate = {æ}{{\ae}}1 {å}{{\r a}}1 {ø}{{\o}}1 {Ø}{{\O}}1 {Æ}{{\AE}}1 {Å}{{\r A}}1
+}
+
+% Presets
 \graphicspath{{fig/}}
 \pagestyle{plain}
-
 \setlength{\parskip}{1em}
 \setlength{\parindent}{0em}
 
-% Commands
+% =============================
+%           Commands
+% =============================
+
+% Easy pictures
+% \pic{Picture path}{picture size as page size}{Caption}{Label}
 \newcommand{\pic}[4]{
 	\begin{figure}[H]
 		\centering
@@ -30,7 +47,6 @@
 	\end{figure}
 	\hspace*{\fill}
 }
-%\pic{Picture path}{picture size as page size}{Caption}{Label}
 
 % Credits to: 
 % https://tex.stackexchange.com/questions/10293/latex-template-for-use-cases
@@ -51,7 +67,9 @@
   \newenvironment{usecase}{\tabularhead}
 {\hline\end{tabular}\end{table}}
 
-%% --------- DOCUMENT ---------------
+% ===========================================
+%                DOCUMENT
+% ===========================================
 
 \begin{document}
 
@@ -99,7 +117,7 @@
 \setcounter{page}{1}
 
 % ===========================================
-%            Start of document
+%            Start of pages
 % ===========================================
 
 \section{Introduktion}
