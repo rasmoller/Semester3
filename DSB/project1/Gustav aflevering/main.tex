@@ -16,14 +16,14 @@
 
 % Standard lst
 \lstset{
-numbers=left, 
-numberstyle=\small, 
-numbersep=8pt, 
-frame = single, 
-language=matlab, 
-framexleftmargin=15pt,
-extendedchars=true,
-literate = {æ}{{\ae}}1 {å}{{\r a}}1 {ø}{{\o}}1 {Ø}{{\O}}1 {Æ}{{\AE}}1 {Å}{{\r A}}1
+  numbers=left, 
+  numberstyle=\small, 
+  numbersep=8pt, 
+  frame = single, 
+  language=matlab, 
+  framexleftmargin=15pt,
+  extendedchars=true,
+  literate = {æ}{{\ae}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Æ}{{\AE}}1 {Ø}{{\O}}1 {Å}{{\r A}}1 
 }
 
 % Presets
@@ -79,36 +79,34 @@ literate = {æ}{{\ae}}1 {å}{{\r a}}1 {ø}{{\o}}1 {Ø}{{\O}}1 {Æ}{{\AE}}1 {Å}{
 
 \begin{titlepage}
     
-    \begin{center}
-        \vspace*{1cm}
- 
-        \Huge
-        \textbf{I3DSB - Mini projekt 1}
- 
-        \vspace{0.5cm}
-        \huge
-        Digitale bølger \\
-        \date\today
- 
-        \vspace{1.5cm}
- 
-        \large
-        \begin{tabular}{c|lr}
-            \hline
-        SW & Rasmus Møller Nielsen & au633064 \\
-	    SW & Christian Bach Johansen & au577526\\ 
-        SW & Gustav Nørgaard Knudsen & au612485 \\
-        \hline
-        \end{tabular}
-        
-        
-        \vfill
-        % \includegraphics[width=0.3\textwidth]{au2}
-        \vspace{2cm}
- 
-        Hold nr. 13
- 
-    \end{center}
+  \begin{center}
+    \vspace*{1cm}
+
+    \Huge
+    \textbf{I3DSB - Mini projekt A}
+
+    \vspace{0.5cm}
+    \huge
+    Sampling og analyse af digital musik- og talesignaler \\
+    \date\today
+
+    \vspace{1.5cm}
+
+    \large
+    \begin{tabular}{c|lr}
+      \hline
+      SW & Gustav Nørgaard Knudsen & au612485 \\
+      \hline
+    \end{tabular}
+    
+    
+    \vfill
+    % \includegraphics[width=0.3\textwidth]{au2}
+    \vspace{2cm}
+
+    Hold nr. 13
+
+  \end{center}
 \end{titlepage}
 
 \newpage
@@ -121,6 +119,8 @@ literate = {æ}{{\ae}}1 {å}{{\r a}}1 {ø}{{\o}}1 {Ø}{{\O}}1 {Æ}{{\AE}}1 {Å}{
 % ===========================================
 
 \section{Introduktion}
+Formålet med dette miniprojekt er at give en forståelse for hvordan MATLAB håndterer digitale signaler såsom lyd og hvordan disse maniuleres. Lyd opbevares i matricer i MATLAB, som så kan plottes til deres tidsenhed, for at skabe plots af lydsignalet. Desuden er det også muligt at høre lyde, f.eks. med funktioner som \lstinline{soundsc()}
+
 \subfile{sec/del1.tex}
 
 \subfile{sec/del2.tex}
