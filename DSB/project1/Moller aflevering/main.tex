@@ -1,0 +1,130 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+%\usepackage[english]{babel}
+\usepackage{subfiles}
+\usepackage{amsthm} %lets us use \begin{proof}
+\usepackage{amssymb} %gives us the character \varnothing
+\usepackage[top=3cm, bottom=3cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage{graphicx}
+\usepackage[compact]{titlesec}
+\usepackage{float}
+\usepackage{listings}
+\usepackage[labelfont=bf,listformat=simple]{caption}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{float}
+
+% Standard lst
+\lstset{
+numbers=left, 
+numberstyle=\small, 
+numbersep=8pt, 
+frame = single, 
+language=matlab, 
+framexleftmargin=15pt,
+extendedchars=true,
+literate = {æ}{{\ae}}1 {å}{{\r a}}1 {ø}{{\o}}1 {Ø}{{\O}}1 {Æ}{{\AE}}1 {Å}{{\r A}}1
+}
+
+% Presets
+\graphicspath{{fig/}}
+\pagestyle{plain}
+\setlength{\parskip}{1em}
+\setlength{\parindent}{0em}
+
+% =============================
+%           Commands
+% =============================
+
+% Easy pictures
+% \pic{Picture path}{picture size as page size}{Caption}{Label}
+\newcommand{\pic}[4]{
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=#2\textwidth]{#1}
+		\caption{#3}
+		\label{#4}
+	\end{figure}
+	\hspace*{\fill}
+}
+
+% Credits to: 
+% https://tex.stackexchange.com/questions/10293/latex-template-for-use-cases
+\newcommand\tabularhead[1]{
+\begin{table}[h]
+  \begin{tabular}{|p{0.25\linewidth}|p{0.6\linewidth}|}
+    \hline
+    \textbf{Navn} & \textbf{#1} \\
+    \hline}
+
+  \newcommand\addrow[2]{#1 &#2\\ \hline}
+
+  \newcommand\addmulrow[2]{ \begin{minipage}[t][][t]{2.5cm}#1\end{minipage}% 
+     &\begin{minipage}[t][][t]{8cm}
+      \begin{enumerate} #2   \end{enumerate}
+      \end{minipage}\\ \hline} 
+
+  \newenvironment{usecase}{\tabularhead}
+{\hline\end{tabular}\end{table}}
+
+% ===========================================
+%                DOCUMENT
+% ===========================================
+
+\begin{document}
+
+% ===========================================
+%                Front page
+% ===========================================
+
+\begin{titlepage}
+    
+    \begin{center}
+        \vspace*{1cm}
+ 
+        \Huge
+        \textbf{I3DSB - Mini projekt 1}
+ 
+        \vspace{0.5cm}
+        \huge
+        Digitale bølger \\
+        \date\today
+ 
+        \vspace{1.5cm}
+ 
+        \large
+        \begin{tabular}{c|lr}
+            \hline
+        SW & Rasmus Møller Nielsen & au633064 \\
+	    SW & Christian Bach Johansen & au577526\\ 
+        SW & Gustav Nørgaard Knudsen & au612485 \\
+        \hline
+        \end{tabular}
+        
+        
+        \vfill
+        % \includegraphics[width=0.3\textwidth]{au2}
+        \vspace{2cm}
+ 
+        Hold nr. 13
+ 
+    \end{center}
+\end{titlepage}
+
+\newpage
+\newpage
+
+\setcounter{page}{1}
+
+% ===========================================
+%            Start of pages
+% ===========================================
+
+\section{Introduktion}
+\subfile{sec/del1.tex}
+
+\subfile{sec/del2.tex}
+
+\subfile{sec/del3.tex}
+
+\end{document}
