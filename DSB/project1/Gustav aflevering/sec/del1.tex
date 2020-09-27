@@ -1,21 +1,102 @@
 \documentclass[../main.tex]{subfiles}
 \graphicspath{{fig/}{../fig/}}
 
-%Opgvee 1-3
+%Opgave 1-4
+
 \begin{document}
 
-\subsection{Introduction}
+\section{Opgave 1}
+For at finde antallet af samples for alle 3 signaler, kan jeg ganske simpelt kalde funktionen \lstinline{length()} på alle samples. \lstinline{length()} returnerer antallet af elementer i matricen, hvilket dermed vil sige antallet af samples. Koden for at gøre dette kan ses i listing \ref{lst:print}
 
-Hello hvkdafgfdg
-
-\begin{lstlisting}[caption={My lstlisting}, label={lst:myLST}]
-x = 1;
-y.(1) = mean[1:3:10];
-%Hello æøå ÆØÅ
-x= 2;
+\begin{lstlisting}[caption=Print af antal samples, label=lst:print]
+length(y(s1).sample) % = 4213759
+length(y(s2left).sample) % = 8753617
+length(y(s2right).sample) % = 8753617
+length(y(s3).sample) % = 1270957
 \end{lstlisting}
 
-Som vi kan se i listing \ref{lst:myLST}
+Her fra kommer jeg frem til at s1 indeholder \(4.213.759\) samples, s2 (left og rigth) indeholder \(8.753.617\) samples og s3 indeholder \(1.270.957\) samples. Dette lade til at være rigtigt, da jeg kan se s2 f.eks. varer meget længere end s3.
 
+
+\section{Opgave 2}
+
+For at plotte alle 3 signaler med rigtige labels og titler, bruges funktionerne beskrevet i \ref{lst:plot}. For at gøre MATLAB koden mere overskuelig, er der brugt et for-loop på min struct, så jeg kan loope igennem hvert signal, og plottet dem med de allerede forudbestemte varaibler. Alle plots tegnes på figur f1, for overskuelighed.
+
+\begin{lstlisting}[caption={Plot af s1, s2 og s3}, label=lst:plot]
+%% Exercise 2
+f1 = figure;
+
+for i = 1:length(y)
+	subplot(2,2,i)
+	plot(y(i).time, y(i).sample)
+	title(y(i).name)
+	xlabel("Time(s)")
+	ylabel("Amplitude(~)")
+end
+\end{lstlisting}
+
+\pic{plot_signaler}{0.9}{Plot af alle 3 signaler}{fig:plot_sig}
+
+
+\section{Opgave 3}
+
+For at dfinde max, min, gennemsnit (mean), rms og effekt for alle 3 signaler, kan jeg kalde de forudbestemte værdier, jeg beregnede i listing 2. Et udsnit af hvordan de blev beregnet kan ses på listing \ref{lst:opg3}. 
+
+\begin{lstlisting}[caption={Udsnit af beregning af max, min, gennemsnit (mean), rms og effekt}, label=lst:opg3]
+for i = 1:length(y)
+  y(i).max = max(y(i).sample);
+  y(i).min = min(y(i).sample);
+  y(i).mean = mean(y(i).sample);
+  y(i).rms = rms(y(i).sample);
+  y(i).effect = sum(y(i).sample.^2);
+end
+\end{lstlisting}
+
+\begin{table}[H]
+	\centering
+	\caption{Værdier for opgave 3}
+	\begin{tabular}{l|ccccc}
+		\hline
+		signal & max & min & mean & rms & effekt \\
+		\hline
+		s1 & 0.930 & -0.820 & $\approx 0$ & 0.119 & 60557.9 \\
+		s2left & 0.955 & -0.955 & $\approx 0$ & 0.338 & 1001787.6  \\ 
+		s2right & 0.955 & -0.955 & $\approx 0$ &	0.354 &	1102211.3 \\
+		s3 & 0.960 &	-0.919 & $\approx 0$ & 0.091 &	10738.9 \\
+	\end{tabular}
+\end{table}
+
+
+\section{Opgave 4}
+
+Ligesom i opgave 3, er crest allerede beregnet i listing 2. Til at beregne crest-faktoren, bruges formlen som beskrevet i ligning \ref{mat:crest}. Da der tage \(20\cdot log_{10}\), kan det antages at crest-faktoren vil være i decibel. Det på listing \ref{lst:crest} kan det også ses, hvordan crest-faktoren er beregnet i MATLAB. 
+
+\begin{equation}
+	\label{mat:crest}
+	20\cdot log_{10}\frac{x_{peak}}{x_{rms}}
+\end{equation}
+
+\begin{lstlisting}[caption={Bergning af crest-faktor for alle 3 signaler}, label=lst:crest]
+for i = 1:length(y)
+	y(i).crest = 20*log10(y(i).max/y(i).rms);
+end
+\end{lstlisting}
+
+\begin{table}[H]
+	\centering
+	\caption{Værdier af crest-faktor}
+	\label{tab:crest}
+	\begin{tabular}{l|ccccc}
+		\hline
+		signal & crest \\
+		\hline
+		s1 & 17.80 dB \\
+		s2left & 9.02 dB \\ 
+		s2right & 8.60 dB\\
+		s3 & 20.37 dB
+	\end{tabular}
+\end{table}
+
+I tabel \ref{tab:crest} ses beregningen for de 3 signalers crest-faktor. Her ses der, at både s1 og s2 har en cirka dobbelt så stor crest-faktor, som s2 (både right og left). Svaret på hvorfor, kan findes i udregningen for crest-faktoren, da foruden omregningen til dB, tages \( x_{peak}/x_{rms} \). Alle signalernes peak ligger omkring \(0.95\). Den store forskel er deres rms-værdi, hvor s2 har om rms-værdi på cirka 0.33, mens s1 og s3 begger ligger på en rms-værdi lige omkring 0.1. Herved har vi at \(x_{peak}\) divideres med et stører tal for s2, end for s1 og s3. At s2 har en lavere crest-faktor giver meget god mening, når crest-faktoren beskriver hvor ekstrem forskellen er mellem peaks og rms af signalet. Da s2 er elektronisk musik, med masser af "gang i den", må vi dermed også kunne forvente en høj rms. Omvendt er der ikke lige så meget gang i den, i et signal med Mozart musik, eller tale.
 
 \end{document}

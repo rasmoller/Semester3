@@ -1,4 +1,6 @@
 clear;
+clc;
+
 Fs = 5000; %Samplingsfrekvens
 Ts = 1/Fs; % Tid per sampling
 
@@ -21,21 +23,22 @@ tone_sum = tone_ekko + tone_ext;
 ekko_t = [0:Ns+e.Ns-1]*Ts;
 
 figure
+subplot(2,2,3)
 plot(t, tone);
 title("Original tone");
 xlabel("Tid - sekunder");
 ylabel("Amplitude - ~");
 
-figure
+subplot(2,2,2)
 plot(ekko_t, tone_ekko);
 title("Ekko");
 xlabel("Tid - sekunder");
 ylabel("Amplitude - ~");
 
-figure
+subplot(2,2,1)
 plot(ekko_t, tone_sum);
 title("Ekko + Original");
 xlabel("Tid - sekunder");
 ylabel("Amplitude - ~");
 
-soundsc(tone_sum);
+soundsc(tone_sum, Fs);

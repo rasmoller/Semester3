@@ -1,10 +1,52 @@
 \documentclass[../main.tex]{subfiles}
 \graphicspath{{fig/}{../fig/}}
 
-%opgave 7-9 + ekstra opgave
+%opgave 9 + ekstra opgave
 \begin{document}
 
-\subsection{Introduction}
+\section{Opgave 9}
+
+For at få en eksponentielt aftagning på s3, kræver det at s3 ganges med en "envelope" der kan fungere som der ønskes. Her at der på den sidste \( 1 /3 \) af s3, skal aftages eksponentielt, ned til en amplitude på \( 5\% \) af den originale amplitude. Dette kan opnås med funktionen for en eksponentielt aftagende funktion, da vi kender vores skæring med y-aksen, og 2 punkter på grafen, skæringen med y-aksen i (0,1) samt slutpunktet, der skal være (\(\frac{1}{3}time, 0.05\)). Funktionen kan ses her under i ligning \ref{mat:eks}. 
+
+\begin{gather}
+  y(x) = b \cdot a^x \label{mat:eks}\\
+  b = \text{y-værdi foor skæring med y-aksen} \\
+  a = \left(\dfrac{y_2}{y_1}\right)^{ \dfrac{1}{x_2-x_1}} \text{, hvor} (x_1,y_1) \text{ og }  (x_2,y_2)  \text{ er punkter på grafen}
+\end{gather}
+
+\begin{lstlisting}[caption={Fade out af s3}label=lst:s3fade]
+%% Exercise 9
+% Tage sidste tredjedel af s3
+t = y(s3).time(1:y(s3).nS/3+1);
+% Eksponentielt aftagende: b*a^x
+% b = Skæring med y i (0,1)
+% a = (y2/y1)^1/(x2-x1)
+a = (0.05/1)^(1/(t(end)-t(1)));
+% Matrice der er eksponentielt aftagenende
+% Starter i 1 og går til 0.05 ved 1/3 af time
+e = 1*a.^t;
+
+% s3fade
+s3fade = 7;
+y(s3fade).sample = y(s3).sample;
+y(s3fade).time = y(s3).time;
+% Påfør e på sidste 1/3 af samples
+y(s3fade).sample(length(y(s3fade).sample)*2/3:end) 
+  = e.*y(s3fade).sample(length(y(s3fade).sample)*2/3:end);
+
+figure
+plot(y(s3fade).time, y(s3fade).sample, Fs)
+%soundsc(y(s3fade).sample)
+\end{lstlisting}
+
+Som det kan ses på figur \ref{fig:s3fade}, er den ønskede effekt opnået. På den sidste 1/3 af signalet, bliver stemmen dæmpet eksponentielt. Ved at lytte til signalt kan det også høre, den ønskede effekt er opnået.
+
+\pic{s3_fade}{1}{s3 med fade effekt}{fig:s3fade}
+
+
+
+\section{Opgave 1.15}
+
 
 
 

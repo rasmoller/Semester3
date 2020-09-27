@@ -13,6 +13,7 @@
 \usepackage{array}
 \usepackage{enumitem}
 \usepackage{float}
+\usepackage{amsmath}
 
 % Standard lst
 \lstset{
@@ -23,7 +24,9 @@
   language=matlab, 
   framexleftmargin=15pt,
   extendedchars=true,
-  literate = {æ}{{\ae}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Æ}{{\AE}}1 {Ø}{{\O}}1 {Å}{{\r A}}1 
+  tabsize=2,
+  literate = {æ}{{\ae}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Æ}{{\AE}}1 {Ø}{{\O}}1 {Å}{{\r A}}1,
+  xleftmargin=2em,
 }
 
 % Presets
@@ -90,18 +93,15 @@
     Sampling og analyse af digital musik- og talesignaler \\
     \date\today
 
-    \vspace{1.5cm}
+    \vspace{3cm}
 
-    \large
-    \begin{tabular}{c|lr}
-      \hline
-      SW & Gustav Nørgaard Knudsen & au612485 \\
-      \hline
-    \end{tabular}
+    \Large
+    SW - Gustav Nørgaard Knudsen - au612485 
+
     
     
     \vfill
-    % \includegraphics[width=0.3\textwidth]{au2}
+    \includegraphics[width=0.3\textwidth]{au2}
     \vspace{2cm}
 
     Hold nr. 13
@@ -120,6 +120,55 @@
 
 \section{Introduktion}
 Formålet med dette miniprojekt er at give en forståelse for hvordan MATLAB håndterer digitale signaler såsom lyd og hvordan disse maniuleres. Lyd opbevares i matricer i MATLAB, som så kan plottes til deres tidsenhed, for at skabe plots af lydsignalet. Desuden er det også muligt at høre lyde, f.eks. med funktioner som \lstinline{soundsc()}
+
+Før jeg kan begynde på opgaverne, starter jeg med at indlæse mine .wav filer med \lstinline{audioread()}. Jeg opretter en struct, der kan indeholde alt information om mine forskellige lydfiler, samt får opdelt s2 op i left og right dele. Dette kan ses på listing \ref{lst:start}. Desuden nulstiller jeg alle tidligere defineret variabler med med \lstinline{clear} og {lstinline{clc}, for ikke at få overlap fra tidligere.
+
+\begin{lstlisting}[caption={Opsætning af MATLAB}, label={lst:start}]
+clear;
+clc;
+
+% Define samples
+s1 = 1;
+s2left = 2;
+s2right = 3;
+s3 = 4;
+
+% Loading files into arrays of samples
+[y(s1).sample, ~] = audioread('Signal_s1.wav');
+[y(s2left).sample, ~] = audioread('Signal_s2.wav');
+[y(s3).sample, Fs] = audioread('Signal_s3.wav');
+
+% Splits signal 2 into its own channels
+y(s2right).sample = y(s2left).sample(:,2);
+y(s2left).sample = y(s2left).sample(:,1);
+
+% Name samples
+y(s1).name = "Signal\_s1.wav";
+y(s2left).name = "Signal\_s2.wav - channel 1";
+y(s2right).name = "Signal\_s2.wav - channel 2";
+y(s3).name = "Signal\_s3.wav";
+\end{lstlisting}
+
+For at gøre nogle af de kommende øvelser nemmere at skrive og forstå, er har jeg oprettet et for-loop, der kan løbe igennem alle structs, og oprette de variabler og matricer der kan blive nødvendige. 
+
+\begin{lstlisting}{caption={Oprettelse af varaibler til alle structs}, labe=lst:loop}
+  % Predefine variables for s1, s2left, s2right, s3 and s1reS
+  for i = 1:length(y)
+      y(i).sample = y(i).sample';
+      % number of Samples 1, 2, 3
+      y(i).nS = length(y(i).sample);
+      %Calculating x axis for signals
+      y(i).time = [0:y(i).nS-1]*(1/Fs);
+      %Find max, min, mean, rms & effect
+      y(i).max = max(y(i).sample);
+      y(i).min = min(y(i).sample);
+      y(i).mean = mean(y(i).sample);
+      y(i).rms = rms(y(i).sample);
+      y(i).effect = sum(y(i).sample.^2);
+      %Calculating Crest value
+      y(i).crest = 20*log10(y(i).max/y(i).rms);
+  end
+  \end{lstlisting}
 
 \subfile{sec/del1.tex}
 
