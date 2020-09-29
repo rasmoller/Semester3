@@ -9,7 +9,7 @@ protected:
 	const int SIZE;
 	int* testar;
 
-	QuicksortUnitTest() : SIZE(100000) {}
+	QuicksortUnitTest() : SIZE(100) {}
 
 	void SetUp()
 	{
