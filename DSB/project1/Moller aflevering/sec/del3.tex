@@ -5,6 +5,42 @@
 \begin{document}
 
 \section{Opgave 1.15 - Ekko}
+I denne sidste opgave handler det om, at skabe et ekko og se hvad der sker når man ligger et ekko oven i det originale ikke forskudte signal.
+
+Først skal man lave et signal.
+På Listing \ref{lst:tone} kan man se koden for at lave et signal med en frekvens på 2350 Hz og en amplitude på 3.
+\begin{lstlisting}[caption={Oprettelse af ikke forskudt tone}, label={lst:tone}]
+Fs = 5000; %Samplingsfrekvens
+Ts = 1/Fs; % Tid per sampling
+    
+length = 1; % Længde i sekunder
+Ns = Fs*length; % Antallet af samples
+t = [0:Ns-1]*Ts; % Tiden over samplingen
+
+%Tone beskrivelse
+f0 = 2350; %2350 Hz tone
+A = 3; % Amplitude er 3
+tone = A * sin(f0*2*pi*t); %Tonen som funktion    
+\end{lstlisting}
+Denne del kode vil generere signalet som man kan se på Figure \ref{pic:tone}
+\pic{1-15-orig.png}{}{Original tone}{pic:tone}
+
+Efter den er blevet oprettet skal man oprette et ekko, som egentlig bare er den originale tone forskudt. Opgaven specificere, at ekkoet originalt skal forskydes med 150 ms.
+\begin{lstlisting}[caption={Oprettelse af ekko}, label={lst:ekko}]
+e.delay = 150; %ekko med 150 ms forsinkelse
+e.Ns = e.delay * (Fs/1000); %Antallet af samples i ekkoet
+
+tone_ekko = [zeros(1,e.Ns), tone]; %Forsinker ved at smide 0'er ind foran
+tone_ext = [tone, zeros(1,e.Ns)]; % Forlænger ved at smide 0'er ind bagved
+\end{lstlisting}
+
+I Listing \ref{lst:ekko} kan man se, hvordan vi tilpasser ekkoet og den originale tone så man nemt kan ligge dem oven i hinanden.
+På Figure \ref{pic:ekkoorig} kan man se, at ved en frekvens på 2350 Hz med et ekko på 150 ms får et signal som går ud med sig selv i det tidsrum, hvor de krydser.
+Dette resulterer i, at man hører to korte bip med et mellemrum imellem. 
+Herimod, hvis man ændrer ekkoet´s forskydning får man en kontinuerlig lyd, som ændres i styrke alt efter om tidsrummet er efter ekkoet er startet og før det originale er slut.
+Dette skyldes, at der enten sker positiv interferens (ved 300ms ekko på Figure \ref{pic:ekko300}) eller negativ interferens (ved 150ms på Figure \ref{pic:ekkoorig}).
+\pic{1-15-ekko+orig.png}{}{Ekko og original tone lagt sammen}{pic:ekkoorig}
+\pic{1-15-300.png}{}{Ekko på 300ms}{pic:ekko300}
 
 
 
