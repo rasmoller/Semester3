@@ -23,12 +23,12 @@ void quicksort(T* ar, int start, int end)
 	T temp = ar[end];
 	ar[end] = ar[pivot];
 	ar[pivot] = temp;
-	//pivot = end;
+	pivot = end;
 	//Setting wall and i
 	int wall = start;
 	int i = start + 1;
 
-	while (i != pivot)
+	while (i != pivot && wall != pivot)
 	{
 		if (ar[pivot] > ar[wall])
 		{
@@ -45,6 +45,7 @@ void quicksort(T* ar, int start, int end)
 		{
 			if (ar[pivot] > ar[i])
 			{
+				wall++;
 				T temp = ar[i];
 				ar[i] = ar[wall];
 				ar[wall] = temp;
@@ -55,12 +56,12 @@ void quicksort(T* ar, int start, int end)
 			}
 		}
 	}
-	temp = ar[wall + 1];
-	ar[wall + 1] = ar[pivot];
+	temp = ar[wall];
+	ar[wall] = ar[pivot];
 	ar[pivot] = temp;
 	// Assume: Pivot is at index k after partitioning 
-	quicksort(ar, start, pivot - 1);
-	quicksort(ar, pivot + 1, end);
+	quicksort(ar, start, wall - 1);
+	quicksort(ar, wall + 1, end);
 }
 
 
