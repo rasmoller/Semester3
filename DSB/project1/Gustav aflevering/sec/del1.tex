@@ -5,7 +5,7 @@
 
 \begin{document}
 
-\section{Opgave 1}
+\section*{Opgave 1}
 For at finde antallet af samples for alle 3 signaler, kan jeg ganske simpelt kalde funktionen \lstinline{length()} på alle samples. \lstinline{length()} returnerer antallet af elementer i matricen, hvilket dermed vil sige antallet af samples. Koden for at gøre dette kan ses i listing \ref{lst:print}
 
 \begin{lstlisting}[caption=Print af antal samples, label=lst:print]
@@ -18,7 +18,7 @@ length(y(s3).sample) % = 1270957
 Her fra kommer jeg frem til at s1 indeholder \(4.213.759\) samples, s2 (left og rigth) indeholder \(8.753.617\) samples og s3 indeholder \(1.270.957\) samples. Dette lade til at være rigtigt, da jeg kan se s2 f.eks. varer meget længere end s3.
 
 
-\section{Opgave 2}
+\section*{Opgave 2}
 
 For at plotte alle 3 signaler med rigtige labels og titler, bruges funktionerne beskrevet i \ref{lst:plot}. For at gøre MATLAB koden mere overskuelig, er der brugt et for-loop på min struct, så jeg kan loope igennem hvert signal, og plottet dem med de allerede forudbestemte varaibler. Alle plots tegnes på figur f1, for overskuelighed.
 
@@ -38,7 +38,7 @@ end
 \pic{plot_signaler}{0.9}{Plot af alle 3 signaler}{fig:plot_sig}
 
 
-\section{Opgave 3}
+\section*{Opgave 3}
 
 For at dfinde max, min, gennemsnit (mean), rms og effekt for alle 3 signaler, kan jeg kalde de forudbestemte værdier, jeg beregnede i listing 2. Et udsnit af hvordan de blev beregnet kan ses på listing \ref{lst:opg3}. 
 
@@ -67,7 +67,7 @@ end
 \end{table}
 
 
-\section{Opgave 4}
+\section*{Opgave 4}
 
 Ligesom i opgave 3, er crest allerede beregnet i listing 2. Til at beregne crest-faktoren, bruges formlen som beskrevet i ligning \ref{mat:crest}. Da der tage \(20\cdot log_{10}\), kan det antages at crest-faktoren vil være i decibel. Det på listing \ref{lst:crest} kan det også ses, hvordan crest-faktoren er beregnet i MATLAB. 
 

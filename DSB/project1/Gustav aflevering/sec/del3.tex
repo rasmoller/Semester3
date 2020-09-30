@@ -4,7 +4,7 @@
 %opgave 9 + ekstra opgave
 \begin{document}
 
-\section{Opgave 9}
+\section*{Opgave 9}
 
 For at få en eksponentielt aftagning på s3, kræver det at s3 ganges med en "envelope" der kan fungere som der ønskes. Her at der på den sidste \( 1 /3 \) af s3, skal aftages eksponentielt, ned til en amplitude på \( 5\% \) af den originale amplitude. Dette kan opnås med funktionen for en eksponentielt aftagende funktion, da vi kender vores skæring med y-aksen, og 2 punkter på grafen, skæringen med y-aksen i (0,1) samt slutpunktet, der skal være (\(\frac{1}{3}time, 0.05\)). Funktionen kan ses her under i ligning \ref{mat:eks}. 
 
@@ -44,10 +44,42 @@ Som det kan ses på figur \ref{fig:s3fade}, er den ønskede effekt opnået. På 
 \pic{s3_fade}{1}{s3 med fade effekt}{fig:s3fade}
 
 
+\section*{Opgave 1.15}
 
-\section{Opgave 1.15}
+Til denne opgave ønskes der at simulere et "ekko" på et tone siganl, hvor ekkoet har forskellige forskydning, til tonen. Først køres der med et ekko, der er 150ms forsinket, der efter et ekko med en forsinkelse på 40ms og 300ms. Tonen der er valgt her er 440Hz, kammertonen.
 
+\begin{lstlisting}[caption={Kode til opgave 1.15}, label=lst:115]
+Fs = 5000; %Samplingsfrekvens
+Ts = 1/Fs; % Tid per sampling
 
+length = 1; % Længde i sekunder
+Ns = Fs*length; % Antallet af samples
+t = [0:Ns-1]*Ts; % Tiden over samplingen
 
+%Tone beskrivelse
+f0 = 2350; %440 Hz tone
+A = 3; % Amplitude er 3
+tone = A * sin(f0*2*pi*t); %Tonen som funktion
 
+e.delay = 150; %ekko med 150 ms forsinkelse
+e.Ns = e.delay * (Fs/1000); %Antallet af samples i ekkoet
+
+tone_ekko = [zeros(1,e.Ns), tone]; %Forsinker ved at smide 0'er ind foran
+tone_ext = [tone, zeros(1,e.Ns)]; % Forlænger ved at smide 0'er ind bagved
+
+tone_sum = tone_ekko + tone_ext;
+ekko_t = [0:Ns+e.Ns-1]*Ts;
+\end{lstlisting}
+
+\pic{115_tone.png}{1}{Plot af 440Hz tone med ekko}{fig:115}
+
+På figur \ref{fig:115} kan ses hvordan den origianle tone ser ud, ved siden af sit ekko. Ekko effekten er lavet, ved at sætte et antal nuller foran det originale siganl, for på den måde at "udskyde" hvornår siganlet starter. Derfor er der også sat ekstra nuller bag på det originale signal, da de 2 matricer ellers ikke vil være lige store. 
+
+\pic{115_sum.png}{0.5}{Plot af sum af 440Hz tone og Ekko på 150ms}{fig:115_sum}
+
+På figur \ref{fig:115_sum} ses hvad summen af 440Hz tonen, sammen med sit ekko ser ud. Vi kan se, der hvor de 2 toner overlapper, har de intefereret, og gået ud med hindanden. Dette skyldes forskydningen af ekko-signalet, der er blevet drejet \(180\deg\) i forhold til det originale siganl. Effekten høres tydeligt ved at afspille tonen, da der cuttes hurtigt ud, med et dødt stykke i midten, og en kort tone til sidst.
+
+Forsøget er også blevet udført med \(40ms\) delay og \(300ms\) delay. I disse tilfælde har tonen ikke været forskudt, og original tonen og ekkoet har derfor i stedet forstærket hindanden. Denne effekt kan ses på figur \ref{fig:115_sum2}. Her kan også ses at amplituden for inteference signalet er fordoblet, til en amplitude på 6.
+
+\pic{115_sum2.png}{0.5}{Plot af sum af 440Hz tone og Ekko på 40ms}{fig:115_sum2}
 \end{document}
