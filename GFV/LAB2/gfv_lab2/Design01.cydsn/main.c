@@ -15,7 +15,7 @@
 #define BUFFER_LENGTH 2
 #define PRINT_LEN 50
 
-float i2cRead(uint8* buffer);
+float i2cRead(uint8* buffer, uint8 addr);
 
 uint8 buf[2];
 
@@ -33,16 +33,21 @@ int main(void)
     
     for(;;)
     {
-        float temp = i2cRead(buf);
-        sprintf(printBuf, "Temperaturen er: %.1f \r\n", temp);
+        float temp1 = i2cRead(buf, 0x48);
+        sprintf(printBuf, "Temperaturen paa slave1 er: %.1f \r\n", temp1);
+        //UART_PutString(printBuf);
+        CyDelay(50);
+        
+        float temp2 = i2cRead(buf, 0x49);
+        sprintf(printBuf, "Temperaturen paa slave2 er: %.1f \r\n", temp2);
         UART_PutString(printBuf);
         
-        CyDelay(20);
+        CyDelay(50);
     }
 }
 
-float i2cRead(uint8 * buffer){
-    I2C_MasterReadBuf(0x49, buffer, 2, I2C_MODE_COMPLETE_XFER);
+float i2cRead(uint8 * buffer, uint8 addr){
+    I2C_MasterReadBuf(addr, buffer, 2, I2C_MODE_COMPLETE_XFER);
     
     buffer[1] >>= 7;
     _Bool comp = buffer[0] & 0b10000000;
