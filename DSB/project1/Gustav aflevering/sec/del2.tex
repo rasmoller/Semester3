@@ -1,11 +1,90 @@
 \documentclass[../main.tex]{subfiles}
 \graphicspath{{fig/}{../fig/}}
 
-%opgave 4-6
+% Opgave 5-8
 \begin{document}
 
-\subsection{Introduction}
+\section*{Opgave 5 og 6}
+
+Jeg vil nu forsøge at nedsample mit siganl s1 med en faktor på 4. Dette gøres med funktionen decimate, der ganske simpel fjerne hvert 4 sample, fra siganlet s1. Her er jeg selvfølgelig opmærksom på, der derfor også er en ny afstand mellem hvert sample, så jeg bliver nødt til at beregne tiden igen, med \( 1 / 4 \) sample rate. Dette kan ses her under på listing \ref{lst:s1re} 
+
+\begin{lstlisting}[caption={Nedsampel af s1}, label={lst:s1re}]
+s1reS = 5;
+y(s1reS).sample = decimate(y(s1).sample, 4);
+y(s1reS).time = [0:y(s1reS).nS-1]*(1/(Fs/4));
+
+%% exercise 5
+figure
+subplot(1,2,1)
+plot(y(s1).time(1:200), y(s1).sample(1:200))
+title(y(s1).name)
+xlabel("Time(s)")
+ylabel("Amplitude(~)")
+subplot(1,2,2)
+plot(y(s1reS).time(1:200/4), y(s1reS).sample(1:200/4))
+title(y(s1reS).name)
+xlabel("Time(s)")
+ylabel("Amplitude(~)")
+
+% Listen to exercise 5
+%soundsc(y(s1).sample, Fs);
+%soundsc(y(s1reS).sample, Fs/4);
+\end{lstlisting}
+
+\pic{plot_s1re.png}{1}{Resampling af signal s1}{fig:s1re}
+
+På plottet i figur \ref{fig:s1re} ses det ikke særlig tydeligt hvad, forskellen egentlig er belvet på de 2 signaler. Der er derfor taget et billede, hvor antallet af samples er taget meget længere ned, som det kan ses på figur \ref{fig:s1reZ}. Her ses det mere tydeligt hvad decimate() har gjort. Da hvert fjerde sample er væk, er der tydeligt mistet en masse detaljer i signalet. F.eks. kan det ses at spændet af amplituder nu er -3.5 - 1.5, hvor der før var -6 - 2. Lyttes der til signalet, hører man forskellen tydeligt. Det nye signal lyder meget komprimeret, som om det er en dårlig .mp3 fil, der afspilles på en Nokia 3210. 
+
+\pic{plot_s1re_zoom.png}{1}{Zoom af resampling}{fig:s1reZ}
 
 
+\section*{Opgave 7}
+
+Til at sammenligne de channels på s2, er der først plottet begge channels ved siden af hindanden på figur \ref{fig:s2}. Da dette ikke har givet nogen stor information, er der derfor lavet et plot af en korter tidsperiod, et tilfædligt sted i signalet. Her ses en lille forskel, hvor amplituden er lidt stører generelt på channel 2, men ikke noget tydeligt. Lyttes der til de 2 signaler, kan det være svært at spotte forskellen, da de egentlig er meget ens. Eneste forskel jeg har været i stand til at finde er, at der på channel 1 (left) kan findes guitar riffet, mens der på channel 2 (right) kan findes baselinen. 
+
+\begin{lstlisting}[caption={Kode for plot af s2left og s2 right}, label=lst:s2]
+figure
+subplot(1,2,1)
+plot(y(s2left).time, y(s2left).sample)
+title(y(s2left).name)
+xlabel("Time(s)")
+ylabel("Amplitude(~)")
+subplot(1,2,2)
+plot(y(s2right).time, y(s2right).sample)
+title(y(s2right).name)
+xlabel("Time(s)")
+ylabel("Amplitude(~)")
+\end{lstlisting}
+
+\pic{plot_s2.png}{1}{Plot af begge channels for s2}{fig:s2}
+
+\pic{plot_s2_zoom.png}{1}{Plot af begge channels for s2, Zoom}{fig:s2Z}
+
+\section*{Opgave 8}
+
+Til at kvantifiseret channel 1 (left), er der brugt den givne funktion quantaziseN() fra Blackboard. Når der kvantifiseres, fjernes detaljerne mellem amplituderne, så hvert sample af amplituden, kan repræsenteres med et færer antal bits. Her er valgt at kvantifisere s2 med 4 bits. Koden til dette kan ses i listing \ref{lst:s2quan}
+
+\begin{lstlisting}[caption={Kvantifisering af s2}, label=lst:s2quan]
+  %% Exercise 8
+  %Using BB function to quantize to 4 bits
+  s2quan = 6;
+  y(s2quan).sample = quantizeN(y(s2left).sample, 4);
+  soundsc(y(s2right).sample, Fs) % uncomment for sound
+  figure
+  subplot(1,2,1)
+  plot(y(s2left).time(200000:205000), y(s2quan).sample(200000:205000))
+  xlabel("Time(s)")
+  ylabel("Amplitude(~)")
+  title("s2 - Left channel");
+  subplot(1,2,2)
+  plot(y(s2left).time(200000:205000), y(s2left).sample(200000:205000))
+  xlabel("Time(s)")
+  ylabel("Amplitude(~)")
+  title("s2 kvantifiseret 4bit - Left Channel");
+\end{lstlisting}
+
+\pic{s2_quan}{1}{s2 kvantifiseret}{fig:s2quan}
+
+På figur \ref{fig:s2quan}, som er et lille udsnit af både s2 og s2 kvantifiseret, ses tydeligt hvad quantaziseN har gjort ved signalet. Hvor amplituden i s2 left normalt repræsenteres med et så stort antal bits, det kanp er muligt at se steps imellem, kan der på det nye signal tydeligt ses de individuelle steps. Dette skyldes der samples med 4 bit, hvilket kun giver 16 mulige værdier for amplituden. Lytter man til signalt, kan der også høres hvordan kvaliteten af musikken er faldet tydeligt. Mest tydeligt er det for instrumenterne, der har mistet en stor del af deltajerne, og nærmest cutter ud jævnligt. Modsat er sangerens stemme stadig forholdsvist tydeligt. Musikken lyder meget som om det er ventemusik, der afspilles når man venter på at komme igennem til f.eks.  telefon kundeservice. Dette kunne være et hint til hvordan telefonlyd komprimeres.
 
 \end{document}

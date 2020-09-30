@@ -1,21 +1,120 @@
 \documentclass[../main.tex]{subfiles}
 \graphicspath{{fig/}{../fig/}}
 
-%Opgvee 1-3
+%Opgave 1-3
 \begin{document}
 
-\subsection{Introduction}
+\section{Opgave 1 - Find antal samples}
+Som udgangspunkt har vi fået udleveret 3 filer, hvor 2 af dem ($S_1$ og $S_3$) er mono imens at $S_2$ er stereo.
+Disse filer skal indlæses i matlab og gemmes som en lang række af samples.
 
-Hello hvkdafgfdg
+Dette gør man ved hjælp af følgende kode:
 
-\begin{lstlisting}[caption={My lstlisting}, label={lst:myLST}]
-x = 1;
-y.(1) = mean[1:3:10];
-%Hello æøå ÆØÅ
-x= 2;
+\begin{lstlisting}[caption={Indlæsning af samples fra fil}, label={lst:sampleRead}]
+% Loading files into arrays of samples
+[y(1).sample, ~] = audioread('Signal_s1.wav');
+[y(2).sample, ~] = audioread('Signal_s2.wav');
+[y(4).sample, Fs] = audioread('Signal_s3.wav');
 \end{lstlisting}
+    
+Som vi kan se i Listing \ref{lst:sampleRead} bbliver filerne indlæst med functionen \textit{audioread('filename')}.
+Funktionen returnerer her en array af samples og den frekvens der er optaget med.
+Vi får at vide at alle frekvenserne er 44.100 Hz.
 
-Som vi kan se i listing \ref{lst:myLST}
+For herefter at finde ud af hvor mange samples der er per signal kan man bruge funktionen \textit{length()} til at finde antallet af samples.
+(Ellers vil man også kunne aflæse dem ude i ens workspace). \\
+Længden på signalerne bliver:
+\[length(S_1) = 4213759\]   
+\[length(S_2) = 8753617\]
+\[length(S_3) = 1270957\]
+\[Fs = 44.100 Hz\]
+
+Antallet af samples vil senere blive refereret til som nS (number of Samples).
+
+\section{Opgave 2 - Plot signaler}
+For at plotte signalerne bruger man funktionen \textit{plot(x, y)}.
+Hertil kan man bruge funktionerne \textit{xlabel("label")}, \textit{ylabel("label")} og \textit{title("title")} til at tilføjer titler til akserne og hele plottet.
+
+Da jeg opbevarer mine signaler og deres værdier i en struct bruger jeg en for løkke til at tilgå dem.
+Før jeg kan plotte skal jeg udregne tiden i sekunder som signalet løber over. Dertil bruger jeg formlen:
+\[t = nS\cdot \frac{1}{Fs}\]
+Her er \textit{Fs} frekvensen for sampling. Så $\frac{1}{Fs}$ vil være tiden per sampel og ved at gange det med antallet af sampels får man tiden for hele signalet.
+
+\pic{fig/plots1-3.png}{1}{Plot af signaler med korrekte akser og titel}{pic:plot} 
+På Figure \ref{pic:plot} kan man se begge kanaler af $S_2$ samt $S_1$ og $S_3$ alle med Tiden \textit{t} på X-aksen, Amplitude på Y-aksen og en passende titel til hvad det viser.
+
+
+\section{Opgave 3 - Find værdier for signalerne}
+I det her afsnit skal jeg finde følgende værdier for signalerne
+\begin{itemize}
+    \item max
+    \item min
+    \item mean (gennemsnit)
+    \item rms
+    \item effekt
+\end{itemize}
+
+Til de første 4 vil jeg bruge følgende funktioner:
+\begin{itemize}
+    \item \textit{max()}
+    \item \textit{min()}
+    \item \textit{mean()}
+    \item \textit{rms()}
+\end{itemize}
+
+og for at udregne effekten vil jeg bruge følgende formel:
+\[E = \sum {A_{samples}}^2\]
+
+Efter at have kørt funktionerne og brugt formlen til udregning af effekt får jeg følgende værdier:
+\begin{itemize}
+    \item $S_1$
+    \begin{itemize}
+        \item max = $0.9306$
+        \item min = $-0.8205$
+        \item mean = $-4.28 \cdot 10^{-5}$
+        \item rms = $0.1199$
+        \item effekt = $6.0558 \cdot 10^4$
+    \end{itemize}
+    \item $S_2Venstre$
+    \begin{itemize}
+        \item max = $0.9558$
+        \item min = $-0.9558$
+        \item mean = $-1.94 \cdot 10^{-5}$
+        \item rms = $0.3383$
+        \item effekt = $1.0018 \cdot 10^6$
+    \end{itemize}
+    \item $S_2Højre$
+    \begin{itemize}
+        \item max = $0.9558$
+        \item min = $-0.9558$
+        \item mean = $-1.94 \cdot 10^{-5}$
+        \item rms = $0.3548$
+        \item effekt = $1.1022 \cdot 10^6$
+    \end{itemize}
+    \item $S_3$
+    \begin{itemize}
+        \item max = $0.9600$
+        \item min = $-0.9192$
+        \item mean = $-5.74 \cdot 10^{-4}$
+        \item rms = $0.0919$
+        \item effekt = $1.0739 \cdot 10^4$
+    \end{itemize}
+\end{itemize}
+
+\section{Opgave 4 - Find crest faktorer og sammenlign}
+
+Til udregning af Crest faktoren bruger vi følgende formel:
+\[
+    C = 20 \cdot log_{10}(\frac{max}{rms})
+\]
+
+\[C_{S_1} = 17.8006\] 
+\[C_{S_2venstre} = 9.0213\]
+\[C_{S_2højre} = 8.6064\]
+\[C_{S_3} = 20.3770\]
+
+
 
 
 \end{document}
+

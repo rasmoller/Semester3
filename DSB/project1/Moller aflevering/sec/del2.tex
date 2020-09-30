@@ -1,11 +1,74 @@
 \documentclass[../main.tex]{subfiles}
 \graphicspath{{fig/}{../fig/}}
 
-%opgave 4-6
+%Opgave 5-9
 \begin{document}
 
-\subsection{Introduction}
+\section{Opgave 5 - Nedsample signal 1 med faktor 4}
+I følgende opgave skal jeg tage $S_1$ og nedsample det med en faktor 4. 
+Hertil bruger jeg funktionen \textit{decimate()}, hvor argumenterne er listen af samples fra $S_1$ og derefter den faktor som det skal nedsamples med.
 
+\begin{lstlisting}[caption={Nedsampel med faktor 4}, label={lst:downsample}]
+y(5).sample = decimate(y(1).sample, 4);
+\end{lstlisting}
+
+Hvis man herefter plotter det får man som på Figure \ref{pic:downsample}
+\pic{downsampling.png}{1}{Downsampling af signal 1}{pic:downsample}
+
+
+\section{Opgave 6 - Beskriv forskellen på signalet fra opgave 5}
+Udfra plottet i Figure \ref{pic:downsample} kan man se der er nogle små ændringer, specifikt lige omkring 70 sekunder, hvor man kan se, at det resamplede signal ikke får samme højde som det originale. 
+Derudover kan man også høre, at selvom signalet holder sin integritet, mister den en stor del af dybden og kvaliteten af lyden.
+
+\section{Opgave 7 - Sammenlign de to kanaler i signal 2}
+I denne opgave skal man sammenligne de to kanaler i $S_2$ og beskrive forskelle og ligheder.
+\pic{stereo.png}{}{Begge kanaler af Signal 2}{pic:stereo}
+På Figure \ref{pic:stereo} kan man se, at kanal 1 starter højt, hvorimod kanal 2 starter lavt og så kommer op på samme amplitude som kanal 1 når man kommer lidt længere ind i signalet.
+
+\section{Opgave 8 - Kvantiser signal 2(venstre) med 4 bit}
+I denne opgave skal man tage venstre side af signal 2 og kvantisere det til 4 bit.
+Hertil har jeg brugt den funktion vi har fået givet \textit{quantizeN()}.
+Denne funktion tager en liste af samples og så den mængde bits som man vil kvavntisere den til.
+Efter at kvantisere til 4 bit kan man plotte det og få resultatet som ses på Figure \ref{pic:kvantise}
+\pic{kvantise.png}{}{4 bit kvantisering af signal 2's venstre kanal}{pic:kvantise}.
+
+Til sammenligning med Signal 2's venstre kanal på Figure \ref{pic:plot} kan man se, at der er meget mere detalje på det originale signal.
+Dette giver god mening efter vi har gjort det kvantiserede signal's bredde til 4 bit.
+Derudover når man afspiller det kvantiserede signal lyder det bare som radio støj.
+
+
+\section{Opgave 9 - Lav fade out på signal 3}
+I denne opgave skal man lave et eksponentielt fald til 5\% over den sidste tredjedel af signal 3.
+
+\pic{negekspon.png}{0.8}{Negativ eksponentiel funktion}{pic:negekspon}
+På Figure \ref{pic:negekspon} kan man se, hvordan vores eksponentielle funktion skal se ud.
+For at gøre dette skal man først have en funktion som laver dette fald fra 100\% til 5\%. Til dette bruger jeg følgende formel:
+\[
+    f(x) = b \cdot a^x
+\]
+Da vi har et fald fra 100\% ved vi at $b$ skal være 1. Dermed kan vi forkorte formlen til følgende:
+\[
+    f(x) = a^x
+\]
+Herefter skal vi ha fundet vores $a$ og dette kan man gøre ud fra følgende formel:
+\[
+    a = \frac{y_2}{y_1}^{\frac{1}{x_2-x_1}}
+\]
+Her skal vi indsætte vores tidsrum $x_2-x_1$ og vores breddefald $\frac{y_2}{y_1}$.\\
+Fra opgaven ved vi at tidsrummet er fra sidste tredjedel til slutningen, samt at breddefaldet går fra 100\% til 5\%.
+Så med følgende kode kan man lave en eksponentiel værdi som man bagefter vil kunne gange på den sidste tredjedel af vores samples fra signal 3.
+\begin{lstlisting}[caption={Oprettelse af eksponentielt aftagende funktion}, label={lst:ekspo}]
+t = y(4).time(1:y(4).nS/3+1);
+a = (0.05/1)^(1/(t(end)-t(1)));
+e = a.^t; 
+\end{lstlisting}
+Herefter har vi fået $e$ som er en array på størrelsen af den sidste tredjedel af signal 3 og har procentværdierne som man kan gange på vores originale signal.
+\begin{lstlisting}[caption={Oprettelse af eksponentielt aftagende funktion}, label={lst:ekspoApply}]
+y(7).sample(end-length(t):end) = e.* y(7).sample(end-length(t):end);
+\end{lstlisting}
+Så ved at køre koden fra Listing \ref{lst:ekspoApply} kan man få en eksponentiel aftagende sidste tredjedel af signal 3.
+Dette kan ses på Figure \ref{pic:fadeout}.
+\pic{fadeout.png}{}{Fadeout på signal 3}{pic:fadeout}
 
 
 \end{document}
