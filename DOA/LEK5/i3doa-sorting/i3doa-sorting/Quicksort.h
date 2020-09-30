@@ -55,10 +55,10 @@ void quicksort(T* ar, int start, int end)
 			}
 		}
 	}
-	temp = ar[wall + 1];
+	T temp = ar[wall + 1];
 	ar[wall + 1] = ar[pivot];
 	ar[pivot] = temp;
-	// Assume: Pivot is at index k after partitioning 
+	// Assume: Pivot is at index k after partitioning
 	quicksort(ar, start, pivot - 1);
 	quicksort(ar, pivot + 1, end);
 }

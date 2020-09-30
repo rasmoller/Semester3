@@ -1,0 +1,47 @@
+\documentclass[../main.tex]{subfiles}
+\graphicspath{{fig/}{../fig/}}
+
+%opgave 7-9 + ekstra opgave
+\begin{document}
+
+\subsection{Introduction}
+
+Jeg vil nu sammenligne de to stereo kanaler bestemt fra s2 i øvelse 1. Derefter vil jeg kvantisere kanal 2 af signal s2 til 4 bits, og undersøge hvad det ændre.
+
+\subsection{Fremgangsmåde}
+
+\begin{lstlisting}[caption={Matlab kode for øvelse 7 \& 8}, label={lst:myLSTdsdsavadsa}]
+figure
+subplot(1,2,1)
+plot(y(2).time, y(2).sample)
+title(y(2).name)
+xlabel("Time(s)")
+ylabel("Amplitude(~)")
+subplot(1,2,2)
+plot(y(3).time, y(3).sample)
+title(y(3).name)
+xlabel("Time(s)")
+ylabel("Amplitude(~)")
+
+%Benytter funktion til at kvantisere til 4 bits
+y(6).sample = quantizeN(y(2).sample, 4);
+soundsc(y(6).sample)
+figure
+plot(y(2).time, y(6).sample)
+\end{lstlisting}
+
+\subsection{Resultater}
+
+\pic{OPG7_8_pic1.png}{0.7}{Sammenligning af de to kanaler}{OdcdccdPGe32}
+\pic{OPG7_8_pic2.png}{0.7}{Sammenligning af de to kanaler}{OdcdccdPGe32}
+
+\subsection{Diskussion}
+
+Det ses fra Figur 8 at der forekommer forskelle mellem de to kanaler. Primært ses det er kanal 1 har større amplituder omkring 0 sekunder, mens kanal to har stigende amplituder, der bliver mere konsistente efter ca. 40-50 sekunder. De to kanaler er tilnærmelsesvist ens fra 50 sekunder til omkring 150 sekunder, hvor kanal ikke foretager et større udsving end kanal 2. Amplituderne begynder så at stige igen, og når igen en enshed, dog foretager kanal en højere amplitude omkring de 200 sekunder.
+
+Funktionen $quantizeN()$ benyttes til at kvantisere kanal 2 af signalet. Resultatet kan ses på Figur 9.Her ser jeg at signalet har fået en meget grovere opløsning, og ved brug af $soundsc()$ funktionen hører jeg også at signalet er blevet meget mere støjfyldt. Jeg forestiller mig at dette skyldes de lavere amplituder i signalet, som ved kvantiseringen er blevet forstærket, og nu kan høres som støj.
+
+\subsection{Konklusion}
+Jeg konkludere at man kan se en forskel mellem de to kanaller af signal 2, specielt omkring 0 sekunder, og 150 sekunder. Videre konkludere jeg også at en kvantisering af et signal kan fører til mere baggrundsstøj, samt mindre præcise amplitudeaflæsninger.
+
+\end{document}

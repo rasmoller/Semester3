@@ -1,0 +1,77 @@
+\documentclass[../main.tex]{subfiles}
+\graphicspath{{fig/}{../fig/}}
+
+%opgave 7-9 + ekstra opgave
+\begin{document}
+
+\subsection{Introduction}
+
+I den sidste del af øvelsen vil jeg besvare opgave 1.15 fra DSB uge 38. Opgaven går ud på at konstruere et ekko-signal på 150ms. Jeg vil efterfølgende variere ekkoet til 40ms og 300ms respektivt.
+
+\subsection{Fremgangsmåde}
+
+\begin{lstlisting}[caption={Matlab kode for øvelse 1.15, uge 39 DSB}, label={lst:myLSTpopsa}]
+f_s = 5000; %Samplingsfrekvens
+T_s = 1/Fs; % Periode
+
+length = 1; % Længde i sekunder
+Ns = Fs*length; % Antallet af samples
+t = [0:Ns-1]*Ts; % Tiden over samplingen
+
+%Tone beskrivelse
+f = 2350; %440 Hz
+A = 3; % Amplitude er 3
+sig = A * sin(f0*2*pi*t); %funktion for signal
+
+ekko.delay = 150; %ekko med 150 ms forsinkelse
+ekko.Ns = ekko.delay * (f_s/1000); %Antallet af samples i ekkoet
+
+tone_ekko = [zeros(1,ekko.Ns), sig]; %Forsinker ved at sætte 0-array foran
+tone_ext = [sig, zeros(1,ekko.Ns)]; % Forlænger array ved at sætte 0-array bagved 
+
+tone_sum = tone_ekko + tone_ext
+ekko_t = [0:Ns+ekko.Ns-1]*T_s;
+
+figure
+plot(t, sig);
+title("Original tone");
+xlabel("Tid - sekunder");
+ylabel("Amplitude - ~");
+
+figure
+plot(ekko_t, tone_ekko);
+title("Ekko");
+xlabel("Tid - sekunder");
+ylabel("Amplitude - ~");
+
+figure
+plot(ekko_t, tone_sum);
+title("Ekko + Original");
+xlabel("Tid - sekunder");
+ylabel("Amplitude - ~");
+
+soundsc(tone_sum)
+
+\end{lstlisting}
+
+\subsection{Resultater}
+
+\pic{OPG115_1.png}{0.7}{Signal $sig$ uden ekko}{OdcdccggdPGe32}
+\pic{OPG115_2.png}{0.7}{ekko signal på 150ms af $sig$}{OdcdccdPsfhGe32}
+\pic{OPG115_3.png}{0.7}{Interferens mellem de to signaler, 150ms}{OdcdccdPGe32}
+\pic{OPG115_4.png}{0.7}{Ekko signal på 40ms af $sig$}{OdcdccdPGe4332}
+\pic{OPG115_5.png}{0.7}{Interferens mellem de to signaler, 40ms}{OdcdccdPGe32}
+\pic{OPG115_6.png}{0.7}{Ekko signal på 300ms af $sig$}{OddercdccdPGe32}
+\pic{OPG115_7.png}{0.7}{Interferens mellem de to kanaler, 300ms}{OdcdddlcmPGe32}
+
+
+\subsection{Diskussion}
+
+For at kunne plotte signalet laver jeg først en ny tidsakse ud fra samplingfrekvensen $f\_s$ og perioden $T\_s$. Jeg opstiller derefter min funktion for signalet, $sig$, og definerer derefter mit ekko-delay. Jeg benytter $zeros$ funktionen til at indsætte nuller foran sig-signalet, så det får det ønskde delay. Ligeledes gør jeg det samme, dog nu med nullerne bagefter. Dette er så de har samme mængde elementer i deres arrays, og kan plottes sammen. Jeg plotter så den originale signal-funktion sammen med ekko-funktionen.
+
+På figur 12 og 13 kan man se de to funktioner plottet, og på figur 14 ses hvordan de inteferere. Det ses at der fra ca. 150ms til 1000ms forekommer stærk destruktiv interferens, og de to signaler ødelægger hinanden, idet de er faseforskudt med pi radianer. på figur 15 og 17 ses istedet resultatet af interferens med et ekko signal på 40ms og 300ms henholdsvist. Begge steder ser jeg konstruktiv interferens, altså sker der en addition af de to signalers amplituder. Altså må signalet $sig$ være faseforskudt med 0 grader med både 40ms og 300ms ekkoet.
+
+\subsection{Konklusion}
+Jeg konkludere at man kan konstruere et ekko-signal vha. Matlab's zeros() funktion. Jeg har desuden set hvordan Matlab kan benyttes til at analysere interferens mellem signaler, og bl.a kan bruges til at besteme hvornår der vil ske konstruktiv og destruktiv interferens.
+
+\end{document}

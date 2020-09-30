@@ -1,0 +1,42 @@
+\documentclass[../main.tex]{subfiles}
+\graphicspath{{fig/}{../fig/}}
+
+%opgave 7-9 + ekstra opgave
+\begin{document}
+
+\subsection{Introduction}
+
+I denne øvelse vil jeg lave et eksponentielt `fade-out' på signalet s3. Fade-outet vil blive foretaget over den sidste tredjedel af signalet, og vil ende med en 5\% signalstyrke.
+
+\subsection{Fremgangsmåde}
+
+\begin{lstlisting}[caption={Matlab kode for øvelse 9}, label={lst:myLSTdsdsavadsa}]
+t = y(4).time(1:y(4).nS/3+1);
+a = (0.05/1)^(1/(t(end)-t(1)));
+eksp = a.^t; %Fra 1 til 0.05
+figure
+plot(t,eksp)
+
+y(7).samples = y(4).samples;
+
+y(7).samples(length(y(7).samples)*2/3:end) = eksp.*y(7).samples(length(y(7).samples)*2/3:end);
+figure
+plot(y(4).time, y(7).samples)
+soundsc(y(7).samples)
+\end{lstlisting}
+
+\subsection{Resultater}
+
+\pic{OPG9_pic1.png}{1}{Eksponential funktion}{Ldsadsadsajabelbabelpodl}
+\pic{OPG9_pic2.png}{1}{signal s3 med fade out}{g}
+
+\subsection{Diskussion}
+
+Jeg bestemmer først eksponential funktionen der skal benyttes til fade-out. Funktionen skal kun løbe fra 2/3 af hele samplesarray til 3/3, og arrayet $t$ oprettes derfor på linje 1. Konstanten $a$ bestemme vha. funktionen $\sqrt[x_1-x_2]{\frac{y_1}{y_2}}$, som ses på linje 2. Eksponentialfunktionen konstrueres så, og på figur 10 ses hvordan den falder fra 1 til 0.05, altså 5\%, over det rigtige interval.
+
+Jeg opstiller så mit signal, ved at gange den sidste tredjedel af s3 signalet med eksponentialfunktionen. Der er her værd at notere at jeg ikke behøvede at Matlab hvilke værdier af eksponentialfunktionen der skulle ganges på hvilke værdier af signalet. Så længe den vidste hvor jeg ville starte og slutte tog programmet sig af resten. På Figur 11 kan man se hvordan signalet aftager på den sidste tredjedel af grafen. Dette er specielt fremhævet ved sammenligning med Figur 1.
+
+\subsection{Konklusion}
+Jeg konkludere at ved brug af en eksponential funktion kan jeg skabe et fade out på et signal over et ønsket interval.
+
+\end{document}

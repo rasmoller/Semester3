@@ -1,0 +1,48 @@
+\documentclass[../main.tex]{subfiles}
+\graphicspath{{fig/}{../fig/}}
+
+%opgave 4-6
+\begin{document}
+
+\subsection{Introduction}
+
+I denne del af øvelsen vil jeg foretage en række udregninger for at bestemme max, min, mean, rms og effekt værdierne for hvert mono-signal. Jeg vil derefter bestemme crest-værdierne for hvert signal.
+
+\subsection{Fremgangsmåde}
+
+\begin{lstlisting}[caption={Matlab kode for øvelse 3 \& 4}, label={lst:myLSTdsadsa}]
+for i = 1:length(y)
+    %Find max, min, mean, rms & effect
+    y(i).max = max(y(i).sample);
+    y(i).min = min(y(i).sample);
+    y(i).mean = mean(y(i).sample);
+    y(i).rms = rms(y(i).sample);
+    y(i).effect = sum(y(i).sample.^2);
+    %Calculating Crest value
+    y(i).crest = 20*log10(y(i).max/y(i).rms);
+end
+\end{lstlisting}
+
+\subsection{Resultater}
+
+\pic{OPG3_4_figmax.png}{0.7}{Max-værdier for de fire mono-signaler}{Lmaxab2elbabelpodlds}
+\pic{OPG3_4_figmin.png}{0.7}{Min-værdier for de fire mono-signaler}{Lmaxminab2elbabelpodlds}
+\pic{OPG3_4_figmean.png}{0.6}{Mean-værdier for de fire mono-signaler}{Lmeanmaxminab2elbabelpodlds}
+\pic{OPG3_4_figrms.png}{0.6}{RMS-værdier for de fire mono-signaler}{dsadlds}
+
+
+\pic{OPG3_4_fig1.png}{0.8}{Crest-værdier for de fire mono-signaler}{Lab2elbabelpodlds}
+
+\subsection{Diskussion}
+
+Som det ses af Listing 2 har Matlab mange funktioner til at udregne værdier for dig. Funktionerne $max(), min(), mean()$ og $rms()$ køres blot på mit sample-array, for at bestemme de tilsvarende værdier.Effekten udregnes som summen af alle samples i anden, altså $rms = (sum(y.sample))^2$. Lignende er crest-værdien for et signal givet ved $crest\_val = 20*log10(y.max/y.rms)$. Disse funktioner indkorporeres i for-loopet, og udregner derved rms -og crest-værdierne for hvert signal.\vspace{0.5cm}
+Jeg ser at alle signalernes max -og min-værdier er nogenlunde ens, og desuden alle har mean-værdier der ligger tæt på 0. Dette skulle de også gerne, da de jo er bølger, der svinger omkring 0 på y-aksen. Jeg ser dog en ret stor variation i deres crest-værdier. \vspace{0.5cm}
+
+Dette skyldes, at crest-værdien jo er forholdet mellem signalets peak-værdier og rms-værdier. Og som vi jo kan se fra Figur 1, foretager signalerne meget forskellige svingninger. Kanal 1 og 2 fra signal 2 foretager dog meget ens svingninger, hvilket også er hvorfor deres crest-værdier er meget tæt på hinanden.
+
+\subsection{Konklusion}
+
+Jeg konkludere at jeg kan opnå en stor mængde oplysinnger om et signal ved at analysere de forskellige værdier tilknyttet hvert signal, da de kan fortælle mig hvordan det foretager sine svingninger.Dog er det vigtig at have alle oplysningerne, da man ellers nemt kan tror at to signaler minder om hnanden, når de ikke gør det.
+
+
+\end{document}

@@ -11,7 +11,7 @@ y(2).sample = y(2).sample(:,1);
 
 %Defines the resampling of signal 1 to 5
 
-y(5).sample = decimate(y(1).sample, 4);
+y(5).sample = downsample(y(1).sample, 4);
 
 y(1).name = "Signal\_s1.wav";
 y(2).name = "Signal\_s2.wav - channel 1";
@@ -59,7 +59,7 @@ title(y(5).name)
 xlabel("Time(s)")
 ylabel("Amplitude(~)")
 %Listen to exercise 5 uncomment for sound
-%soundsc(y(5).sample, Fs/4);
+soundsc(y(5).sample, Fs/4);
 
 % Exercise 7
 figure
@@ -80,6 +80,9 @@ y(6).sample = quantizeN(y(2).sample, 4);
 %soundsc(y(6).sample) % uncomment for sound
 figure
 plot(y(2).time, y(6).sample)
+title("Kvantisering af s2 kanal 2, 4 bit")
+xlabel("Time(s)")
+ylabel("Amplitude(~)")
 
 % Exercise 9
 t = y(4).time(1:y(4).nS/3+1);

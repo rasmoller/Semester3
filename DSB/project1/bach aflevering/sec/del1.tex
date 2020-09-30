@@ -1,0 +1,60 @@
+\documentclass[../main.tex]{subfiles}
+\graphicspath{{fig/}{../fig/}}
+
+%Opgvee 1-3
+\begin{document}
+
+\subsection{Introduction}
+
+I de første to øvelser vil jeg bestemme antallet af sampless i hver af de tre lyd-signaler, og derefter plotte hvert signal, med fokus på korrekte akse-beskrivelser.
+
+\subsection{Fremgangsmåde}
+
+\begin{lstlisting}[caption={Matlab kode for øvelse 1 \& 2}, label={lst:myLST}]
+% Lægger filerne ind i arrays
+[y(1).samples, ~] = audioread('Signal_s1.wav');
+[y(2).samples, ~] = audioread('Signal_s2.wav');
+[y(4).samples, f_s] = audioread('Signal_s3.wav');
+
+%Splitter s2 i to kanaler
+y(3).samples = y(2).samples(:,2);
+y(2).samples = y(2).samples(:,1);
+
+y(1).name = "Signal\_s1.wav";
+y(2).name = "Signal\_s2.wav - channel 1";
+y(3).name = "Signal\_s2.wav - channel 2";
+y(4).name = "Signal\_s3.wav";
+
+%Udregner tidsakser for signalerne
+for i = 1:length(y)
+    y(i).samples = y(i).samples';
+    % number of sampless 1, 2, 3
+    y(i).nS = length(y(i).samples);
+    %Calculating x axis for signals
+    y(i).time = [0:y(i).nS-1]*(1/f_s);
+end
+
+f1 = figure;
+%Plotter signalerne
+for i = 1:length(y)-1
+    subplot(2,2,i)
+    plot(y(i).time, y(i).samples)
+    title(y(i).name)
+    xlabel("Time(s)")
+    ylabel("Amplitude(~)")
+end
+\end{lstlisting}
+
+\subsection{Resultater}
+
+\pic{OPG1_2_fig1.png}{1}{Plot over alle fire mono-signaler}{Labelbabelpodl}
+
+\subsection{Diskussion}
+Som det ses af Listing 1, benyttes audioread() til at aflæse antallet af sampless,y, og samplingsfrekvensen af alle tre lydsignale, f\_s. y er her en struct, hvor hvert signal får lagret deres antal sampless, i arrays ved navnet samples. f\_s er blot en enkelt variable, da jeg ved at alle signalerne har den samme samplingsfrekvens.\vspace{0.5cm}
+Jeg ved at `Signal\_s2.wav' er et stereo signal, og vil derfor have signaler opbevaret i to seperate kanaler. På linje 7 og 8 ses hvordan jeg opdeler dem i hver sit array. et for-loop, muliggjort af mit brug af structs, bruger jeg til at udregne tidsakserne vi skal bruge til at plotte signalerne. På linje 17 vender jegi først arraysne, så Matlab vil lade mig regne med dem. Derefter sættes Ns til længden af hvert array af samples. Jeg opnår til sidst mit array af tider ved at lave et array der ganger antallet af samples med svingningstiden, altså $T = 1/f$.\vspace{0.5cm}
+Jeg benytter til sidst endnu et for-loop til at printe hvert signal som et sub-plot, og skriver korrekte aksenavne, som kan ses på figur 1.
+
+\subsection{Konklusion}
+Jeg konkludere at jeg kan benytte Matlab's funktioner til at bearbejde, og analysere lyd-signaler. Desuden kan jeg benytte Matlab til at visualisere dataen, til overskueliggørelse og sammenligning.
+
+\end{document}

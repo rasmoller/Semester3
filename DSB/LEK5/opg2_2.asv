@@ -1,0 +1,11 @@
+clc;
+clear;
+
+f_0 = 400;
+A = 1;
+t = linspace(0,1,12000);%Samplefrekvens er 12kHz, ergo 12000 målinger per. sekund
+a = A*sin(2*pi*t);
+
+dft = fft(a,12000);
+
+plot(abs(dft))
