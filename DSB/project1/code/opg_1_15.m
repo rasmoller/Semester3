@@ -1,4 +1,6 @@
 clear;
+clc;
+
 Fs = 5000; %Samplingsfrekvens
 Ts = 1/Fs; % Tid per sampling
 
@@ -11,7 +13,7 @@ f0 = 2350; %440 Hz tone
 A = 3; % Amplitude er 3
 tone = A * sin(f0*2*pi*t); %Tonen som funktion
 
-e.delay = 150; %ekko med 150 ms forsinkelse
+e.delay = 40; %ekko med 150 ms forsinkelse
 e.Ns = e.delay * (Fs/1000); %Antallet af samples i ekkoet
 
 tone_ekko = [zeros(1,e.Ns), tone]; %Forsinker ved at smide 0'er ind foran
@@ -21,12 +23,13 @@ tone_sum = tone_ekko + tone_ext;
 ekko_t = [0:Ns+e.Ns-1]*Ts;
 
 figure
-plot(t, tone);
+subplot(1,2,1)
+plot(ekko_t, tone_ext);
 title("Original tone");
 xlabel("Tid - sekunder");
 ylabel("Amplitude - ~");
 
-figure
+subplot(1,2,2)
 plot(ekko_t, tone_ekko);
 title("Ekko");
 xlabel("Tid - sekunder");
@@ -38,4 +41,4 @@ title("Ekko + Original");
 xlabel("Tid - sekunder");
 ylabel("Amplitude - ~");
 
-soundsc(tone_sum);
+soundsc(tone_sum, Fs);
