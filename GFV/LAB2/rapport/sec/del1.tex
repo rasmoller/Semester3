@@ -5,10 +5,32 @@
 \begin{document}
 
 \subsection{Introduktion}
-[MORE TEXT HERE]
+I denne opgave skal vi undersøge, hvordan man med en I2C master kan snakke med temperatur sensoren LM75.
+Hertil skal vi bruge viden fra tidligere opgaver og snakke med vores master gennem en UART forbindelse. 
+Dette gør vi for at aflæse LM75'erens målinger.
 
 \subsection{Overvejelser}
-[TEXT HERE]
+For at vi kan snakke med LM75'eren er der 2 forbindelser vi skal fokusere på.
+\begin{enumerate}
+    \item LM75$\iff$PSoC (I2C Master)
+    \item PSoC$\iff$PC (UART)
+\end{enumerate}
+Disse forbindelse vil vi følgende beskrive og kigge nærmere på, hvilke udfordringer der opstår og hvordan vi planlægger at overkomme dem.
+
+\subsubsection{LM75$\iff$PSoC (I2C Master)}
+Denne forbindelse foregår via I2C og her skal vi fra PSoC'en sende beskeder som LM75'en modtager og håndtere. Den opbygning vi skal give beskederne kan vi se i datasheetet\footnote{https://www.ti.com/lit/ds/symlink/lm75b.pdf}.
+Først skal vi sætte den adresse, som vi skal kommunikere med LM75'en igennem. Dette gør vi med følgende besked struktur.
+\pic{LM75I2CAdresse.png}{0.5}{I2C adresse til LM75}{fig:i2cadresse}
+
+\subsubsection{PSoC$\iff$PC (UART)}
+For at snakke mellem PSoC'en og vores computer bruger vi et UART komponent. Dette skal sættes op sådan at PSoC'en sender den læste data fra LM75'en til PC'en.
+På grund af vi ikke bruger computerens input til noget, har vi ikke noget interrupt på RX benet.
+
+Vores computer sættes op med RealTerm til at modtage fra den USB port som PSoC'en er sat til.
+Selve formaterringen af teksten foregår alt sammen på PSoC'en.
+
+Et af problemer i denne forbindelse er, hvordan vi håndtere at sende vores temperatur værdi som en "floating point" værdi.
+Vi ved at fra LM75'en får vi to 8-bit heltal (integer) og i dem ligger dataen som på 
 
 \subsection{Implementering}
 [TEXT HERE]
