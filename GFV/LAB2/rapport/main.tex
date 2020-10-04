@@ -1,0 +1,119 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+%\usepackage[english]{babel}
+\usepackage{amsthm} %lets us use \begin{proof}
+\usepackage{amssymb} %gives us the character \varnothing
+\usepackage[top=3cm, bottom=3cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage{graphicx}
+\usepackage[compact]{titlesec}
+\usepackage{float}
+\usepackage{listings}
+\usepackage[labelfont=bf,listformat=simple]{caption}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{xr} 
+
+\usepackage{subfiles}
+
+% Standard lst
+\lstset{
+  numbers=left, 
+  numberstyle=\small, 
+  numbersep=8pt, 
+  frame = single, 
+  language=C, 
+  framexleftmargin=15pt,
+  extendedchars=true,
+  tabsize=2,
+  literate = {æ}{{\ae}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Æ}{{\AE}}1 {Ø}{{\O}}1 {Å}{{\r A}}1,
+  xleftmargin=2em,
+}
+
+% Presets
+\graphicspath{{fig/}}
+\pagestyle{plain}
+\setlength{\parskip}{1em}
+\setlength{\parindent}{0em}
+
+% =============================
+%           Commands
+% =============================
+
+% Easy pictures
+% \pic{Picture path}{picture size as page size}{Caption}{Label}
+\newcommand{\pic}[4]{
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=#2\textwidth]{#1}
+		\caption{#3}
+		\label{#4}
+	\end{figure}
+}
+
+% ===========================================
+%                DOCUMENT
+% ===========================================
+
+\begin{document}
+
+% ===========================================
+%                Front page
+% ===========================================
+
+\begin{titlepage}
+    
+  \begin{center}
+    \vspace*{1cm}
+
+    \Huge
+    \textbf{I3GFV - LAB Experiment 2}
+
+    \vspace{0.5cm}
+    \huge
+    Communication busses \\
+    \date\today
+
+    \vspace{3cm}
+
+    \Large
+    \begin{tabular}{l|l|r}
+      SW & Gülle Northfarm KnotLate & AU612485 \\
+      SW & Rásmu\$ Müller LangFlod\$øn & AU633064\\
+      SW & Bâk BakelacheeladensBagerBodega & AU577526 \\
+    \end{tabular}
+    \vfill
+    \includegraphics[width=0.25\textwidth]{au2}
+    \vspace{2cm}
+
+    Hold nr. 4
+
+  \end{center}
+\end{titlepage}
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\setcounter{page}{1}
+
+% ===========================================
+%            Start of pages
+% ===========================================
+
+\section{Introduktion}
+
+\section{I2C Experiment: PSoC Master and LM75 Slave}
+
+\subfile{sec/del1.tex}
+
+\section{SPI Experiment: PSoC Master and PSoC Slave}
+
+\subfile{sec/del2.tex}
+
+\section{(Optional)I2C Experiment: PSoC Master and PSoC Slave }
+
+\end{document}

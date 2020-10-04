@@ -1,6 +1,6 @@
-E:\Programmer\Cypres\PSoC Creator\4.3\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|0d5325b7-d0a5-46f8-8901-3821af9231f7
-C:\Users\Gustav\Documents\PSoC Creator\4.3\Downloads ( 4.3).cylib\Downloads ( 4.3).cyprj|34ef08e1-2a69-4c5b-b466-b302f7c16188
-E:\Programmer\Cypres\PSoC Creator\4.3\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|223a2ae0-d607-477e-8edc-f8797e229ffa
-E:\Programmer\Cypres\PSoC Creator\4.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|c2d5e0b4-dc27-4d78-a32a-e9421b447d38
-E:\Programmer\Cypres\PSoC Creator\4.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|58d12d70-402a-416c-8e25-00b70ce5ab50
-C:\Users\Gustav\source\Semester3\GFV\LAB2\gfv_lab2\Design01.cydsn\Design01.cyprj|32230c1f-f975-47f6-a358-97e01a21cae1
+C:\Users\Gustav\source\Semester3\GFV\LAB2\gfv_lab2\Design01.cydsn\Design01.cyprj|019f492b-02ec-4f9f-8b15-cd113c3f88ff
+E:\Programmer\Cypres\PSoC Creator\4.3\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|66558576-678f-44a7-9d5d-9906678d644e
+C:\Users\Gustav\Documents\PSoC Creator\4.3\Downloads ( 4.3).cylib\Downloads ( 4.3).cyprj|f61d7e4f-bf3a-4bca-80b0-07e7c029343c
+E:\Programmer\Cypres\PSoC Creator\4.3\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|d8e46f4d-2e2c-4560-bf6f-b88f0bbb3837
+E:\Programmer\Cypres\PSoC Creator\4.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|a479d131-cd9a-4192-b266-3798371ab626
+E:\Programmer\Cypres\PSoC Creator\4.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|d2ad681e-ae23-480c-b62e-903f273e97a0
