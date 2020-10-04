@@ -21,6 +21,29 @@ Disse forbindelse vil vi følgende beskrive og kigge nærmere på, hvilke udford
 Denne forbindelse foregår via I2C og her skal vi fra PSoC'en sende beskeder som LM75'en modtager og håndtere. Den opbygning vi skal give beskederne kan vi se i datasheetet\footnote{https://www.ti.com/lit/ds/symlink/lm75b.pdf}.
 Først skal vi sætte den adresse, som vi skal kommunikere med LM75'en igennem. Dette gør vi med følgende besked struktur.
 \pic{LM75I2CAdresse.png}{0.5}{I2C adresse til LM75}{fig:i2cadresse}
+Efter at have sat adressen skal vi skal vi modtage temperaturen. Den modtager vi som to 8-bit integers og den følger følgende format:
+\pic{LM75TempBytes.png}{1}{Temperatur formattet fra LM75}{fig:tempBytes}
+Problematikken kommer i at få rykket rundt og behandlet de 2 bytes vi får til kun 1 enkelt byte, hvor vores temperatur er ændret fra 2's kompliment til unsigned.
+De to bytes vi modtager kommer nogenlunde til at ligne følgende:
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|llllllllllllllll|}
+    \hline
+    \multicolumn{1}{|l|}{0}   & \multicolumn{1}{l|}{1} & \multicolumn{1}{l|}{2}  & \multicolumn{1}{l|}{3}  & \multicolumn{1}{l|}{4}  & \multicolumn{1}{l|}{5}  & \multicolumn{1}{l|}{6}  & \multicolumn{1}{l|}{7}  & \multicolumn{1}{|l|}{8}   & \multicolumn{1}{l|}{9} & \multicolumn{1}{l|}{10} & \multicolumn{1}{l|}{11} & \multicolumn{1}{l|}{12} & \multicolumn{1}{l|}{13} & \multicolumn{1}{l|}{14} & \multicolumn{1}{l|}{15} \\ \hline
+    MSB &                        &                         &                         &                         &                         &                         &                      & \multicolumn{1}{l|}{LSB} & \multicolumn{1}{l|}{x} & \multicolumn{1}{l|}{x}  & \multicolumn{1}{l|}{x}  & \multicolumn{1}{l|}{x}  & \multicolumn{1}{l|}{x}  & \multicolumn{1}{l|}{x}  & \multicolumn{1}{l|}{x}  \\ \hline    
+    \end{tabular}
+\end{table}
+I ovenstående tabel er x brugt til at vise bits som er ligegyldige for os.
+
+Herefter planlægger vi at omskrive det til 1 byte med følgende trin:
+\begin{itemize}
+    \item Gem fortegn (+/-) MSB
+    \item Bitshift LSB til plads 15
+    \item Bitshift MSB'en ud og resten af første byte 1 til plads 0
+    \item OR de 2 bytes sammen så vi får LSB ind på plads 7
+    \item Hvis MSB er 1 (-) skal vi invertere plads 0-7 og trække 1 fra for at fjerne 2's compliment
+\end{itemize}
 
 \subsubsection{PSoC$\iff$PC (UART)}
 For at snakke mellem PSoC'en og vores computer bruger vi et UART komponent. Dette skal sættes op sådan at PSoC'en sender den læste data fra LM75'en til PC'en.
@@ -30,7 +53,7 @@ Vores computer sættes op med RealTerm til at modtage fra den USB port som PSoC'
 Selve formaterringen af teksten foregår alt sammen på PSoC'en.
 
 Et af problemer i denne forbindelse er, hvordan vi håndtere at sende vores temperatur værdi som en "floating point" værdi.
-Vi ved at fra LM75'en får vi to 8-bit heltal (integer) og i dem ligger dataen som på 
+Vi ved at fra LM75'en får vi to 8-bit integer og i dem ligger dataen som på 
 
 \subsection{Implementering}
 [TEXT HERE]
