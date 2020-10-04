@@ -43,7 +43,10 @@ Herefter planlægger vi at omskrive det til 1 byte med følgende trin:
     \item Bitshift MSB'en ud og resten af første byte 1 til plads 0
     \item OR de 2 bytes sammen så vi får LSB ind på plads 7
     \item Hvis MSB er 1 (-) skal vi invertere plads 0-7 og trække 1 fra for at fjerne 2's compliment
+    \item Returner det halve og cast til en float
 \end{itemize}
+Da LM75'en giver os antallet af halve grader halverer vi resultatet og returner det i stedet. Så ved stue temperatur ville man få 40 fra LM75'en i stedet for 20.
+Dette kan vi herefter sende videre til vores PC gennem UART.
 
 \subsubsection{PSoC$\iff$PC (UART)}
 For at snakke mellem PSoC'en og vores computer bruger vi et UART komponent. Dette skal sættes op sådan at PSoC'en sender den læste data fra LM75'en til PC'en.
@@ -53,7 +56,9 @@ Vores computer sættes op med RealTerm til at modtage fra den USB port som PSoC'
 Selve formaterringen af teksten foregår alt sammen på PSoC'en.
 
 Et af problemer i denne forbindelse er, hvordan vi håndtere at sende vores temperatur værdi som en "floating point" værdi.
-Vi ved at fra LM75'en får vi to 8-bit integer og i dem ligger dataen som på 
+Dette problem overkommes dog forholdvist nemt ved at følge en guide\footnote{GFV Lektion 5 Communication buses - lab experiment Handouts: PSoC-Creator-Printing-Floating-Point.pdf} givet i undervisningen.
+Først skal man ind i build settings og sætte float formatting til \textit{TRUE} og herefter skal man bare øge heap sizen til \textit{0x200}.
+Når dette er gjort kan man caste sin unsigned interger til en float og printe den med printf ved brug af formaterrings type fieldet "\%f".
 
 \subsection{Implementering}
 [TEXT HERE]
