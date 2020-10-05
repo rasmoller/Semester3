@@ -1,5 +1,5 @@
 -- Project:   spi_master
--- Generated: 10/04/2020 20:16:25
+-- Generated: 10/04/2020 22:46:30
 -- PSoC Creator  4.3
 
 ENTITY spi_master IS

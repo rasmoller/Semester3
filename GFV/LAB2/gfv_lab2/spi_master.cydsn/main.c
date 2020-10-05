@@ -1,14 +1,3 @@
-/* ========================================
- *
- * Copyright YOUR COMPANY, THE YEAR
- * All Rights Reserved
- * UNPUBLISHED, LICENSED SOFTWARE.
- *
- * CONFIDENTIAL AND PROPRIETARY INFORMATION
- * WHICH IS THE PROPERTY OF your company.
- *
- * ========================================
-*/
 #include "project.h"
 
 CY_ISR_PROTO(ISR_UART_rx_handler);
@@ -25,8 +14,7 @@ int main(void)
     UART_PutString("SPI initiateted, this is Master\r\n");
     
     for(;;)
-    {
-              
+    {         
     }
 }
 
@@ -48,22 +36,21 @@ void handleByteReceived(uint8_t byteReceived)
 {
     switch(byteReceived)
     {
-        case 'i':
+        //ON case
+        case 'i': 
         {
-            SPIM_WriteByte(0xf);
-            SPIM_ReadByte();
+            SPIM_ClearTxBuffer();
+            SPIM_WriteTxData(0xcc);            
             break;
         }
-        case 'o':
+        //OFF case
+        case 'o': 
         {
-            SPIM_WriteByte(0x9);
-            SPIM_ReadByte();
+            SPIM_ClearTxBuffer();
+            SPIM_WriteTxData(0x55);
             break;
         }
-            default:
+        default:
         {}
     }
 }
-
-
-/* [] END OF FILE */
