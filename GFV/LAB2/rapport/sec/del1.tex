@@ -48,6 +48,9 @@ Herefter planlægger vi at omskrive det til 1 byte med følgende trin:
 Da LM75'en giver os antallet af halve grader halverer vi resultatet og returner det i stedet. Så ved stue temperatur ville man få 40 fra LM75'en i stedet for 20.
 Dette kan vi herefter sende videre til vores PC gennem UART.
 
+Når denne protokol er opbygget kan vi bruge den til opsætningen af flere LM75'er. Her skal vi bare indstille adressen til en anden og så kan vi forbinde dem alle serielt.
+Ved at gøre dette kan vi få flere LM75 slaver på samme kommunikations bus. I koden skal vi loope gennem de forskellige adresser og spørge dem en af gangen, når vi så har fået svar skal vi lukke forbindelsen og spørge den næste.
+
 \subsubsection{PSoC$\iff$PC (UART)}
 For at snakke mellem PSoC'en og vores computer bruger vi et UART komponent. Dette skal sættes op sådan at PSoC'en sender den læste data fra LM75'en til PC'en.
 På grund af vi ikke bruger computerens input til noget, har vi ikke noget interrupt på RX benet.
@@ -61,26 +64,41 @@ Først skal man ind i build settings og sætte float formatting til \textit{TRUE
 Når dette er gjort kan man caste sin unsigned interger til en float og printe den med printf ved brug af formaterrings type fieldet "\%f".
 
 \subsection{Implementering}
-[TEXT HERE]
+På Figure \ref{fig:td} kan man se topdesignet for vores PSoC. Her har vi et I2C modul til at snakke med LM75'eren og UART modulet til at snakke med computeren.
 
-\pic{td_i2c}{0.7}{EN TEKST HER TAK}{fig:td}
+\pic{td_i2c}{0.7}{Top design til I2C master}{fig:td}
 
-\pic{design_i2c}{0.7}{ENDNU MERE TEKST HER TAK}{fig:des}
+Herefter bestemmer vi, hvor alle pins skal placeres. På Figure \ref{fig:des} kan man se, hvordan pinsne er blevet fordelt.
+\pic{design_i2c}{0.7}{Pin setup på I2C master}{fig:des}
+
+
+[KODE AFSNIT]
 
 \subsection{Dokumentation}
 
-\pic{temp_read.png}{0.7}{DER SKAL VÆRE TEKSKTST}{fig:temp}
+På Figure \ref{fig:temp} kan man se vores resultat fra computeren når vi har 1 slave på vores kommunikations bus. Her aflæser vi en temperatur fra 27 grader til 30 grader.
+\pic{temp_read.png}{0.7}{I2C forbindelse med 1 slave}{fig:temp}
 
-\pic{2temp_read.png}{0.7}{DER SKAL MERE TEKST SE}{fig:temp2}
+Herefter på Figure \ref{fig:temp2} kan man se, resultatet efter vi forbandte 2 slaver til kommunikations bussen.
+\pic{2temp_read.png}{0.7}{I2C forbindelse med 2 slaver}{fig:temp2}
 
 \pic{i2c_wave}{0.7}{DER SKAL TEKST IGEN}{fig:wave}
 
 \pic{i2c_wave0x49}{0.7}{ENDU MERE TEKST}{fig:wave2}
 
 \subsection{Diskussion}
-[TEXT HERE]
+På Figure \ref{fig:temp} kan man se, at temperaturen går mellem 27 grader og 30 grader. Denne ændring kom da vi placerede en finger på sensoren og det passer dermed at temperaturen stiger til 30 grader.
+Dette passer med forventningen om, at den omkringværende luft er koldere en vores fingrer.
 
+Tilgengæld på Figure \ref{fig:temp2} kan man ikke se en særlig stor forskel. Denne forskel kommer af, at vi ikke placerede en finger eller et varmt objekt på en af sensorne. 
+Dermed har vi 2 værdier som ligger meget tæt op af hinanden fordi luften omkring dem er ens temperatur.
+
+[Diskuter waveform billeder]
+
+[Diskuter kode ?]
 \subsection{Konklusion}
-[TEXT HERE]
+På baggrund af denne øvelse kan vi konkludere, at man kan kommunikere LM75 med over en I2C forbindelse. Hertil kan man forbinde flere LM75'ere (slaver) på samme kommunikations bus og derved aflæse fra flere slaver over samme forbindelse.
+Herudover kan vi konkludere, at vi modtager temperaturen over 2 Bytes og med forholdsvis få trin kan man få det omregnet til en enkelt byte, som man herefter meget nemmere kan sende til sin computer og få vist. 
+
 
 \end{document}
