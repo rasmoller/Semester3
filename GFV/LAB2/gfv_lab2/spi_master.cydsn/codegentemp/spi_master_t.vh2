@@ -1,5 +1,5 @@
 -- Project:   C:\Users\Gustav\source\Semester3\GFV\LAB2\gfv_lab2\spi_master.cydsn\spi_master.cyprj
--- Generated: 10/04/2020 20:16:29
+-- Generated: 10/04/2020 22:46:33
 -- PSoC Creator  4.3
 
 ENTITY spi_master IS

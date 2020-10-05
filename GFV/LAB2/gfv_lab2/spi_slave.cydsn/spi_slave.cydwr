@@ -253,8 +253,10 @@
     <Group key="Pin">
       <Data key="8d318d8b-cf7b-4b6b-b02c-ab1c5c49d0ba" value="MOSI" />
       <Data key="30a90304-7668-406d-aad5-e21c826a3e90" value="MISO" />
+      <Data key="1425177d-0d0e-4468-8bcc-e638e5509a9b" value="Rx" />
       <Data key="b4fff616-5f40-4003-ad22-fde5cd460ebc" value="SCLK" />
       <Data key="e851a3b9-efb8-48be-bbb8-b303b216c393" value="LED" />
+      <Data key="ed092b9b-d398-4703-be89-cebf998501f6" value="Tx" />
     </Group>
   </Group>
   <Group key="EEPROM">
@@ -3351,6 +3353,11 @@
         <Data key="Port Format" value="2,4" />
       </Group>
     </Group>
+    <Group key="1425177d-0d0e-4468-8bcc-e638e5509a9b">
+      <Group key="0">
+        <Data key="Port Format" value="12,6" />
+      </Group>
+    </Group>
     <Group key="b4fff616-5f40-4003-ad22-fde5cd460ebc">
       <Group key="0">
         <Data key="Port Format" value="2,6" />
@@ -3359,6 +3366,11 @@
     <Group key="e851a3b9-efb8-48be-bbb8-b303b216c393">
       <Group key="0">
         <Data key="Port Format" value="2,1" />
+      </Group>
+    </Group>
+    <Group key="ed092b9b-d398-4703-be89-cebf998501f6">
+      <Group key="0">
+        <Data key="Port Format" value="12,7" />
       </Group>
     </Group>
   </Group>
