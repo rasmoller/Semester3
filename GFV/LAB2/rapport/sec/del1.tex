@@ -24,7 +24,7 @@ Først skal vi sætte den adresse, som vi skal kommunikere med LM75'en igennem. 
 Efter at have sat adressen skal vi skal vi modtage temperaturen. Den modtager vi som to 8-bit integers og den følger følgende format:
 \pic{LM75TempBytes.png}{1}{Temperatur formattet fra LM75}{fig:tempBytes}
 Problematikken kommer i at få rykket rundt og behandlet de 2 bytes vi får til kun 1 enkelt byte, hvor vores temperatur er ændret fra 2's kompliment til unsigned.
-De to bytes vi modtager kommer til at ligne følgende:
+De to bytes vi modtager kommer nogenlunde til at ligne følgende:
 
 \begin{table}[h]
     \centering
@@ -68,7 +68,7 @@ På Figure \ref{fig:td} kan man se topdesignet for vores PSoC. Her har vi et I2C
 
 \pic{td_i2c}{0.7}{Top design til I2C master}{fig:td}
 
-Herefter bestemmer vi, hvor alle pins skal placeres. På Figure \ref{fig:des} kan man se, hvordan pin'sne er blevet fordelt.
+Herefter bestemmer vi, hvor alle pins skal placeres. På Figure \ref{fig:des} kan man se, hvordan pinsne er blevet fordelt.
 \pic{design_i2c}{0.7}{Pin setup på I2C master}{fig:des}
 
 I koden er der 2 primære dele:

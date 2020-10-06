@@ -14,13 +14,35 @@ Vi forventer at benytte AD til at teste hvorvidt signalerne sendes og modtages k
 
 \subsubsection{SPI}
 
-SPI fungere som en datastrøm imellem 2 devices. Det er kun muligt at sende på en SPI, hvis der også modtages fra den samtidig. Modtageren og senderen fungerer som en cirkulær buffer, som læses og skrives til hele tiden. Man bør derfor være opmærksomme på ikke at komme bagud i bufferen, så vores data bliver overskreveet. Da protokollen til denne opgave er forhodlsvist nem, og kan anses for binær, er det valgt simpelthen at ignorere bufferen, og nulstille den, hver gang den bruges.
+SPI fungerer som en datastrøm imellem 2 devices. Det er kun muligt at sende på en SPI, hvis der også modtages fra den samtidig. Modtageren og senderen fungerer som en cirkulær buffer, som læses og skrives til hele tiden. Man bør derfor være opmærksomme på ikke at komme bagud i bufferen, så vores data bliver overskreveet. Da protokollen til denne opgave er forhodlsvist nem, og kan anses for binær, er det valgt simpelthen at ignorere bufferen, og nulstille den, hver gang den bruges.
 
 Fobindelsen mellem Master og Slave er forholdsvist simpel i denne implementering. Der skal oprettes en MOSI, MISO og en SCLK. Det er vigtigt vores SPI Master og SPI Slave kører på samme modes. Vi har defor brugt stadardinstillingen på modes, som er \(CPHA=0\) og \(CPOL = 0\). CPOL er vores clock polaritet. I mode 0 starter klokken LOW, når der ikke tælles. CPHA fortæller hvornår vores bits bliver læst. Ved 0 er det ved starten af en clock puls der samples, ved 1 er det i slutningen der samples.
 
 Til at opstille Slave modulet, skal vi desuden bruge en Slave Select. Da der i dette system kun eksisterer en enekelt Slave, vælges der at forbinde Slave Select direkte til GND.
 
+\pic{spi_design}{0.9}{SPI setup diagram}{fig:slave_topp}
+
+\begin{center}
+\begin{tabular}{ | m{5em} | m{5cm}| } 
+\hline
+\textbf{Signal}& \textbf{Beskrivelse}\\ 
+\hline
+MOSI& Står for Master-Out-Slave-In. Signal i bits der sendes  fra master til slave.\\ 
+\hline
+MISO& Står for Master-In-Slave-Out. Signal i bits der sendes fra slave til master.\\ 
+\hline
+SCLK& Master intern clock, styrer synkronisering af sending af bits. \\ 
+\hline
+SS& Master Slave Select. Sættes LOW for at kommunikere til slaven er der sendes til den.\\
+\hline
+GND& Fælles stel forbindelse for slave og master\\
+\hline
+\end{tabular}
+\end{center}
+
 \subsection{Implementering}
+
+Vi vil her introducere hvordan vi har opbygget vores master-slave system, og hvordan det er blevet implementeret i softwaren.
 
 \subsubsection{SPI Slave}
 
