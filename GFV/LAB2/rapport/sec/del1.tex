@@ -21,8 +21,10 @@ Disse forbindelse vil vi følgende beskrive og kigge nærmere på, hvilke udford
 Denne forbindelse foregår via I2C og her skal vi fra PSoC'en sende beskeder som LM75'en modtager og håndtere. Den opbygning vi skal give beskederne kan vi se i datasheetet\footnote{https://www.ti.com/lit/ds/symlink/lm75b.pdf}.
 Først skal vi sætte den adresse, som vi skal kommunikere med LM75'en igennem. Dette gør vi med følgende besked struktur.
 \pic{LM75I2CAdresse.png}{0.5}{I2C adresse til LM75}{fig:i2cadresse}
+
 Efter at have sat adressen skal vi skal vi modtage temperaturen. Den modtager vi som to 8-bit integers og den følger følgende format:
-\pic{LM75TempBytes.png}{1}{Temperatur formattet fra LM75}{fig:tempBytes}
+\pic{LM75TempBytes.png}{0.8}{Temperatur formattet fra LM75}{fig:tempBytes}
+
 Problematikken kommer i at få rykket rundt og behandlet de 2 bytes vi får til kun 1 enkelt byte, hvor vores temperatur er ændret fra 2's kompliment til unsigned.
 De to bytes vi modtager kommer nogenlunde til at ligne følgende:
 
@@ -50,7 +52,7 @@ Dette kan vi herefter sende videre til vores PC gennem UART.
 
 Når denne protokol er opbygget kan vi bruge den til opsætningen af flere LM75'er. Her skal vi bare indstille adressen til en anden og så kan vi forbinde dem alle serielt.
 Ved at gøre dette kan vi få flere LM75 slaver på samme kommunikations bus. I koden skal vi loope gennem de forskellige adresser og spørge dem en af gangen, når vi så har fået svar skal vi lukke forbindelsen og spørge den næste.
-
+\newpage
 \subsubsection{PSoC$\iff$PC (UART)}
 For at snakke mellem PSoC'en og vores computer bruger vi et UART komponent. Dette skal sættes op sådan at PSoC'en sender den læste data fra LM75'en til PC'en.
 På grund af vi ikke bruger computerens input til noget, har vi ikke noget interrupt på RX benet.
@@ -166,7 +168,7 @@ int main(void)
 Variablen PRINT\_LEN er defineret til 50.
 
 En vigtig del af vores main loop er det delay vi indsætter efter vi har læst fra begge LM75'ere. Dette gør vi for ikke at læse for hyppigt på slaverne. 
-Hvis vi gjorde det risikerede vi at overophede slaverne og dermed få en forkert temperatur, da LM75'eren har en anden temperatur end den omkringværende. 
+Hvis vi gjorde det risikerede vi at overophede slaverne og dermed få en forkert temperatur, da LM75'eren har en anden temperatur end den omkringværende luft. 
 
 Fra datasheetet\footnote{https://www.ti.com/lit/ds/symlink/lm75b.pdf? - Side 5, Afsnit 6.5, note (5)} lyder det nemlig at
 \begin{quote}
@@ -207,10 +209,10 @@ Dette passer med forventningen om, at den omkringværende luft er koldere en vor
 Tilgengæld på Figure \ref{fig:temp2} kan man ikke se en særlig stor forskel. Denne forskel kommer af, at vi ikke placerede en finger eller et varmt objekt på en af sensorne. 
 Dermed har vi 2 værdier som ligger meget tæt op af hinanden fordi luften omkring dem er ens temperatur.
 
-På Figure \ref{fig:wave} kan man se, hvordan vores protocol følges af signalet. 
+På Figure \ref{fig:wave} kan man se, hvordan vores protokol følges af signalet. 
 Inden den første acknowledgement har vi PSoC'en der sender adressen ud på data linjen og herefter kan man se, på grund af, at ground bliver forskudt fra vores PSoC's ground, at det er LM75'en der svarer tilbage.
 Nu ved vi at LM75'en svarer med 2 bytes af data og vi kan se, at ind imellem disse 2 bytes er der en acknowledge fra masteren. Dette kan man igen se på den lille forskel der sker på vores data forbindelse og at vores LOW bliver skudt en lille smule op fra 0V.
-Derudover kan man se, at vores data kun skifter når vores clock er LOW, dette er specificeret i protocollen for I2C\footnote{https://www.nxp.com/docs/en/user-guide/UM10204.pdf - Side 9, Afsnit 3.1.3 Data validity}, hvor den siger:
+Derudover kan man se, at vores data kun skifter når vores clock er LOW, dette er specificeret i protokollen for I2C\footnote{https://www.nxp.com/docs/en/user-guide/UM10204.pdf - Side 9, Afsnit 3.1.3 Data validity}, hvor den siger:
 
 \begin{quote}
     "\textit{The data on the SDA line must be stable during the HIGH period of the clock. The HIGH
