@@ -1,0 +1,10 @@
+C:\Users\Gustav\source\Semester3\GFV\LAB2\gfv_lab2\Design01.cydsn\Design01.cyprj|9ea99626-c8d4-45b0-8e47-94bf5a61df0d
+E:\Programmer\Cypres\PSoC Creator\4.3\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|97e582c0-6a97-4de5-a856-7f2d98018ec8
+C:\Users\Gustav\Documents\PSoC Creator\4.3\Downloads ( 4.3).cylib\Downloads ( 4.3).cyprj|94297d7c-1992-43f6-ab29-3f8475723065
+E:\Programmer\Cypres\PSoC Creator\4.3\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|0218d241-8b7c-41bf-944e-58ca0e2f7226
+E:\Programmer\Cypres\PSoC Creator\4.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|9538a2b9-6d6e-4987-91ea-9f7b8fe1ae14
+E:\Programmer\Cypres\PSoC Creator\4.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|a7ec05cd-d446-4d3f-98c9-dc90e80aea93
+C:\Users\Gustav\source\Semester3\GFV\LAB2\gfv_lab2\spi_slave.cydsn\spi_slave.cyprj|7a3daa09-afab-4eec-8705-9ea8b65339c5
+C:\Users\Gustav\source\Semester3\GFV\LAB2\gfv_lab2\spi_master.cydsn\spi_master.cyprj|60700336-7007-4461-87ec-0b9bfc90eff5
+C:\Users\Gustav\source\Semester3\GFV\LAB2\gfv_lab2\spi_master_btn.cydsn\spi_master_btn.cyprj|20e723c1-e5e9-4d57-8d4b-d16328fb61cc
+C:\Users\Gustav\source\Semester3\GFV\LAB2\gfv_lab2\spi_slave_btn.cydsn\spi_slave_btn.cyprj|3522c007-019e-4249-81de-8ee271592fef

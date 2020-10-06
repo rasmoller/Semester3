@@ -45,11 +45,13 @@ CY_ISR(isr_spi_rx_handler)
     
     switch(data)
     {
+        // ON case
         case 0xcc:
         {
             LED_Write(1);
         break;   
         }
+        // OFF case
         case 0x55:
         {
             LED_Write(0);

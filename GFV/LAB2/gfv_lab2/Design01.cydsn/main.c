@@ -45,15 +45,13 @@ int main(void)
         UART_PutString(printBuf);
         CyDelay(1);
         
-        /*
-        if(!i2cRead(0x48, &temp1)){
+        if(!i2cRead(0x49, &temp1)){
             //temp error value
             temp1 = -0.1;
         }
         sprintf(printBuf, "Temperaturen paa slave 2 er: %.1f \r\n", temp1);
         UART_PutString(printBuf);
         CyDelay(500);
-        */
     }
 }
 
