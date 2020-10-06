@@ -105,6 +105,7 @@ uint8 i2cRead(uint8 addr, float *result){
     }
     
 // Interpret LM75 2s compliment into propper float
+// Follow the steps explained in report, section 2.2.1
     buffer[1] >>= 7;
     _Bool comp = buffer[0] & 0b10000000;
     buffer[0] <<= 1;
@@ -176,6 +177,9 @@ Hvis vi spørger oftere end 300ms risikerer vi at afbryde en temperatur læsning
 Derfor har vi valgt at indsætte et delay på 500ms. Se linje 29 på listing \ref{lst:i2cMain}.
 
 Efter vi har klaret alt dette kan vi nu lave vores opstilling med PSoC, LM75 boards og computer.
+
+\pic{i2c_design.png}{}{Opstillingsdiagram}{fig:opstilDia}
+På Figure \ref{fig:opstilDia} kan man se, at vi udfra top design har lavet et diagram over opstillingen. Dette vil vi bruge til at lave følgende opstillinger med en eller to slave(r).
 
 \pic{i2c.jpg}{0.8}{Opstilling af I2C forbindelser}{fig:i2copstilling}
 På Figure \ref{fig:i2copstilling} kan man se opstillingen, hvorpå der er indsat bokse, der beskriver ledningernes formål.
