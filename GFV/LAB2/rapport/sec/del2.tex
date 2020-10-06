@@ -140,38 +140,38 @@ for(;;)
 På Figure \ref{fig:Stinkybabyman} nedenfor ses vores endelige opstilling. Forbindelserne mellem slave og master, beskrevet i implementeringsafsnittet, er etableret som specificeret
 , og vi ser som forventet at vi kan tænde og slukke for LED'en på slave PSoC'en ved at sende i/o til vores master PSoC.
 
-\pic{spi.jpeg}{0.7}{DER SKAL TEKST IGEN}{fig:Stinkybabyman}
+\pic{spi.jpeg}{0.7}{SPI forbindelse mellem Slave (venstre) og Master (højre)}{fig:Stinkybabyman}
 
 For at få en bedre forståelse af hvad der sker signalmæssigt, og for at sikre systemet ikke bare virker ved et uheld, benytter vi Analog Discovery Oscilloskop til at måle  i/o signalet sendt mellem PSoC parret.
- På Figure \ref{fig:BowserEatsShit} ses vores måling af signalet for at tænde LED'en, mens Figure \ref{fig:StinkyPoopyHAHA} viser signalet sendt for at slukke LED'en. Den blå graf er her 
+ På Figure \ref{fig:BowserEatsShit} ses vores måling af signalet for at tænde LED'en, mens Figure \ref{fig:StinkyPoopyHAHA} viser signalet sendt for at slukke LED'en. Den blå graf er her.
  vores clk-signal, mens den orange graf er vores SPI-signal. 
 
- \pic{x55.png}{0.7}{DER SKAL TEKST IGEN}{fig:BowserEatsShit} 
- \pic{xcc.png}{0.7}{DER SKAL TEKST IGEN}{fig:StinkyPoopyHAHA}
+ \pic{x55.png}{0.7}{Modtagelse af sluk-byte}{fig:BowserEatsShit} 
+ \pic{xcc.png}{0.7}{Modtagelse af tænd-byte}{fig:StinkyPoopyHAHA}
  
 \subsection{Diskussion}
 Som vi først ser på Figure \ref{fig:Stinkybabyman} virker vores implementering, og vi kan tænde og slukke for vores slave LED ved at sende et signal til vores master PSoC.
 Idet vi ville sikre at SPI protokollen blev kørt korrekt, valgte vi specifikke hex-tal til at repræsentere I/O signalerne. 
 
 Dette gav dog nogle problemer under implementeringen, da vi ved målinger med Analog Discoverys Spy funktion fandt at signalet modtaget af slave PSoC'en blev forskudt en halv byte 
-ift. hvad der blev sendt af master. Vi fandt at fejlen opstod hvis et tidligere signal ikke var blevet modtaget korrekt. Hvis bufferen så ikke blev tømt efterfølgende, lagde protokollen 
+ift. hvad der blev sendt af master. Vi fandt at fejlen opstod hvis et tidligere signal ikke var blevet modtaget korrekt. Hvis bufferen så ikke blev tømt efterfølgende, lagde protokollen.
 blot dele af det nye signal ind i bufferen oveni fejlsignalet.
 
 Problemet opstår, idet SPI-protokollen ikke har adgang til en acknowledge, og derfor blot sender en stream af bits fra master til slave. En evt. løsning kunne være at gøre brug af 
 SPI slave-select. Når SS signalet sættes lav for at indikere til slaven at der nu sendes specifikt til den, kan bufferen så tømmes. Vi valgte imidlertidig ikke at bruge denne løsning,
 da vi ikke ønskede at overkomplicere opgaven.
 
-Hvis vi kigger på Figure \ref{fig:BowserEatsShit} ser vi det korrekte 'i' signal modtaget af slaven. Vi benyttede i dette tilfælde hex-tallet x55, i binært '1010101', hvilket er præcis 
-den kombination vi ser på figuren. Ligeldes benyttede vi hextallet xcc, '11001100' i binært, til vores 'o' signal, og vi ser på Figure \ref{fig:Stinkybabyman} at signalet stemmer overens.
+Hvis vi kigger på Figure \ref{fig:BowserEatsShit} ser vi det korrekte 'i' signal modtaget af slaven. Vi benyttede i dette tilfælde hex-tallet 0x55, i binært '1010101', hvilket er præcis 
+den kombination vi ser på figuren. Ligeledes benyttede vi hex-tallet 0xcc, '11001100' i binært, til vores 'o' signal, og vi ser på Figure \ref{fig:Stinkybabyman} at signalet stemmer overens.
 
-Det er her værd at pointere at amplituden af vores SPI-signal er dobbelt størelsen af vores clock. Dette skyldes at vi har stillet på akserne, for at gøre målingerne mere visuelt
+Det er her værd at pointere at amplituden af vores SPI-signal er dobbelt størrelsen af vores clock. Dette skyldes at vi har stillet på akserne, for at gøre målingerne mere visuelt
  overskuelige, da vi ikke er videre interesserede i amplituderne af vores signaler.
 
 \subsection{Konklusion}
 På baggrund af denne øvelse konkluderer vi, at vi har formået at etablere en SPI-protokol mellem en slave PSoC og master PSoC. 
-Hertil har vi implementeret et master-slave system, der benytter SPI til at kommmunikere mellem dens master og slave moduler. Vi har ved hjælp af dette sende et I/O signal til en 
-LED monteret på slaven, ved at kontakte masteren vha. UART til PC.
+Hertil har vi implementeret et master-slave system, der benytter SPI til at kommmunikere mellem dens master og slave moduler. 
+Vi har ved hjælp af dette sendt en byte til slaven, som så bestemmer om vi skal tænde eller slukke på LED'en monteret på slaven.
 
-Ligeledes har vi også formået at implementere den førnævnte SPI-protokol, dog nu ved at initiatere LED tænd signalet med en switch på master.
+Ligeledes har vi også formået at implementere den førnævnte SPI-protokol, dog nu ved at initiere LED tænd signalet med en switch på master.
 
 \end{document}
