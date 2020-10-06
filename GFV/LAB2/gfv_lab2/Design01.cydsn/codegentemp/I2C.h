@@ -30,11 +30,11 @@
 *   Conditional Compilation Parameters
 ****************************************/
 
-#define I2C_IMPLEMENTATION     (0u)
+#define I2C_IMPLEMENTATION     (1u)
 #define I2C_MODE               (2u)
 #define I2C_ENABLE_WAKEUP      (0u)
 #define I2C_ADDR_DECODE        (1u)
-#define I2C_UDB_INTRN_CLOCK    (1u)
+#define I2C_UDB_INTRN_CLOCK    (0u)
 
 
 /* I2C implementation enum */
@@ -944,7 +944,7 @@ extern uint8 I2C_initVar;
                                              I2C_ENABLE_SLAVE)
 
     /*I2C_DEFAULT_DIVIDE_FACTOR_REG */
-    #define I2C_DEFAULT_DIVIDE_FACTOR  ((uint16) 1u)
+    #define I2C_DEFAULT_DIVIDE_FACTOR  ((uint16) 15u)
 
 #else
     /* I2C_CFG_REG: bits definition  */
