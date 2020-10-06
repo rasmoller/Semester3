@@ -24,7 +24,7 @@ Først skal vi sætte den adresse, som vi skal kommunikere med LM75'en igennem. 
 Efter at have sat adressen skal vi skal vi modtage temperaturen. Den modtager vi som to 8-bit integers og den følger følgende format:
 \pic{LM75TempBytes.png}{1}{Temperatur formattet fra LM75}{fig:tempBytes}
 Problematikken kommer i at få rykket rundt og behandlet de 2 bytes vi får til kun 1 enkelt byte, hvor vores temperatur er ændret fra 2's kompliment til unsigned.
-De to bytes vi modtager kommer nogenlunde til at ligne følgende:
+De to bytes vi modtager kommer til at ligne følgende:
 
 \begin{table}[h]
     \centering
@@ -68,7 +68,7 @@ På Figure \ref{fig:td} kan man se topdesignet for vores PSoC. Her har vi et I2C
 
 \pic{td_i2c}{0.7}{Top design til I2C master}{fig:td}
 
-Herefter bestemmer vi, hvor alle pins skal placeres. På Figure \ref{fig:des} kan man se, hvordan pinsne er blevet fordelt.
+Herefter bestemmer vi, hvor alle pins skal placeres. På Figure \ref{fig:des} kan man se, hvordan pin'sne er blevet fordelt.
 \pic{design_i2c}{0.7}{Pin setup på I2C master}{fig:des}
 
 I koden er der 2 primære dele:
@@ -105,7 +105,6 @@ uint8 i2cRead(uint8 addr, float *result){
     }
     
 // Interpret LM75 2s compliment into propper float
-// Follow the steps explained in report, section 2.2.1
     buffer[1] >>= 7;
     _Bool comp = buffer[0] & 0b10000000;
     buffer[0] <<= 1;
@@ -177,9 +176,6 @@ Hvis vi spørger oftere end 300ms risikerer vi at afbryde en temperatur læsning
 Derfor har vi valgt at indsætte et delay på 500ms. Se linje 29 på listing \ref{lst:i2cMain}.
 
 Efter vi har klaret alt dette kan vi nu lave vores opstilling med PSoC, LM75 boards og computer.
-
-\pic{i2c_design.png}{}{Opstillingsdiagram}{fig:opstilDia}
-På Figure \ref{fig:opstilDia} kan man se, at vi udfra top design har lavet et diagram over opstillingen. Dette vil vi bruge til at lave følgende opstillinger med en eller to slave(r).
 
 \pic{i2c.jpg}{0.8}{Opstilling af I2C forbindelser}{fig:i2copstilling}
 På Figure \ref{fig:i2copstilling} kan man se opstillingen, hvorpå der er indsat bokse, der beskriver ledningernes formål.

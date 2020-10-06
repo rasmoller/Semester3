@@ -1,0 +1,18 @@
+\contentsline {section}{\numberline {1}Introduktion}{1}%
+\contentsline {section}{\numberline {2}I2C Experiment: PSoC Master and LM75 Slave}{1}%
+\contentsline {subsection}{\numberline {2.1}Introduktion}{1}%
+\contentsline {subsection}{\numberline {2.2}Overvejelser}{1}%
+\contentsline {subsubsection}{\numberline {2.2.1}LM75$\DOTSB \tmspace +\thickmuskip {.2777em}\DOTSB \Leftarrow \joinrel \Rightarrow \tmspace +\thickmuskip {.2777em}$PSoC (I2C Master)}{1}%
+\contentsline {subsubsection}{\numberline {2.2.2}PSoC$\DOTSB \tmspace +\thickmuskip {.2777em}\DOTSB \Leftarrow \joinrel \Rightarrow \tmspace +\thickmuskip {.2777em}$PC (UART)}{2}%
+\contentsline {subsection}{\numberline {2.3}Implementering}{3}%
+\contentsline {subsection}{\numberline {2.4}Dokumentation}{4}%
+\contentsline {subsection}{\numberline {2.5}Diskussion}{5}%
+\contentsline {subsection}{\numberline {2.6}Konklusion}{6}%
+\contentsline {section}{\numberline {3}SPI Experiment: PSoC Master and PSoC Slave}{6}%
+\contentsline {subsection}{\numberline {3.1}Introduktion}{6}%
+\contentsline {subsection}{\numberline {3.2}Overvejelser}{6}%
+\contentsline {subsection}{\numberline {3.3}Implementering}{6}%
+\contentsline {subsection}{\numberline {3.4}Dokumentation}{6}%
+\contentsline {subsection}{\numberline {3.5}Diskussion}{6}%
+\contentsline {subsection}{\numberline {3.6}Konklusion}{6}%
+\contentsline {section}{\numberline {4}(Optional)I2C Experiment: PSoC Master and PSoC Slave }{6}%

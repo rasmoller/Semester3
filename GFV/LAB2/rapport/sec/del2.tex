@@ -146,8 +146,8 @@ For at få en bedre forståelse af hvad der sker signalmæssigt, og for at sikre
  På Figure \ref{fig:BowserEatsShit} ses vores måling af signalet for at tænde LED'en, mens Figure \ref{fig:StinkyPoopyHAHA} viser signalet sendt for at slukke LED'en. Den blå graf er her 
  vores clk-signal, mens den orange graf er vores SPI-signal. 
 
- \pic{x55.png}{0.7}{Modtagelse af sluk-byte}{fig:BowserEatsShit} 
- \pic{xcc.png}{0.7}{Modtagelse af tænd-byte}{fig:StinkyPoopyHAHA}
+ \pic{x55.png}{0.7}{DER SKAL TEKST IGEN}{fig:BowserEatsShit} 
+ \pic{xcc.png}{0.7}{DER SKAL TEKST IGEN}{fig:StinkyPoopyHAHA}
  
 \subsection{Diskussion}
 Som vi først ser på Figure \ref{fig:Stinkybabyman} virker vores implementering, og vi kan tænde og slukke for vores slave LED ved at sende et signal til vores master PSoC.
@@ -168,6 +168,10 @@ Det er her værd at pointere at amplituden af vores SPI-signal er dobbelt støre
  overskuelige, da vi ikke er videre interesserede i amplituderne af vores signaler.
 
 \subsection{Konklusion}
-[TEXT HERE]
+På baggrund af denne øvelse konkluderer vi, at vi har formået at etablere en SPI-protokol mellem en slave PSoC og master PSoC. 
+Hertil har vi implementeret et master-slave system, der benytter SPI til at kommmunikere mellem dens master og slave moduler. Vi har ved hjælp af dette sende et I/O signal til en 
+LED monteret på slaven, ved at kontakte masteren vha. UART til PC.
+
+Ligeledes har vi også formået at implementere den førnævnte SPI-protokol, dog nu ved at initiatere LED tænd signalet med en switch på master.
 
 \end{document}
