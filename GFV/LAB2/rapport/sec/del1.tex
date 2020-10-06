@@ -24,7 +24,7 @@ Først skal vi sætte den adresse, som vi skal kommunikere med LM75'en igennem. 
 Efter at have sat adressen skal vi skal vi modtage temperaturen. Den modtager vi som to 8-bit integers og den følger følgende format:
 \pic{LM75TempBytes.png}{1}{Temperatur formattet fra LM75}{fig:tempBytes}
 Problematikken kommer i at få rykket rundt og behandlet de 2 bytes vi får til kun 1 enkelt byte, hvor vores temperatur er ændret fra 2's kompliment til unsigned.
-De to bytes vi modtager kommer nogenlunde til at ligne følgende:
+De to bytes vi modtager kommer til at ligne følgende:
 
 \begin{table}[h]
     \centering
