@@ -21,9 +21,7 @@
 
 uint8 i2cRead(uint8 addr, float *result);
 
-float temp1;
-float temp2;
-
+float temp1, temp2;
 char printBuf[PRINT_LEN];
 
 int main(void)
@@ -45,7 +43,6 @@ int main(void)
         UART_PutString(printBuf);
         CyDelay(1);
         
-        /*
         if(!i2cRead(0x48, &temp1)){
             //temp error value
             temp1 = -0.1;
@@ -53,7 +50,6 @@ int main(void)
         sprintf(printBuf, "Temperaturen paa slave 2 er: %.1f \r\n", temp1);
         UART_PutString(printBuf);
         CyDelay(500);
-        */
     }
 }
 
