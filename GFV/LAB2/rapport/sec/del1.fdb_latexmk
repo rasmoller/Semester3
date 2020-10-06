@@ -1,5 +1,9 @@
 # Fdb version 3
+<<<<<<< HEAD
 ["pdflatex"] 1602017382 "c:/Users/Rasmus/Documents/IKT/3. Semester/Semester3/GFV/LAB2/rapport/sec/del1.tex" "c:/Users/Rasmus/Documents/IKT/3. Semester/Semester3/GFV/LAB2/rapport/sec/del1.pdf" "del1" 1602017421
+=======
+["pdflatex"] 1602017382 "c:/Users/Rasmus/Documents/IKT/3. Semester/Semester3/GFV/LAB2/rapport/sec/del1.tex" "c:/Users/Rasmus/Documents/IKT/3. Semester/Semester3/GFV/LAB2/rapport/sec/del1.pdf" "del1" 1602017387
+>>>>>>> Slight editing in Part 1 with removal of axulirary files
   "c:/Users/Rasmus/Documents/IKT/3. Semester/Semester3/GFV/LAB2/rapport/sec/del1.aux" 1602017385 3527 de6485af1ff953627e8fffbd3fd98a10 ""
   "c:/Users/Rasmus/Documents/IKT/3. Semester/Semester3/GFV/LAB2/rapport/sec/del1.tex" 1602017379 14207 24ac7d072305b84d894da38bae0a0a44 ""
   "c:/texlive/2019/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1585136072 2900 1537cc8184ad1792082cd229ecc269f4 ""
@@ -99,8 +103,16 @@
   "sec/del1.aux" 1602017385 3527 de6485af1ff953627e8fffbd3fd98a10 "pdflatex"
   "sec/del1.tex" 1602017379 14207 24ac7d072305b84d894da38bae0a0a44 ""
   (generated)
+<<<<<<< HEAD
   "c:/Users/Rasmus/Documents/IKT/3. Semester/Semester3/GFV/LAB2/rapport/sec/del1.pdf"
   "c:/Users/Rasmus/Documents/IKT/3. Semester/Semester3/GFV/LAB2/rapport/sec/del1.log"
   "sec/del1.pdf"
   "sec/del1.aux"
   "sec/del1.log"
+=======
+  "sec/del1.log"
+  "c:/Users/Rasmus/Documents/IKT/3. Semester/Semester3/GFV/LAB2/rapport/sec/del1.log"
+  "c:/Users/Rasmus/Documents/IKT/3. Semester/Semester3/GFV/LAB2/rapport/sec/del1.pdf"
+  "sec/del1.pdf"
+  "sec/del1.aux"
+>>>>>>> Slight editing in Part 1 with removal of axulirary files
