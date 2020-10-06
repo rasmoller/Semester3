@@ -1,7 +1,6 @@
 \documentclass[../main.tex]{subfiles}
 \graphicspath{{fig/}{../fig/}}
 
-
 \begin{document}
 
 \subsection{Introduktion}
@@ -10,18 +9,141 @@ I denne del af øvelsen vil vi nu arbejde med kommunikations interfacet. Der vil
 
 \subsection{Overvejelser}
 Kommunikation mellem master og slave vil som sagt foregå gennem SPI. Vores fokus vil derfor ligge i at sikre, at signalet sendt fra master og signalet modtaget af slave benytter den korrekte protokol.
- Vi forventer at benytte AD til at teste hvorvidt signalerne sendes og modtages korrekt, og om det rigtige antal bits benyttes. Desuden er vi blevet informeret om at SPI-protokollen i PSoC-Creator benytter en cirkulær buffer, hvilket vi vil uddybbet senere i opgaven.
+
+Vi forventer at benytte AD til at teste hvorvidt signalerne sendes og modtages korrekt, og om det rigtige antal bits benyttes. Desuden er vi blevet informeret om at SPI-protokollen i PSoC-Creator benytter en cirkulær buffer, hvilket vi vil uddybbet senere i opgaven.
+
+\subsubsection{SPI}
+
+SPI fungere som en datastrøm imellem 2 devices. Det er kun muligt at sende på en SPI, hvis der også modtages fra den samtidig. Modtageren og senderen fungerer som en cirkulær buffer, som læses og skrives til hele tiden. Man bør derfor være opmærksomme på ikke at komme bagud i bufferen, så vores data bliver overskreveet. Da protokollen til denne opgave er forhodlsvist nem, og kan anses for binær, er det valgt simpelthen at ignorere bufferen, og nulstille den, hver gang den bruges.
+
+Fobindelsen mellem Master og Slave er forholdsvist simpel i denne implementering. Der skal oprettes en MOSI, MISO og en SCLK. Det er vigtigt vores SPI Master og SPI Slave kører på samme modes. Vi har defor brugt stadardinstillingen på modes, som er \(CPHA=0\) og \(CPOL = 0\). CPOL er vores clock polaritet. I mode 0 starter klokken LOW, når der ikke tælles. CPHA fortæller hvornår vores bits bliver læst. Ved 0 er det ved starten af en clock puls der samples, ved 1 er det i slutningen der samples.
+
+Til at opstille Slave modulet, skal vi desuden bruge en Slave Select. Da der i dette system kun eksisterer en enekelt Slave, vælges der at forbinde Slave Select direkte til GND.
 
 \subsection{Implementering}
 
+\subsubsection{SPI Slave}
 
-[TEXT HERE]
+SPI Slave top design ser ud som på figur \ref{fig:slave_top}. Den består af vores SPI modul, en UART til debugging samt en LED. LEDen er forbundet viar hardware til pin 2.1, UART er forbundet Tx=12.7 og Rx=12.6, da disse er fobundet til USBen. SPI har ikke er forudbestemt pin opsætning, så den er forbundet MISO=2.4, MOSI=2.5 og SCLK= 2.6. Slave Select er bundet direkte til GND, da vi ønsker at forsimple implementeringen. 
+
+\pic{spi_slave_top}{0.9}{SPI Slave top design}{fig:slave_top}
+
+Selve Slaves funktionalitet ligger i den SPI interrupt handler der er beskrevet i listings \ref{lst:spi_slave}. Funktionen tager læser data fra SPI bufferen, printere dette til UART-debuggeren, nultiller bufferen og tager så stilling til LEDens tilstand ud fra hvilken data er læst. Da funktionaliteten af SPI slave er den samme i de to implementeringer (med og uden knap) er her kun vist en.
+
+\begin{lstlisting}[caption={SPI Slave}, label=lst:spi_slave]
+CY_ISR(isr_spi_rx_handler)
+{
+  uint8_t data = SPIS_ReadByte();
+  
+  // Write to terminal for DEBUGGING
+  char buf[20];
+  sprintf(buf, "Data received: %x\r\n", data);
+  UART_PutString(buf);
+  
+  // Clear buffer, makes it easier
+  SPIS_ClearRxBuffer();
+  
+  switch(data)
+  {
+      case 0xcc:
+      {
+          LED_Write(1);
+      break;   
+      }
+      case 0x55:
+      {
+          LED_Write(0);
+          break;
+      }
+      default:
+      {}
+  }
+}
+\end{lstlisting}
+
+\subsubsection{SPI Master}
+
+Da der både skal implementeres en SPI Master der kan styres via UART, og en der kan styres via en knap på PSoC, er der implementeret to forskellige versioner ad SPI Master. Deres top design kan ses her under på figur \ref{fig:master_top} og \ref{fig:master_btn_top}.
+De er begge implementeret med en UART, hvor dens pins er sat Tx=12.7 og Rx=12.6. SPI er sat op på samme måde som i SPI Slave, med MISO=2.4, MOSI=2.5 og SCLK=2.6. Der er ikke brug for at definere Slave Select, da dette ikke er relevant for opgaven. Desuden er der tilføjet en software forbindelse til kanppen på PSoC boardet, via pin 2.2.
+
+\pic{spi_master_top}{0.5}{SPI Master top design}{fig:master_top}
+
+\pic{spi_master_btn_top}{0.5}{SPI Master top design - med kanp}{fig:master_btn_top}
+
+På listing \ref{lst:spi_master} kan ses den funktion der håndterer hvad der modtages på UART. Når der er modtaget besked via UART, 
+
+\begin{lstlisting}[caption={Håndtergin af Bytes Received fra UART til SPI Master}, label=lst:spi_master]
+void handleByteReceived(uint8_t byteReceived)
+{
+  switch(byteReceived)
+  {
+      //ON case
+      case 'i': 
+      {
+          SPIM_ClearTxBuffer();
+          SPIM_WriteTxData(0xcc);            
+          break;
+      }
+      //OFF case
+      case 'o': 
+      {
+          SPIM_ClearTxBuffer();
+          SPIM_WriteTxData(0x55);
+          break;
+      }
+      default:
+      {}
+  }
+}
+\end{lstlisting}
+
+\begin{lstlisting}[caption={Håndtering af knappens input på SPI Master - med knap}, label=lst:spi_master_btn]
+for(;;)
+{
+    CyDelay(20);
+    if(!BTN_Read())
+    {
+        SPIM_ClearTxBuffer();
+        SPIM_WriteTxData(0xcc); 
+    }
+    else
+    {
+        SPIM_ClearTxBuffer();
+        SPIM_WriteTxData(0x55);
+    }
+}
+\end{lstlisting}
 
 \subsection{Dokumentation}
-[TEXT HERE]
+På Figure \ref{fig:Stinkybabyman} nedenfor ses vores endelige opstilling. Forbindelserne mellem slave og master, beskrevet i implementeringsafsnittet, er etableret som specificeret
+, og vi ser som forventet at vi kan tænde og slukke for LED'en på slave PSoC'en ved at sende i/o til vores master PSoC.
 
+\pic{spi.jpeg}{0.7}{DER SKAL TEKST IGEN}{fig:Stinkybabyman}
+
+For at få en bedre forståelse af hvad der sker signalmæssigt, og for at sikre systemet ikke bare virker ved et uheld, benytter vi Analog Discovery Oscilloskop til at måle  i/o signalet sendt mellem PSoC parret.
+ På Figure \ref{fig:BowserEatsShit} ses vores måling af signalet for at tænde LED'en, mens Figure \ref{fig:StinkyPoopyHAHA} viser signalet sendt for at slukke LED'en. Den blå graf er her 
+ vores clk-signal, mens den orange graf er vores SPI-signal. 
+
+ \pic{x55.png}{0.7}{DER SKAL TEKST IGEN}{fig:BowserEatsShit} 
+ \pic{xcc.png}{0.7}{DER SKAL TEKST IGEN}{fig:StinkyPoopyHAHA}
+ 
 \subsection{Diskussion}
-[TEXT HERE]
+Som vi først ser på Figure \ref{fig:Stinkybabyman} virker vores implementering, og vi kan tænde og slukke for vores slave LED ved at sende et signal til vores master PSoC.
+Idet vi ville sikre at SPI protokollen blev kørt korrekt, valgte vi specifikke hex-tal til at repræsentere I/O signalerne. 
+
+Dette gav dog nogle problemer under implementeringen, da vi ved målinger med Analog Discoverys Spy funktion fandt at signalet modtaget af slave PSoC'en blev forskudt en halv byte 
+ift. hvad der blev sendt af master. Vi fandt at fejlen opstod hvis et tidligere signal ikke var blevet modtaget korrekt. Hvis bufferen så ikke blev tømt efterfølgende, lagde protokollen 
+blot dele af det nye signal ind i bufferen oveni fejlsignalet.
+
+Problemet opstår, idet SPI-protokollen ikke har adgang til en acknowledge, og derfor blot sender en stream af bits fra master til slave. En evt. løsning kunne være at gøre brug af 
+SPI slave-select. Når SS signalet sættes lav for at indikere til slaven at der nu sendes specifikt til den, kan bufferen så tømmes. Vi valgte imidlertidig ikke at bruge denne løsning,
+da vi ikke ønskede at overkomplicere opgaven.
+
+Hvis vi kigger på Figure \ref{fig:BowserEatsShit} ser vi det korrekte 'i' signal modtaget af slaven. Vi benyttede i dette tilfælde hex-tallet x55, i binært '1010101', hvilket er præcis 
+den kombination vi ser på figuren. Ligeldes benyttede vi hextallet xcc, '11001100' i binært, til vores 'o' signal, og vi ser på Figure \ref{fig:Stinkybabyman} at signalet stemmer overens.
+
+Det er her værd at pointere at amplituden af vores SPI-signal er dobbelt størelsen af vores clock. Dette skyldes at vi har stillet på akserne, for at gøre målingerne mere visuelt
+ overskuelige, da vi ikke er videre interesserede i amplituderne af vores signaler.
 
 \subsection{Konklusion}
 [TEXT HERE]
