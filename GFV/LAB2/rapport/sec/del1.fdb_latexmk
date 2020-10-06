@@ -1,6 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1602017382 "c:/Users/Rasmus/Documents/IKT/3. Semester/Semester3/GFV/LAB2/rapport/sec/del1.tex" "c:/Users/Rasmus/Documents/IKT/3. Semester/Semester3/GFV/LAB2/rapport/sec/del1.pdf" "del1" 1602017421
-  "c:/Users/Rasmus/Documents/IKT/3. Semester/Semester3/GFV/LAB2/rapport/sec/del1.aux" 1602017385 3527 de6485af1ff953627e8fffbd3fd98a10 ""
+["pdflatex"] 1602017459 "c:/Users/Rasmus/Documents/IKT/3. Semester/Semester3/GFV/LAB2/rapport/sec/del1.tex" "c:/Users/Rasmus/Documents/IKT/3. Semester/Semester3/GFV/LAB2/rapport/sec/del1.pdf" "del1" 1602017461
+  "c:/Users/Rasmus/Documents/IKT/3. Semester/Semester3/GFV/LAB2/rapport/sec/del1.aux" 1602017461 3527 de6485af1ff953627e8fffbd3fd98a10 ""
   "c:/Users/Rasmus/Documents/IKT/3. Semester/Semester3/GFV/LAB2/rapport/sec/del1.tex" 1602017379 14207 24ac7d072305b84d894da38bae0a0a44 ""
   "c:/texlive/2019/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1585136072 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "c:/texlive/2019/texmf-dist/fonts/map/fontname/texfonts.map" 1585136987 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -96,11 +96,11 @@
   "fig/td_i2c.png" 1601838362 45799 1dc5b522409ac79dcfe7065c662f3e15 ""
   "fig/temp_read.png" 1601838362 213146 a58267468248de7701bee1038dc4c1d1 ""
   "sec/../main.tex" 1602017377 2600 79d06a5195e21a19a048ecb8573e30d2 ""
-  "sec/del1.aux" 1602017385 3527 de6485af1ff953627e8fffbd3fd98a10 "pdflatex"
+  "sec/del1.aux" 1602017461 3527 de6485af1ff953627e8fffbd3fd98a10 "pdflatex"
   "sec/del1.tex" 1602017379 14207 24ac7d072305b84d894da38bae0a0a44 ""
   (generated)
-  "c:/Users/Rasmus/Documents/IKT/3. Semester/Semester3/GFV/LAB2/rapport/sec/del1.pdf"
-  "c:/Users/Rasmus/Documents/IKT/3. Semester/Semester3/GFV/LAB2/rapport/sec/del1.log"
   "sec/del1.pdf"
-  "sec/del1.aux"
+  "c:/Users/Rasmus/Documents/IKT/3. Semester/Semester3/GFV/LAB2/rapport/sec/del1.pdf"
   "sec/del1.log"
+  "sec/del1.aux"
+  "c:/Users/Rasmus/Documents/IKT/3. Semester/Semester3/GFV/LAB2/rapport/sec/del1.log"
