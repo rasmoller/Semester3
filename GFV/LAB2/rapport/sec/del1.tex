@@ -24,7 +24,7 @@ Først skal vi sætte den adresse, som vi skal kommunikere med LM75'en igennem. 
 Efter at have sat adressen skal vi skal vi modtage temperaturen. Den modtager vi som to 8-bit integers og den følger følgende format:
 \pic{LM75TempBytes.png}{1}{Temperatur formattet fra LM75}{fig:tempBytes}
 Problematikken kommer i at få rykket rundt og behandlet de 2 bytes vi får til kun 1 enkelt byte, hvor vores temperatur er ændret fra 2's kompliment til unsigned.
-De to bytes vi modtager kommer nogenlunde til at ligne følgende:
+De to bytes vi modtager kommer til at ligne følgende:
 
 \begin{table}[h]
     \centering
@@ -68,9 +68,26 @@ På Figure \ref{fig:td} kan man se topdesignet for vores PSoC. Her har vi et I2C
 
 \pic{td_i2c}{0.7}{Top design til I2C master}{fig:td}
 
-Herefter bestemmer vi, hvor alle pins skal placeres. På Figure \ref{fig:des} kan man se, hvordan pinsne er blevet fordelt.
+Herefter bestemmer vi, hvor alle pins skal placeres. På Figure \ref{fig:des} kan man se, hvordan pin'sne er blevet fordelt.
 \pic{design_i2c}{0.7}{Pin setup på I2C master}{fig:des}
 
+I koden er der 2 primære dele:
+\begin{enumerate}
+    \item Indlæsning af data fra I2C
+    \item Print af float over UART
+\end{enumerate}
+Disse dele vil følgende blive gennemgået og der vil blive beskrevet, hvordan koden modtager og håndterer vores input.
+
+\subsubsection{Indlæsning af data fra I2C}
+Efter at vi i \textit{main()} loopet har startet og slået interrupten for I2C til, skal vi ha lavet en funktion som modtager input fra en I2C adresse og sender det ud som en float.
+Vores prototype hedder \textit{uint8 i2cRead(uin8 addr, float *result)}. Først har vi returtypen uint8, den bruges til at vise om vi har fået en fejl eller ej, hvis der ikke er en fejl returnere vi '1'.
+Herefter har vi adressen til vores I2C device, den specificere hvilket device vi gerne vil have data fra.
+Til sidst har vi resultatet. Dette modtager vi som en adresse for at kunne parse det ud af funktionen samtidigt med at vi har en fejlkode fra returværdien.
+
+
+
+
+\subsubsection{Print af float over UART}
 
 [KODE AFSNIT]
 
