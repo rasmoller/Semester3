@@ -3,11 +3,15 @@
 <!--This file is machine generated and read. It is not intended to be edited by hand.-->
 <!--Due to this, there is no schema for this file.-->
 <CyGuid_2867d519-54d2-4c01-9830-c51cb08bc3dd type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtWorkspaceSerialize" version="5" xml_contents_version="3" name="gfv_lab2" persistent="gfv_lab2.cywrk" platform="NOT_USED">
-<current_project name=".\Design01.cydsn\Design01.cyprj" />
+<current_project name=".\spi_master_btn.cydsn\spi_master_btn.cyprj" />
 <wrkspc_folders />
 <files />
 <projects>
 <v>.\Design01.cydsn\Design01.cyprj</v>
+<v>.\spi_slave.cydsn\spi_slave.cyprj</v>
+<v>.\spi_master.cydsn\spi_master.cyprj</v>
+<v>.\spi_master_btn.cydsn\spi_master_btn.cyprj</v>
+<v>.\spi_slave_btn.cydsn\spi_slave_btn.cyprj</v>
 </projects>
 <workspace_id v="52b9d1d4-eb96-4c25-88c5-25759555f10d" />
 <WriteAppVersionLastSavedWith v="4.3.0.1445" />
