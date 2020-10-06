@@ -62,7 +62,6 @@ int main(void)
 uint8 i2cRead(uint8 addr, float *result){
     uint8 buffer[BUFFER_LEN];
     I2C_Init();
-    
     I2C_MasterReadBuf(addr, buffer, BUFFER_LEN, I2C_MODE_COMPLETE_XFER);
     
     // Wait for transfer to complete
