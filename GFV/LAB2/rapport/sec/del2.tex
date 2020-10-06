@@ -5,20 +5,20 @@
 
 \subsection{Introduktion}
 I denne del af øvelsen vil vi nu arbejde med kommunikations interfacet. Der vil hertil benyttes 2 styk PSoC 5LP, som implementeres som henholdsvist slave og master i systemet.
- Vha. en UART-forbindelse til PC, vil vi så forsøge at implementere vores master så instrukser sendt fra PC kan sendes gennem SPI-protokollen fra master til slave.
+Vha. en UART-forbindelse til PC, vil vi så forsøge, at implementere vores Master så instrukser sendt fra PC'en, kan sendes gennem SPI-protokollen fra Master til Slave.
 
 \subsection{Overvejelser}
-Kommunikation mellem master og slave vil som sagt foregå gennem SPI. Vores fokus vil derfor ligge i at sikre, at signalet sendt fra master og signalet modtaget af slave benytter den korrekte protokol.
+Kommunikation mellem Master og Slave vil som sagt foregå gennem SPI. Vores fokus vil derfor ligge i at sikre, at signalet sendt fra master og signalet modtaget af slave benytter den korrekte protokol.
 
-Vi forventer at benytte AD til at teste hvorvidt signalerne sendes og modtages korrekt, og om det rigtige antal bits benyttes. Desuden er vi blevet informeret om at SPI-protokollen i PSoC-Creator benytter en cirkulær buffer, hvilket vi vil uddybbet senere i opgaven.
+Vi forventer at benytte Analog Discovery til at teste hvorvidt signalerne sendes og modtages korrekt, og om det rigtige antal bits benyttes. Desuden er vi blevet informeret om at SPI-protokollen i PSoC-Creator benytter en cirkulær buffer, hvilket vi vil uddybe senere i opgaven.
 
 \subsubsection{SPI}
 
-SPI fungerer som en datastrøm imellem 2 devices. Det er kun muligt at sende på en SPI, hvis der også modtages fra den samtidig. Modtageren og senderen fungerer som en cirkulær buffer, som læses og skrives til hele tiden. Man bør derfor være opmærksomme på ikke at komme bagud i bufferen, så vores data bliver overskreveet. Da protokollen til denne opgave er forhodlsvist nem, og kan anses for binær, er det valgt simpelthen at ignorere bufferen, og nulstille den, hver gang den bruges.
+SPI fungerer som en datastrøm imellem 2 devices. Det er kun muligt at sende på en SPI, hvis der også modtages fra den samtidig. Modtageren og senderen fungerer som en cirkulær buffer, som læses og skrives til hele tiden. Man bør derfor være opmærksomme på ikke at komme bagud i bufferen, så vores data bliver overskrevet. Da protokollen til denne opgave er forhodlsvist nem, og kan anses for binær, er det valgt simpelthen at ignorere bufferen, og nulstille den, hver gang den bruges.
 
-Fobindelsen mellem Master og Slave er forholdsvist simpel i denne implementering. Der skal oprettes en MOSI, MISO og en SCLK. Det er vigtigt vores SPI Master og SPI Slave kører på samme modes. Vi har defor brugt stadardinstillingen på modes, som er \(CPHA=0\) og \(CPOL = 0\). CPOL er vores clock polaritet. I mode 0 starter klokken LOW, når der ikke tælles. CPHA fortæller hvornår vores bits bliver læst. Ved 0 er det ved starten af en clock puls der samples, ved 1 er det i slutningen der samples.
+Fobindelsen mellem Master og Slave er forholdsvist simpel i denne implementering. Der skal oprettes en MOSI\footnote{Master Input Slave Output}, MISO\footnote{Master Output Slave Input} og en SCLK\footnote{Seriel CLocK}. Det er vigtigt vores SPI Master og SPI Slave kører på samme modes. Vi har defor brugt standardindstillingen på modes, som er \(CPHA = 0\) og \(CPOL = 0\). CPOL er vores clock polaritet. I mode 0 starter klokken LOW, når der ikke tælles. CPHA fortæller hvornår vores bits bliver læst. Ved 0 er det ved starten af en clock puls der samples, ved 1 er det i slutningen der samples.
 
-Til at opstille Slave modulet, skal vi desuden bruge en Slave Select. Da der i dette system kun eksisterer en enekelt Slave, vælges der at forbinde Slave Select direkte til GND.
+Til at opstille Slave modulet, skal vi desuden bruge en Slave Select. Da der i dette system kun eksisterer en enkelt Slave, vælges der at forbinde Slave Select direkte til GND.
 
 \pic{spi_design}{0.9}{SPI setup diagram}{fig:slave_topp}
 
@@ -46,11 +46,11 @@ Vi vil her introducere hvordan vi har opbygget vores master-slave system, og hvo
 
 \subsubsection{SPI Slave}
 
-SPI Slave top design ser ud som på figur \ref{fig:slave_top}. Den består af vores SPI modul, en UART til debugging samt en LED. LEDen er forbundet viar hardware til pin 2.1, UART er forbundet Tx=12.7 og Rx=12.6, da disse er fobundet til USBen. SPI har ikke er forudbestemt pin opsætning, så den er forbundet MISO=2.4, MOSI=2.5 og SCLK= 2.6. Slave Select er bundet direkte til GND, da vi ønsker at forsimple implementeringen. 
+SPI Slave top design ser ud som på figur \ref{fig:slave_top}. Den består af vores SPI slave modul, en UART til debugging samt en LED. LEDen er forbundet via hardware til pin 2.1, UART er forbundet Tx=12.7 og Rx=12.6, da disse er fobundet til USBen. SPI har ikke er forudbestemt pin opsætning, så den er forbundet MISO=2.4, MOSI=2.5 og SCLK= 2.6. Slave Select er bundet direkte til GND, da vi ønsker at forsimple implementeringen. 
 
 \pic{spi_slave_top}{0.9}{SPI Slave top design}{fig:slave_top}
 
-Selve Slaves funktionalitet ligger i den SPI interrupt handler der er beskrevet i listings \ref{lst:spi_slave}. Funktionen tager læser data fra SPI bufferen, printere dette til UART-debuggeren, nultiller bufferen og tager så stilling til LEDens tilstand ud fra hvilken data er læst. Da funktionaliteten af SPI slave er den samme i de to implementeringer (med og uden knap) er her kun vist en.
+Selve Slaves funktionalitet ligger i den SPI interrupt handler der er beskrevet i listings \ref{lst:spi_slave}. Funktionen læser data fra SPI bufferen(, printer dette til UART-debuggeren, hvis vi vil teste og programmere den fra PC'en), nulstiller bufferen og tager så stilling til LED'ens tilstand ud fra hvilken data er læst. Da funktionaliteten af SPI slave er den samme i de to implementeringer (med og uden knap) er her kun vist en.
 
 \begin{lstlisting}[caption={SPI Slave}, label=lst:spi_slave]
 CY_ISR(isr_spi_rx_handler)
@@ -86,15 +86,15 @@ CY_ISR(isr_spi_rx_handler)
 \subsubsection{SPI Master}
 
 Da der både skal implementeres en SPI Master der kan styres via UART, og en der kan styres via en knap på PSoC, er der implementeret to forskellige versioner ad SPI Master. Deres top design kan ses her under på figur \ref{fig:master_top} og \ref{fig:master_btn_top}.
-De er begge implementeret med en UART, hvor dens pins er sat Tx=12.7 og Rx=12.6. SPI er sat op på samme måde som i SPI Slave, med MISO=2.4, MOSI=2.5 og SCLK=2.6. Der er ikke brug for at definere Slave Select, da dette ikke er relevant for opgaven. Desuden er der tilføjet en software forbindelse til kanppen på PSoC boardet, via pin 2.2.
+De er begge implementeret med en UART, hvor dens pins er sat Tx=12.7 og Rx=12.6. SPI er sat op på samme måde som i SPI Slave, med MISO=2.4, MOSI=2.5 og SCLK=2.6. Der er ikke brug for at definere Slave Select, da dette ikke er relevant for opgaven. Desuden er der tilføjet en software forbindelse til knappen på PSoC boardet, via pin 2.2.
 
 \pic{spi_master_top}{0.5}{SPI Master top design}{fig:master_top}
 
 \pic{spi_master_btn_top}{0.5}{SPI Master top design - med kanp}{fig:master_btn_top}
 
-På listing \ref{lst:spi_master} kan ses den funktion der håndterer hvad der modtages på UART. Når der er modtaget besked via UART, 
+På listing \ref{lst:spi_master} kan ses den funktion der håndterer hvad der modtages på UART. Når der er modtaget besked via UART, tager switch-staten stilling til om der skal sendes en tænd-byte (0xcc) eller et sluk-byte (0x55). Før der sendes, cleares bufferen, så håndteringen af bufferen er mere simpel. 
 
-\begin{lstlisting}[caption={Håndtergin af Bytes Received fra UART til SPI Master}, label=lst:spi_master]
+\begin{lstlisting}[caption={Håndtering af Bytes Received fra UART til SPI Master}, label=lst:spi_master]
 void handleByteReceived(uint8_t byteReceived)
 {
   switch(byteReceived)
@@ -118,6 +118,8 @@ void handleByteReceived(uint8_t byteReceived)
   }
 }
 \end{lstlisting}
+
+På listing \ref{lst:spi_master_btn} kan ses hvordan der håndteres læsning af kanppens tilstand. Da knappen er ACTIVE-LOW sendes der et tænd-byte (0xcc) ved LOW og et sluk-byte (0x55) ved HIGH. Desuden tømmes bufferen, for at forsimple håndtereingen af den cirkulære buffer.
 
 \begin{lstlisting}[caption={Håndtering af knappens input på SPI Master - med knap}, label=lst:spi_master_btn]
 for(;;)
@@ -146,7 +148,8 @@ For at få en bedre forståelse af hvad der sker signalmæssigt, og for at sikre
  På Figure \ref{fig:BowserEatsShit} ses vores måling af signalet for at tænde LED'en, mens Figure \ref{fig:StinkyPoopyHAHA} viser signalet sendt for at slukke LED'en. Den blå graf er her 
  vores clk-signal, mens den orange graf er vores SPI-signal. 
 
- \pic{x55.png}{0.7}{DER SKAL TEKST IGEN}{fig:BowserEatsShit} 
+ \pic{x55.png}{0.7}{DER SKAL TEKST IGEN}{fig:BowserEatsShit}
+ 
  \pic{xcc.png}{0.7}{DER SKAL TEKST IGEN}{fig:StinkyPoopyHAHA}
  
 \subsection{Diskussion}
@@ -168,6 +171,7 @@ Det er her værd at pointere at amplituden af vores SPI-signal er dobbelt støre
  overskuelige, da vi ikke er videre interesserede i amplituderne af vores signaler.
 
 \subsection{Konklusion}
-[TEXT HERE]
+På baggrund af denne øvelse konkluderer vi, at vi har formået at etablere en SPI-protokol mellem en slave PSoC og master PSoC. 
+Hertil har vi 
 
 \end{document}
