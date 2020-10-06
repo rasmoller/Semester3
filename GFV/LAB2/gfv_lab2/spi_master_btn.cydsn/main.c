@@ -18,11 +18,13 @@ int main(void)
         if(!BTN_Read())
         {
             SPIM_ClearTxBuffer();
+            // Send ON-byte
             SPIM_WriteTxData(0xcc); 
         }
         else
         {
             SPIM_ClearTxBuffer();
+            // Send OFF-byte
             SPIM_WriteTxData(0x55);
         }
     }
