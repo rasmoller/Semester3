@@ -133,9 +133,6 @@ På listing \ref{lst:i2cMain} kan man se vores main funktion. Kort beskrevet, s�
  og til sidst printer den det over UART til vores computer, hvor vi kører RealTerm til at modtage dataen fra UART fobindelsen.
 
 \begin{lstlisting}[caption={main()}, label=lst:i2cMain]
-float temp1, temp2;
-char printBuf[PRINT_LEN];
-
 int main(void)
 {
     CyGlobalIntEnable; /* Enable global interrupts. */
@@ -168,14 +165,14 @@ int main(void)
 Variablen PRINT\_LEN er defineret til 50.
 
 En vigtig del af vores main loop er det delay vi indsætter efter vi har læst fra begge LM75'ere. Dette gør vi for ikke at læse for hyppigt på slaverne. 
-Hvis vi gjorde det risikerede vi at overophede slaverne og dermed få en forkert temperatur, da LM75'eren har en anden temperatur end den omkringværende.
+Hvis vi gjorde det risikerede vi at overophede slaverne og dermed få en forkert temperatur, da LM75'eren har en anden temperatur end den omkringværende. 
 
 Fra datasheetet\footnote{https://www.ti.com/lit/ds/symlink/lm75b.pdf? - Side 5, Afsnit 6.5, note (5)} lyder det nemlig at
 \begin{quote}
     "\textit{The LM75 should not be accessed continuously with a
 wait time of less than 300 ms.}"
 \end{quote}
-
+Hvis vi spørger oftere end 300ms risikerer vi at afbryde en temperatur læsning hos LM75'en. Så starter den bare forfra og dette kan risikere, at den skaber en unødig varme.
 Derfor har vi valgt at indsætte et delay på 500ms. Se linje 29 på listing \ref{lst:i2cMain}.
 
 Efter vi har klaret alt dette kan vi nu lave vores opstilling med PSoC, LM75 boards og computer.
@@ -206,7 +203,6 @@ Dette passer med forventningen om, at den omkringværende luft er koldere en vor
 Tilgengæld på Figure \ref{fig:temp2} kan man ikke se en særlig stor forskel. Denne forskel kommer af, at vi ikke placerede en finger eller et varmt objekt på en af sensorne. 
 Dermed har vi 2 værdier som ligger meget tæt op af hinanden fordi luften omkring dem er ens temperatur.
 
-[Diskuter waveform billeder]
 På Figure \ref{fig:wave} kan man se, hvordan vores protocol følges af signalet. 
 Inden den første acknowledgement har vi PSoC'en der sender adressen ud på data linjen og herefter kan man se, på grund af, at ground bliver forskudt fra vores PSoC's ground, at det er LM75'en der svarer tilbage.
 Nu ved vi at LM75'en svarer med 2 bytes af data og vi kan se, at ind imellem disse 2 bytes er der en acknowledge fra masteren. Dette kan man igen se på den lille forskel der sker på vores data forbindelse og at vores LOW bliver skudt en lille smule op fra 0V.
