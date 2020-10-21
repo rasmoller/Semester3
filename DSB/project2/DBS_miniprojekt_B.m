@@ -48,14 +48,15 @@ end
 %% Opgave 3
 
 for i = 1:length(sound)
-sound(i).fft_sort_high = sound(i).sample_fft(81:end);
-sound(i).fft_sort_low = sound(i).sample_fft(1:80);
+    sound(i).freq_res = sound(i).freq_sample/length(sound(i).samples);
+    sound(i).fft_sort_high = sound(i).sample_fft(81:end);
+    sound(i).fft_sort_low = sound(i).sample_fft(1:80);
 
-sound(i).effect_high = sum(sound(i).fft_sort_high.^2);
-sound(i).effect_low = sum(sound(i).fft_sort_low.^2);
+    sound(i).effect_high = sum(sound(i).fft_sort_high.^2);
+    sound(i).effect_low = sum(sound(i).fft_sort_low.^2);
 
-abs(sound(i).effect_high)
-abs(sound(i).effect_low)
+    abs(sound(i).effect_high)
+    abs(sound(i).effect_low)
 end
 
 %% opgave 4
@@ -65,51 +66,38 @@ end
 
 %% opgave 5
 dial_up = 3;
-sound(dial_up).name = "moller.mp4";
+sound(dial_up).name = "dial_tones.mp4";
 [sound(dial_up).samples, sound(dial_up).freq_sample] = audioread(sound(dial_up).name);
+sound(dial_up).N = length(sound(dial_up).samples);
+
 % only left channel
 sound(dial_up).samples = sound(dial_up).samples( :, 1 );
-%sound(dial_up).samples = sound(dial_up).samples(sound(dial_up).freq_sample*8:end);
 
 figure(5)
 plot(sound(dial_up).samples)
 
 % Fourier på dial up tone
-sound(dial_up).sample_fft = fft(sound(dial_up).samples);
+sound(dial_up).sample_fft = fft(sound(dial_up).samples, sound(dial_up).N);
 
-sound(dial_up).fft_axis = [0 : ...
-    sound(dial_up).freq_sample / length(sound(dial_up).sample_fft) : ...
-    sound(dial_up).freq_sample-1];
+sound(dial_up).delta_f = sound(dial_up).freq_sample / sound(dial_up).N;
+sound(dial_up).f_axis = [0: sound(dial_up).delta_f: sound(dial_up).freq_sample-sound(dial_up).delta_f];
 
-figure(9)
-semilogx(20*log10(abs(sound(dial_up).sample_fft)), "b")
+figure
+semilogx(sound(dial_up).f_axis(1:0.5*end), 20*log10( abs((2/sound(dial_up).N)*sound(dial_up).sample_fft(1:0.5*end)) ) );
+
 hold on
-
 % dialed number 15 96 24 80
-% 1=697+1209, 5=770+1336, 
+% DMTF tones
 tones = [697, 770, 852, 941, 1209, 1336, 1477, 1633];
-for i = 1:4
-    for j = 5:8
-    xline(tones(i)*tones(j),"r");
-    end
+for i = 1:length(tones)
+    xline(tones(i),"r");
 end
 
 title(sound(dial_up).name)
-xlabel("samples")
+xlabel("Hz")
 ylabel("Amplitude(dB)")
 
-
-
-
-
-
-
-
-
-
-
-
-
+%% P3.12
 
 
 
