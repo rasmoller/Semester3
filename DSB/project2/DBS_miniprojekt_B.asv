@@ -90,7 +90,7 @@ hold on
 tones = [697, 770, 852, 941, 1209, 1336, 1477, 1633];
 for i = 1:4
     for j = 5:8
-    xline(tones(i)*tones(j),"r");
+    xline(tones(i)*1000,"r");
     end
 end
 
