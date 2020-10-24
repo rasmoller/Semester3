@@ -1,62 +1,6 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
-%\usepackage[english]{babel}
-\usepackage{amsthm} %lets us use \begin{proof}
-\usepackage{amssymb} %gives us the character \varnothing
-\usepackage[top=3cm, bottom=3cm, left=2.5cm, right=2.5cm]{geometry}
-\usepackage{graphicx}
-\usepackage[compact]{titlesec}
-\usepackage{float}
-\usepackage{listings}
-\usepackage[labelfont=bf,listformat=simple]{caption}
-\usepackage{array}
-\usepackage{enumitem}
-\usepackage{float}
-\usepackage{amsmath}
-\usepackage{xr} 
-
-\usepackage{subfiles}
-
-% Standard lst settings
-\lstset{
-  numbers=left, 
-  numberstyle=\small, 
-  numbersep=8pt, 
-  frame = single, 
-  language=matlab, 
-  framexleftmargin=15pt,
-  extendedchars=true,
-  tabsize=2,
-  literate = {æ}{{\ae}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Æ}{{\AE}}1 {Ø}{{\O}}1 {Å}{{\r A}}1,
-  xleftmargin=2em,
-}
-
-% Presets
-\graphicspath{{fig/}}
-\pagestyle{plain}
-\setlength{\parskip}{1em}
-\setlength{\parindent}{0em}
-
-% =============================
-%           Commands
-% =============================
-
-% Easy pictures
-% \pic{Picture path}{picture size as page size}{Caption}{Label}
-\newcommand{\pic}[4]{
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=#2\textwidth]{#1}
-		\caption{#3}
-		\label{#4}
-	\end{figure}
-	\hspace*{\fill}
-}
-
-% ===========================================
-%                DOCUMENT
-% ===========================================
-
+\usepackage{prj3}
 \begin{document}
 
 % ===========================================
@@ -99,9 +43,13 @@
 %            Start of pages
 % ===========================================
 
-\subfile{sec/part1.tex}
+\subfile{sec/part1.tex} % Opgave 1 og 2
 
-\subfile{sec/part2.tex}
+\subfile{sec/part2.tex} % Opgave 3 og 4
+
+\subfile{sec/part3.tex} % Opgave 5 og 6
+
+\subfile{sec/part4.tex} % Opgave 3_12 og 3_15
 
 
 
