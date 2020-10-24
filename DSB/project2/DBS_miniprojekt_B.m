@@ -43,8 +43,9 @@ sound(i).fft_axis = [0:sound(i).freq_sample/length(sound(i).sample_fft):sound(i)
 %Tegner figur på logaritmisk akse
 figure(i+2)
 semilogx(sound(i).fft_axis, 20*log10(abs((2/length(sound(i).sample_fft))*sound(i).sample_fft)))
-title(sound(i).name)
-xlabel("samples")
+xline(sound(i).freq_sample/2, "r")
+title("DFT af " + sound(i).name)
+xlabel("Frekvens (Hz)")
 ylabel("Amplitude(dB)")
 end
 
@@ -76,7 +77,7 @@ end
 
 %Indlæser samples og frekvens af dial tone
 dial_up = 3;
-sound(dial_up).name = "dial_tones.mp4";
+sound(dial_up).name = "dial tones.mp4";
 [sound(dial_up).samples, sound(dial_up).freq_sample] = audioread(sound(dial_up).name);
 
 %Bestemmer antal samples
@@ -85,9 +86,13 @@ sound(dial_up).N = length(sound(dial_up).samples);
 % Indlæser vesntre kanal af lydsignalet
 sound(dial_up).samples = sound(dial_up).samples( :, 1 );
 
+sound(dial_up).time_interval = [0:sound(dial_up).N-1]*(1/sound(dial_up).freq_sample);
 %Plotter samples
 figure(5)
-plot(sound(dial_up).samples)
+plot(sound(dial_up).time_interval, sound(dial_up).samples)
+ylabel("Amplitude (~)")
+xlabel("Tid (s)")
+title(sound(dial_up).name)
 
 % Fourier på dial up tone
 sound(dial_up).sample_fft = fft(sound(dial_up).samples, sound(dial_up).N);
@@ -109,8 +114,8 @@ for i = 1:length(tones)
     xline(tones(i),"r");
 end
 
-title(sound(dial_up).name)
-xlabel("Hz")
+title("DFT af " + sound(dial_up).name)
+xlabel("Frekvens (Hz)")
 ylabel("Amplitude(dB)")
 
 %% Opgave 6
@@ -142,8 +147,8 @@ for i = 4:6
     
     figure(10+i)
     semilogx(sound(i).f_axis(1:0.5*end), 20*log10( abs((2/sound(i).N)*sound(i).sample_fft(1:0.5*end)) ) );
-    title(sound(i).name)
-    xlabel("Hz")
+    title("DFT af " + sound(i).name)
+    xlabel("Frekvens (Hz)")
     ylabel("Amplitude(dB)")
     hold on
     

@@ -44,7 +44,7 @@ sound(i).fft_axis = [0:sound(i).freq_sample/length(sound(i).sample_fft):sound(i)
 figure(i+2)
 semilogx(sound(i).fft_axis, 20*log10(abs((2/length(sound(i).sample_fft))*sound(i).sample_fft)))
 title(sound(i).name)
-xlabel("samples")
+xlabel("Frekvens (Hz)")
 ylabel("Amplitude(dB)")
 end
 
@@ -85,9 +85,13 @@ sound(dial_up).N = length(sound(dial_up).samples);
 % Indlæser vesntre kanal af lydsignalet
 sound(dial_up).samples = sound(dial_up).samples( :, 1 );
 
+sound(dial_up).time_interval = [0:sound(dial_up).N-1]*(1/sound(dial_up).freq_sample);
 %Plotter samples
 figure(5)
 plot(sound(dial_up).samples)
+ylabel("Amplitude (~)")
+xlabel("Tid (s)")
+title(sound(dial_up).name)
 
 % Fourier på dial up tone
 sound(dial_up).sample_fft = fft(sound(dial_up).samples, sound(dial_up).N);
@@ -131,9 +135,26 @@ sound(song).name = 'SKRILLEX - Bangarang.mp3';
 [sound(song).samples,sound(song).freq_sample] = audioread(sound(song).name);
 
 for i = 4:6
-    sound(i).sample_fft = fft(sound(i).samples, sound(dial_up).N);
+    sound(i).N = length(sound(i).samples);
     
+    sound(i).samples = sound(i).samples(:,1);
     
+    sound(i).sample_fft = fft(sound(i).samples, sound(i).N);
+    
+    sound(i).delta_f = sound(i).freq_sample / sound(i).N;
+    sound(i).f_axis = [0: sound(i).delta_f: sound(i).freq_sample-sound(i).delta_f];
+    
+    figure(10+i)
+    semilogx(sound(i).f_axis(1:0.5*end), 20*log10( abs((2/sound(i).N)*sound(i).sample_fft(1:0.5*end)) ) );
+    title(sound(i).name)
+    xlabel("Hz")
+    ylabel("Amplitude(dB)")
+    hold on
+    
+    [sound(i).freq_oct, sound(i).fft_freq] = oct_smooth(sound(i).sample_fft, sound(i).freq_sample, 18, [1 22000]);
+    
+    semilogx(sound(i).freq_oct, 20*log10(abs((2/sound(i).N)*sound(i).fft_freq)),'r','linewidth',1.5)
+    hold off
     
 end
 

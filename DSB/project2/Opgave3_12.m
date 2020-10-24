@@ -1,6 +1,6 @@
 clc;
-for i = 1:3
-    y(i).samples = (2*rand(5000,1))-1;
+for i = 1:2
+    %y(i).samples = (2*rand(5000,1))-1;
     y(i).length = length(y(i).samples);
     
     y(i).dft = fft(y(i).samples, y(i).length-1);
