@@ -58,8 +58,10 @@ for i = 1:length(sound)
     sound(i).fft_sort_low = sound(i).sample_fft(1:80);
 
     %Bestemmer effekten at de to intervaller
-    sound(i).effect_high = sum(sound(i).fft_sort_high.^2);
-    sound(i).effect_low = sum(sound(i).fft_sort_low.^2);
+    sound(i).effect_high = abs(sum(sound(i).fft_sort_high.^2));
+    sound(i).effect_low = abs(sum(sound(i).fft_sort_low.^2));
+    
+    sound(i).effect_rel = abs(sound(i).effect_low)/abs(sound(i).effect_high);
 
     %Finder den absolute værdi for at få længden/størrelsen af effekten
     abs(sound(i).effect_high)

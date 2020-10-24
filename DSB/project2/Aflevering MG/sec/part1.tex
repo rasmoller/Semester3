@@ -7,13 +7,73 @@
 
 \section{Opgave 1}
 
+For at plotte de to signaler vi har fundet på YouTube, indlæser vi først dem med audioread, udtager de 10 sekunder af samples vi mener er bedst, og får defineret den rigtige akse. Dette kan ses på listing \ref{lst:wind}
+
+\begin{lstlisting}[caption={Kode til at indlæse kvindmølle og computer blæsre lyde}, label={lst:wind}]
+wind    = 1;
+fan     = 2;
+
+% Definerer navne til plots
+%sound(wind).name = 'Wind Turbine Noise.mp3';
+sound(wind).name = 'Wind turbine sound - high quality audio.mp3';
+sound(fan).name = 'Computer Fan - Sound Effect.mp3';
+
+%Indlæser samples og frekvens af vind og computer
+[sound(wind).samples,sound(wind).freq_sample] = audioread(sound(wind).name);
+[sound(fan).samples,sound(fan).freq_sample] = audioread(sound(fan).name);
+
+for i = 1:length(sound)
+% Udvælger kanal af signal
+sound(i).samples = sound(i).samples(:,1);
+
+% Opstiller sample-værdier og tids-værdier
+sound(i).interval = sound(i).samples((sound(i).freq_sample * 20):(sound(i).freq_sample * 30)-1);
+sound(i).interval_N = length(sound(i).interval);
+sound(i).time_interval = [0:sound(i).interval_N-1]*(1/sound(i).freq_sample);
+
+% Plotter
+figure(i)
+plot(sound(i).time_interval,sound(i).interval) 
+title(sound(i).name)
+xlabel("Time(s)")
+ylabel("Amplitude(~)")
+end
+\end{lstlisting}
+
 \pic{wind_samples.png}{0.8}{Wind}{fig:wind}
 
-\pic{}
+\pic{ComFan_samples.png}{0.8}{Computer Fan sample}{fig:com}
 
-
-
+Som vi kan se, ligner de 2 plots meget hindanden. Dette giver god mening da de begge egentlig kan anses for støj, og der derfor ikke umidelbart er noget spændende vi kan se endnu.
 
 \section{Opgave 2}
+
+For at lave vores frekvensspektre af signalerne, bruger vi fft() funktionen til at omdanne signalet til frekvens domænet. Her efter finder vi vores fft-akse og plotter dette logaritmisk. Koden kan ses her under i listing \ref{lst:wind_dft}
+
+\begin{lstlisting}[caption={Kode til at plotte DFT for vindmølle og computer blæser lyde}, label={lst:wind_dft}]
+for i = 1:length(sound)
+%Foretager fourier-transformation ud fra sample-frekvens
+sound(i).sample_fft = fft(sound(i).samples,sound(i).freq_sample);
+
+%Opstiller sample-akse vi kan plotte ud fra
+sound(i).fft_axis = [0:sound(i).freq_sample/length(sound(i).sample_fft):sound(i).freq_sample-1];
+
+%Tegner figur på logaritmisk akse
+figure(i+2)
+semilogx(sound(i).fft_axis, 20*log10(abs((2/length(sound(i).sample_fft))*sound(i).sample_fft)))
+xline(sound(i).freq_sample/2, "r")
+title("DFT af " + sound(i).name)
+xlabel("Frekvens (Hz)")
+ylabel("Amplitude(dB)")
+end
+\end{lstlisting}
+
+\pic{wind_dft}{0.8}{DFT af Vindmølle støj}{fig:wind_dft}
+
+\pic{ComFan_dft}{0.8}{DFT af computer blæser støj}{fig:com_dft}
+
+Ud fra DFT plotsne kan vi nu se karakteristika for de 2 signaler. Begge signaler lader til at have mest energi i de laveste frekvenser cirka under 100 Hz. Vi ser også at begge signalers signal styrke falder en del, efterhånden som frekvenser går op. Dog lader det til at copmuter blæserens støj indeholder flere høj frekvens støj, da den er forholdsvist konstant mellem 100 Hz til \~10.000 Hz. I dette område går vindmølle støjen noget mere ned. Vi kan også se der lader til at være mindre kraft i vindmølle signalet, hvor styrken går mellem -60 dB til -180 dB mens computer bælser signalet går mellem -10 dB til -140 dB. Dette kan dog have noget at gøre med selve lydklippet og den brugte mikrofon, og ikke hvilken type signal det er.
+
+Vi kan også se vi er kommet til at plotte lidt for meget af signalet, og derfor har fået en del med der ligger efter Nyqvist frekvensen. Denne er markeret med en rød streg, og vi ignorer derfor denne del.
 
 \end{document}

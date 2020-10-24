@@ -6,6 +6,32 @@
 \begin{document}
 
 \section{Opgave 3.12}
+Opgave 3.12 fra Lyons lyder som følgende:
+\begin{quote}
+    Forestil en N størrelse x(n) tids sekvens, som DFT er beskrevet af X(m), hvor $0 <= m <= N-1$. 
+    Stående i denne situation mener en hjemmeside på internettet at "Summen af alle X(m) værdier er lig N gange den første værdi i x(n)." 
+    Undersøg om dette er sandt eller falskt.
+\end{quote}
+
+Dette vil vi teste ved at først generere nogle tilfældige signaler og herefter dem på følgende ligning:
+\[
+    \sum X(m) \approx N \cdot x(1)    
+\]
+
+\begin{lstlisting}[caption=MatLab kode til udregning af problematikken fra 3.12, label=lst:Opg3.12]
+for i = 1:2
+    %y(i).samples = (2*rand(5000,1))-1;
+    y(i).length = length(y(i).samples);
+    
+    y(i).dft = fft(y(i).samples, y(i).length-1);
+    
+    abs(sum(y(i).dft))
+    abs(y(i).length*y(i).samples(1))
+end    
+\end{lstlisting}
+
+I koden på listing \ref{lst:Opg3.12} løber vi en forløkke igennem med længden 2, for at sikre os at vi har flere resultater, der viser det samme resultat.
+Først får vi DFT'en ved hjælp af \textit{fft()} funktionen og herefter laver vi udregninger for summen af DFT'en og N gange med den første værdi i x(n).
 
 
 \section{Opgave 3.15}

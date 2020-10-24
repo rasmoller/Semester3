@@ -6,16 +6,80 @@
 \begin{document}
 
 \section{Opgave 3}
+I opgave 3 skal vi bestemme effekten for de lave frekvenser (Under 80Hz) og effekten for de høje frekvenser (over 80 Hz).
+Dette skal vi gøre for begge de signaler vi har brugt i opgave 1 og 2 (Vindmølle støj og computer blæser støj).
+Til dette bruger vi følgende metode i matlab:
 
-% Formål og opgave beskrivelse (Why?)
+\begin{lstlisting}[caption=Udregning af frekvens effekter, label=lst:freqEffect]
+%Opstiller frekvenser over 80 H< og under 80Hz
+    sound(i).fft_sort_high = sound(i).sample_fft(81:end);
+    sound(i).fft_sort_low = sound(i).sample_fft(1:80);
 
-% formler osv. (How?)
+%Bestemmer effekten at de to intervaller
+    sound(i).effect_high = sum(sound(i).fft_sort_high.^2);
+    sound(i).effect_low = sum(sound(i).fft_sort_low.^2);
+\end{lstlisting}
 
-% Resultater (Do)
+Hertil skal vi også udregne effektforholdet mellem høj- og lav-frekvenseffekterne. 
+Dette gøres på følgende måde:
+\[
+    \frac{P_{low}}{P_{high}}
+\]
+Følgende er koden i matlab brugt til at udregne effetkforholdet.
+\begin{lstlisting}[caption=Udregning af effektforhold, label=lst:effectRel]
+% Calculate the effekt relation
+sound(i).effect_rel = abs(sound(i).effect_low)/abs(sound(i).effect_high);
+\end{lstlisting}
 
-% Reflektering ()
+Efter at disse 2 ovenstående stykker kode er kørt kan vi gå ind og kigge på de effekt forhold vi har fået.
 
+\begin{table}[h]
+    \centering
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|l|lll|}
+    \hline
+    Lydnavn                                     & \multicolumn{1}{c|}{$P_{Low}$}       & \multicolumn{1}{c|}{$P_{High}$}      & $P_{Rel}$        \\ \hline
+    Wind turbine sound - high quality audio.mp3 & 159.06 & 165.56 & 0.96 \\ \hline
+    Computer Fan - Sound Effect.mp3             & 91774990.50  & 91779089.50 & 0.99 \\ \hline
+    \end{tabular}%
+    }
+    \caption{Tabel over frekvenseffekter og effektforhold}
+    \label{tab:effectTabel}
+\end{table}
 
+På Table \ref{tab:effectTabel} kan man se en oversigt over både frekvens effekterne og effekt forholdene.
+Her kan man se at "Computer Fan - Sound Effect.mp3" har den højeste effekt både ved de lave og høje frekvenser. 
+Grunden til at de er så meget større er angiveligt lydfilen, som har en meget højere volumen, da den f.eks. kunne ha været optaget tættere på.
+Herudover kan man se, at der er mere energi i de høje frekvenser i begge signaler, dog er forholdet lidt større i vindmølle signalet, men dette kan være fordi effekterne er meget højere i blæser signalet.
 
+\section{Opgave 4}
+I denne delopgave skal vi udregne frekvensopløsningen for de 2 støj signaler.
+
+\begin{lstlisting}[caption=Udregning af effektforhold, label=lst:freqRes]
+% Calculate the frequency resolution
+sound(i).freq_res = sound(i).freq_sample/length(sound(i).samples);
+\end{lstlisting}
+
+På listing \ref{lst:freqRes} kan man se at vi bruger nedenstående formel til udregningen af frekvensopløsningen.
+\[res = \frac{f_{samples}}{N}\]
+
+Ved bagefter så at aflæse værdierne fra matlab for man at svarene bliver som følgende:
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|l|c|}
+    \hline
+    Navn & Frekvensopløsningen \\ 
+    \hline
+    Wind turbine sound - high quality audio.mp3 & 0.00161 Hz \\
+    \hline
+    Computer Fan - Sound Effect.mp3 & 0.00748 Hz \\
+    \hline
+    \end{tabular}
+    \caption{Tabel over frekvensopløsninger}
+    \label{tab:freqResTable}
+\end{table}
+
+Resultatet vi får er, antallet af Hertz per sample. Så for "Computer Fan - Sound Effect.mp3" får man at der på 1 sample er gået 0.00748 Hz. Dette er en tilpas høj opløsning, ellers kunne man have tilføjet ekstra samples for at øge opløsningen.
 
 \end{document}

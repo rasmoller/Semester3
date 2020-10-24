@@ -7,9 +7,136 @@
 
 \section{Opgave 5}
 
+Vi har lavet vores eget dial up signal ved at optage skærmen på en iPhone. Det resulterende signal kan ses på figur \ref{fig:dial_up}
 
+\pic{Dial_samples}{0.7}{Dial up signal}{fig:dial_up}
 
+For at finde DFT på dial up signalet gør vi det samme som i de tidligere opgaver. Finder DFT via fft() og finder en ny x-akse der passer til vores frekvenser. Koden til at plotte signalet samt dets DFT kan ses i listing \ref{lst:dial}
+
+\begin{lstlisting}[caption={Kode til at plotte dial up singal og DFT}, label=lst:dial]
+%Indlæser samples og frekvens af dial tone
+dial_up = 3;
+sound(dial_up).name = "dial tones.mp4";
+[sound(dial_up).samples, sound(dial_up).freq_sample] = audioread(sound(dial_up).name);
+
+%Bestemmer antal samples
+sound(dial_up).N = length(sound(dial_up).samples);
+
+% Indlæser vesntre kanal af lydsignalet
+sound(dial_up).samples = sound(dial_up).samples( :, 1 );
+
+sound(dial_up).time_interval = [0:sound(dial_up).N-1]*(1/sound(dial_up).freq_sample);
+%Plotter samples
+figure(5)
+plot(sound(dial_up).time_interval, sound(dial_up).samples)
+ylabel("Amplitude (~)")
+xlabel("Tid (s)")
+title(sound(dial_up).name)
+
+% Fourier på dial up tone
+sound(dial_up).sample_fft = fft(sound(dial_up).samples, sound(dial_up).N);
+
+%Opstiller plotte-akse for fft af dial tone
+sound(dial_up).delta_f = sound(dial_up).freq_sample / sound(dial_up).N;
+sound(dial_up).f_axis = [0: sound(dial_up).delta_f: sound(dial_up).freq_sample-sound(dial_up).delta_f];
+
+%Plotter dial tone på logaritmiske akser
+figure
+semilogx(sound(dial_up).f_axis(1:0.5*end), 20*log10( abs((2/sound(dial_up).N)*sound(dial_up).sample_fft(1:0.5*end)) ) );
+
+hold on
+%Plotter frekvenser vi forventer på plot
+% dialed number 15 96 24 80
+% DMTF tones
+tones = [697, 770, 852, 941, 1209, 1336, 1477, 1633];
+for i = 1:length(tones)
+    xline(tones(i),"r");
+end
+
+title("DFT af " + sound(dial_up).name)
+xlabel("Frekvens (Hz)")
+ylabel("Amplitude(dB)")
+\end{lstlisting}
+
+\pic{dial_dft}{0.8}{DFT af dial up signal}{fig:dial_up_dft}
+
+Det resulterende DFT plot kan ses her over i figur \ref{fig:dial_up_dft}. Som beskrevet i koden er der indtastet nummeret "15 96 24 80". 
+
+Når man indtaster et nummer på telefonen er der 8 mulige toner der kan afspilles. Da der er flere taster end 8 på en telefon, spiller man 2 toner samtidig, for at få endnu flere unikke toner. Tabellen for deres kombinationer kan ses i tabel \ref{tab:dial}
+
+\begin{table}
+  \centering
+  \begin{tabular}{l|llll}
+    & 1209 & 1336 & 1477 & 1633 \\ \hline
+    697 & 1 & 2 & 3 & A \\
+    770 & 4 & 5 & 6 & B \\
+    852 & 7 & 8 & 9 & C \\
+    941 & $\star$ & 0 & $\sharp$ & D \\
+  \end{tabular}
+  \caption{Dial up tones}
+  \label{tab:dial}
+\end{table}
+
+De 8 toner er indsat med xline(), og på figur \ref{fig:dial_up_dft} kan vi se der er tydelige udslag i frekvensspektret på disse frekvenser. Dog ser vi ikke noget udslag på frekvensen 1633 Hz. Dette skyldes vi ikke har brugt nogen af special kraktererne A, B C eller D. Derfor har der ikke været nogen kombinationer der indeholder 1633 Hz.
 
 \section{Opgave 6}
+
+Vi har fundet de 3 signaler på YouTube, hvor vi har downlaodet dem og indsat i MATLAB. Proceduren for at plotte amplitude spektret er det samme som i de andre opgaver. Koden kan ses her under i listing \ref{lst:lyde}.
+
+\begin{lstlisting}[caption={Kode til at lave frekvensspektre for vinglas, roterende maskine og musik}, label=lst:lyde]
+  glass    = 4;
+  bike     = 5;
+  song     = 6;
+  
+  % Definerer navne til plots
+  %sound(wind).name = 'Wind Turbine Noise.mp3';
+  sound(glass).name = 'Clinking Glasses.mp3';
+  sound(bike).name = 'Yamaha R6.mp3';
+  sound(song).name = 'SKRILLEX - Bangarang.mp3';
+  
+  %Indlæser samples og frekvens af vind og computer
+  [sound(glass).samples,sound(glass).freq_sample] = audioread(sound(glass).name);
+  [sound(bike).samples,sound(bike).freq_sample] = audioread(sound(bike).name);
+  [sound(song).samples,sound(song).freq_sample] = audioread(sound(song).name);
+  
+  for i = 4:6
+      sound(i).N = length(sound(i).samples);
+      
+      sound(i).samples = sound(i).samples(:,1);
+      
+      sound(i).sample_fft = fft(sound(i).samples, sound(i).N);
+      
+      sound(i).delta_f = sound(i).freq_sample / sound(i).N;
+      sound(i).f_axis = [0: sound(i).delta_f: sound(i).freq_sample-sound(i).delta_f];
+      
+      figure(10+i)
+      semilogx(sound(i).f_axis(1:0.5*end), 20*log10( abs((2/sound(i).N)*sound(i).sample_fft(1:0.5*end)) ) );
+      title("DFT af " + sound(i).name)
+      xlabel("Frekvens (Hz)")
+      ylabel("Amplitude(dB)")
+      hold on
+      
+      [sound(i).freq_oct, sound(i).fft_freq] = oct_smooth(sound(i).sample_fft, sound(i).freq_sample, 18, [1 22000]);
+      
+      semilogx(sound(i).freq_oct, 20*log10(abs((2/sound(i).N)*sound(i).fft_freq)),'r','linewidth',1.5)
+      hold off
+  end
+\end{lstlisting}
+
+\pic{glass_dft}{0.8}{DFT af 2 glas der slås mod hindanden}{fig:glas}
+
+Den første lyd vi har analyseret, er 2 glas der slås mod hindanden. DFT plottet kan ses på figur \ref{fig:glas}. Ud fra amplitudespektret ser vi glsaets interne resonans. Det er disse frekvenser hvor ved glasset naturligt vil kunne vibrere og resonrer ved. Afspiller man f.eks. en 1006 Hz tone, kan glasset vibrere med.
+
+\pic{yamaha_dft}{0.8}{DFT af en Yamaha R6 motorcykel der kører}{fig:yamaha}
+
+Den næste lyd vi har analyseret, er en Yamaha R6 motorcycle, der er ude og køre. Plottet af dennes DFT kan ses på figur \ref{fig:yamaha}. Her ser vi et noget mere blødt spektre end ved glasset. Det giver også god mening da ovegangen mellem hvor hurtigt motorcyklen kører, er meget blød. Fra Wikipedia siden om denne specifikke motorcykel (https://en.wikipedia.org/wiki/Yamaha\_YZF-R6) kan vi se den optimale RPM for en Yamaha R6 er cirka 14.500 RPM. Den kraftigste frekvens vi ser ud fra spektret er 246.4 Hz. Da Hz er antal i sekdundet og RPM er antal i minuttet, kan vi gange vores frekvens med 60.
+
+\[246.4 Hz \cdot 60 = 14784 RPM\]
+
+Vi kan altså se Yamahas antagelse af hvor den optimale RPM ligger, lader til at holde.
+
+\pic{skrillex_dft}{0.8}{DFT af musik stykket Bangarang - Skrillex}{fig:skrillex}
+
+Vi har valgt at analyser et et forholdsvit voldsomt musikstykke, af musik sjangeren Dubstep, da vi gerne vil teste vores analyse redskaber til det yderste. Amplitudespektret kan ses på figur \ref{fig:skrillex}. Online har vi fundet ud af, at Bangarang - Skrillex, er skrevet i G-dur (https://tabs.ultimate-guitar.com/tab/dave-giles/bangarang-chords-1183209). Dette lader vi også til at kunne bekræfte ud fra amplitudespektret, da vi kan se tydelige udslag på frekvenserne 198.9 Hz, 391.4 Hz og 781 Hz, som cirka korresponderer til G3, G4, og G5 tonerne. 
 
 \end{document}
