@@ -115,6 +115,39 @@ ylabel("Amplitude(dB)")
 
 %% Opgave 6
 
+glass    = 4;
+bike     = 5;
+song     = 6;
+
+% Definerer navne til plots
+%sound(wind).name = 'Wind Turbine Noise.mp3';
+sound(glass).name = 'Clinking Glasses.mp3';
+sound(bike).name = 'Yamaha R6.mp3';
+sound(song).name = 'SKRILLEX - Bangarang.mp3';
+
+%Indlæser samples og frekvens af vind og computer
+[sound(glass).samples,sound(glass).freq_sample] = audioread(sound(glass).name);
+[sound(bike).samples,sound(bike).freq_sample] = audioread(sound(bike).name);
+[sound(song).samples,sound(song).freq_sample] = audioread(sound(song).name);
+
+for i = 4:6
+    sound(i).sample_fft = fft(sound(i).samples, sound(dial_up).N);
+    
+    
+    
+end
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

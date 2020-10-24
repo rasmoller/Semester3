@@ -115,6 +115,56 @@ ylabel("Amplitude(dB)")
 
 %% Opgave 6
 
+glass    = 4;
+bike     = 5;
+song     = 6;
+
+% Definerer navne til plots
+%sound(wind).name = 'Wind Turbine Noise.mp3';
+sound(glass).name = 'Clinking Glasses.mp3';
+sound(bike).name = 'Yamaha R6.mp3';
+sound(song).name = 'SKRILLEX - Bangarang.mp3';
+
+%Indlæser samples og frekvens af vind og computer
+[sound(glass).samples,sound(glass).freq_sample] = audioread(sound(glass).name);
+[sound(bike).samples,sound(bike).freq_sample] = audioread(sound(bike).name);
+[sound(song).samples,sound(song).freq_sample] = audioread(sound(song).name);
+
+for i = 4:6
+    sound(i).N = length(sound(i).samples);
+    
+    sound(i).samples = sound(i).samples(:,1);
+    
+    sound(i).sample_fft = fft(sound(i).samples, sound(i).N);
+    
+    sound(i).delta_f = sound(i).freq_sample / sound(i).N;
+    sound(i).f_axis = [0: sound(i).delta_f: sound(i).freq_sample-sound(i).delta_f];
+    
+    figure(10+i)
+    semilogx(sound(i).f_axis(1:0.5*end), 20*log10( abs((2/sound(i).N)*sound(i).sample_fft(1:0.5*end)) ) );
+    title(sound(i).name)
+    xlabel("Hz")
+    ylabel("Amplitude(dB)")
+    hold on
+    
+    [sound(i).freq_oct, sound(i).fft_freq] = oct_smooth(sound(i).sample_fft, sound(i).freq_sample, 18, [1 22000]);
+    
+    semilogx(sound(i).freq_oct, 20*log10(abs((2/sound(i).N)*sound(i).fft_freq)),'r','linewidth',1.5)
+    hold off
+    
+end
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
