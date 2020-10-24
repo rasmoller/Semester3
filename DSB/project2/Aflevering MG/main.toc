@@ -1,0 +1,10 @@
+\contentsline {section}{\numberline {1}Opgave 1}{1}%
+\contentsline {section}{\numberline {2}Opgave 2}{3}%
+\contentsline {section}{\numberline {3}Opgave 3}{4}%
+\contentsline {section}{\numberline {4}Opgave 4}{5}%
+\contentsline {section}{\numberline {5}Opgave 5}{6}%
+\contentsline {section}{\numberline {6}Opgave 6}{8}%
+\contentsline {section}{\numberline {7}Opgave 3.12}{11}%
+\contentsline {section}{\numberline {8}Opgave 3.15}{11}%
+\contentsline {subsection}{\numberline {8.1}a)}{12}%
+\contentsline {subsection}{\numberline {8.2}b)}{13}%
