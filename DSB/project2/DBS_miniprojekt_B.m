@@ -34,7 +34,7 @@ end
 %% Opgave 2
 
 for i = 1:length(sound)
-%Foretager fourier-transformation ud fra sample-frekvens
+%Foretager fourier-transformation ud fra samples
 sound(i).sample_fft = fft(sound(i).samples,sound(i).freq_sample);
 
 %Opstiller sample-akse vi kan plotte ud fra
@@ -52,7 +52,7 @@ end
 
 for i = 1:length(sound)
     %Opstiller frekvenser over 80 H< og under 80Hz
-    sound(i).freq_res = sound(i).freq_sample/length(sound(i).samples);
+    sound(i).freq_res = sound(i).freq_sample/length(sound(i).samples)
     sound(i).fft_sort_high = sound(i).sample_fft(81:end);
     sound(i).fft_sort_low = sound(i).sample_fft(1:80);
 
@@ -89,6 +89,10 @@ sound(dial_up).samples = sound(dial_up).samples( :, 1 );
 figure(5)
 plot(sound(dial_up).samples)
 
+title(sound(dial_up).name)
+xlabel("Time(s)")
+ylabel("Amplitude(~)")
+
 % Fourier på dial up tone
 sound(dial_up).sample_fft = fft(sound(dial_up).samples, sound(dial_up).N);
 
@@ -110,7 +114,7 @@ for i = 1:length(tones)
 end
 
 title(sound(dial_up).name)
-xlabel("Hz")
+xlabel("Frequencies(Hz)")
 ylabel("Amplitude(dB)")
 
 %% Opgave 6
@@ -143,13 +147,14 @@ for i = 4:6
     figure(10+i)
     semilogx(sound(i).f_axis(1:0.5*end), 20*log10( abs((2/sound(i).N)*sound(i).sample_fft(1:0.5*end)) ) );
     title(sound(i).name)
-    xlabel("Hz")
+    xlabel("Frequency(Hz)")
     ylabel("Amplitude(dB)")
     hold on
     
     [sound(i).freq_oct, sound(i).fft_freq] = oct_smooth(sound(i).sample_fft, sound(i).freq_sample, 18, [1 22000]);
     
     semilogx(sound(i).freq_oct, 20*log10(abs((2/sound(i).N)*sound(i).fft_freq)),'r','linewidth',1.5)
+    legend('DFT', 'oct_smooth')
     hold off
     
 end
