@@ -1,0 +1,6 @@
+C:\Program Files (x86)\Cypress\PSoC Creator\4.3\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|f896b18d-6505-4e2b-87f8-68c6decd4218
+C:\Users\1chri\Documents\PSoC Creator\4.3\Downloads ( 4.3).cylib\Downloads ( 4.3).cyprj|4e38e230-a33d-4fa2-9d97-1d6ee2c6112e
+C:\Program Files (x86)\Cypress\PSoC Creator\4.3\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|13baacb6-dfdf-4193-a45f-05439dfef1f4
+C:\Program Files (x86)\Cypress\PSoC Creator\4.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|5ab766e9-544c-45f8-be43-5d5d205ffe2f
+C:\Program Files (x86)\Cypress\PSoC Creator\4.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|9e4ceb50-ab3f-4ba5-99e9-8a26ab3e7f02
+C:\Users\1chri\Documents\GitHub\Semester3\GFV\LAB4\code\GFV_LAB4\tempSensor.cydsn\tempSensor.cyprj|196e4562-3cdf-43ad-a193-87a0480b9161
