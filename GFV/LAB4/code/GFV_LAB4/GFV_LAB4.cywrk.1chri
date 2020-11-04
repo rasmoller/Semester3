@@ -65,25 +65,6 @@
 <v>GFV_LAB4\tempSensor\Generated_Source\PSoC5\UART</v>
 <v>GFV_LAB4\tempSensor\Generated_Source\PSoC5\UART_IntClock</v>
 <v>GFV_LAB4\tempSensor\Generated_Source\PSoC5\cycodeshareexport.ld</v>
-<v>GFV_LAB4\tempSensor\Generated_Source\PSoC5\cycodeshareimport.ld</v>
-<v>GFV_LAB4\tempSensor\Generated_Source\PSoC5\cycodeshareimport.scat</v>
-<v>GFV_LAB4\tempSensor\Generated_Source\PSoC5\cydevice.h</v>
-<v>GFV_LAB4\tempSensor\Generated_Source\PSoC5\cydevice_trm.h</v>
-<v>GFV_LAB4\tempSensor\Generated_Source\PSoC5\cydevicegnu.inc</v>
-<v>GFV_LAB4\tempSensor\Generated_Source\PSoC5\cydevicegnu_trm.inc</v>
-<v>GFV_LAB4\tempSensor\Generated_Source\PSoC5\cydeviceiar.inc</v>
-<v>GFV_LAB4\tempSensor\Generated_Source\PSoC5\cydeviceiar_trm.inc</v>
-<v>GFV_LAB4\tempSensor\Generated_Source\PSoC5\cydevicerv.inc</v>
-<v>GFV_LAB4\tempSensor\Generated_Source\PSoC5\cydevicerv_trm.inc</v>
-<v>GFV_LAB4\tempSensor\Generated_Source\PSoC5\cydisabledsheets.h</v>
-<v>GFV_LAB4\tempSensor\Generated_Source\PSoC5\cyfitter.h</v>
-<v>GFV_LAB4\tempSensor\Generated_Source\PSoC5\cyfitter_cfg.c</v>
-<v>GFV_LAB4\tempSensor\Generated_Source\PSoC5\cyfitter_cfg.h</v>
-<v>GFV_LAB4\tempSensor\Generated_Source\PSoC5\cyfittergnu.inc</v>
-<v>GFV_LAB4\tempSensor\Generated_Source\PSoC5\cyfitteriar.inc</v>
-<v>GFV_LAB4\tempSensor\Generated_Source\PSoC5\cyfitterrv.inc</v>
-<v>GFV_LAB4\tempSensor\Generated_Source\PSoC5\cymetadata.c</v>
-<v>GFV_LAB4\tempSensor\Generated_Source\PSoC5\project.h</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
@@ -111,6 +92,7 @@
 <VisibleNodeIds>
 <v>GFV_LAB4</v>
 <v>GFV_LAB4\tempSensor</v>
+<v>GFV_LAB4\tempSensor\tempSensor.gpdsc</v>
 <v>GFV_LAB4\tempSensor\tempSensor.rpt</v>
 <v>GFV_LAB4\tempSensor\tempSensor_timing.html</v>
 </VisibleNodeIds>
@@ -152,7 +134,17 @@
 </userData>
 </CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
 <Unloaded />
-<OpenDocs />
+<OpenDocs>
+<name v=".\tempSensor.cydsn\TopDesign\TopDesign.cysch" />
+<name v="..\..\..\LAB2\gfv_lab2\Design01.cydsn\I2C_temp.h" />
+</OpenDocs>
+<OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
+
+  Actipro Docking/MDI for WinForms
+  Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
+  http://www.actiprosoftware.com
+
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="696, 348" SelectedTabbedMdiWindow="72e20911-f5aa-4f00-bb94-872e858308fe"><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="305a7723-9217-4f66-a5f7-1a26a7d6133d" /><DocumentWindow Key="C:\Users\1chri\Documents\GitHub\Semester3\GFV\LAB4\code\GFV_LAB4\tempSensor.cydsn\TopDesign\TopDesign.cysch" Guid="04580576-ff89-4369-b5cc-8334f545e6c3" /><DocumentWindow Key="C:\Users\1chri\Documents\GitHub\Semester3\GFV\LAB2\gfv_lab2\Design01.cydsn\I2C_temp.h" Guid="72e20911-f5aa-4f00-bb94-872e858308fe" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
