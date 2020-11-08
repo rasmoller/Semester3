@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CyXmlSerializer>
+<!--This file is machine generated and read. It is not intended to be edited by hand.-->
+<!--Due to this, there is no schema for this file.-->
+<CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtWrkspcCustomData" version="4">
+<CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997 type_name="CyDesigner.Common.Base.CyCustomData" version="2">
+<userData>
+<dataGuid v="1b906a0f-a7b6-4e4d-a428-82f98b53cb35">
+<CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35 type_name="CyDesigner.Common.ProjMgmt.GUI.CyExplorerWindow+CyExplorerWindowState" version="3" SelectedTab="Source">
+<TreeKeys>
+<v>Source</v>
+<v>Components</v>
+<v>Output</v>
+</TreeKeys>
+<TreeStates>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="gfv_lab2\Design01\Source Files\main.c">
+<ExpandedNodeIds>
+<v>gfv_lab2</v>
+<v>gfv_lab2\Design01</v>
+<v>gfv_lab2\Design01\TopDesign</v>
+<v>gfv_lab2\Design01\Design01.cydwr</v>
+<v>gfv_lab2\Design01\Design01.cydwr\Pins</v>
+<v>gfv_lab2\Design01\Design01.cydwr\Analog</v>
+<v>gfv_lab2\Design01\Design01.cydwr\Clocks</v>
+<v>gfv_lab2\Design01\Design01.cydwr\Interrupts</v>
+<v>gfv_lab2\Design01\Design01.cydwr\DMA</v>
+<v>gfv_lab2\Design01\Design01.cydwr\System</v>
+<v>gfv_lab2\Design01\Design01.cydwr\Directives</v>
+<v>gfv_lab2\Design01\Design01.cydwr\Flash Security</v>
+<v>gfv_lab2\Design01\Design01.cydwr\EEPROM</v>
+<v>gfv_lab2\Design01\Header Files</v>
+<v>gfv_lab2\Design01\Header Files\cyapicallbacks.h</v>
+<v>gfv_lab2\Design01\Source Files</v>
+<v>gfv_lab2\Design01\Source Files\main.c</v>
+<v>gfv_lab2\Design01\Generated_Source</v>
+<v>gfv_lab2\Design01\Generated_Source\PSoC5</v>
+<v>gfv_lab2\spi_master</v>
+<v>gfv_lab2\spi_master\TopDesign</v>
+<v>gfv_lab2\spi_master\spi_master.cydwr</v>
+<v>gfv_lab2\spi_master\spi_master.cydwr\Pins</v>
+<v>gfv_lab2\spi_master\spi_master.cydwr\Analog</v>
+<v>gfv_lab2\spi_master\spi_master.cydwr\Clocks</v>
+<v>gfv_lab2\spi_master\spi_master.cydwr\Interrupts</v>
+<v>gfv_lab2\spi_master\spi_master.cydwr\DMA</v>
+<v>gfv_lab2\spi_master\spi_master.cydwr\System</v>
+<v>gfv_lab2\spi_master\spi_master.cydwr\Directives</v>
+<v>gfv_lab2\spi_master\spi_master.cydwr\Flash Security</v>
+<v>gfv_lab2\spi_master\spi_master.cydwr\EEPROM</v>
+<v>gfv_lab2\spi_master\Header Files</v>
+<v>gfv_lab2\spi_master\Header Files\cyapicallbacks.h</v>
+<v>gfv_lab2\spi_master\Source Files</v>
+<v>gfv_lab2\spi_master\Source Files\main.c</v>
+<v>gfv_lab2\spi_master\Generated_Source</v>
+<v>gfv_lab2\spi_master\Generated_Source\PSoC5</v>
+<v>gfv_lab2\spi_master_btn</v>
+<v>gfv_lab2\spi_master_btn\TopDesign</v>
+<v>gfv_lab2\spi_master_btn\spi_master_btn.cydwr</v>
+<v>gfv_lab2\spi_master_btn\spi_master_btn.cydwr\Pins</v>
+<v>gfv_lab2\spi_master_btn\spi_master_btn.cydwr\Analog</v>
+<v>gfv_lab2\spi_master_btn\spi_master_btn.cydwr\Clocks</v>
+<v>gfv_lab2\spi_master_btn\spi_master_btn.cydwr\Interrupts</v>
+<v>gfv_lab2\spi_master_btn\spi_master_btn.cydwr\DMA</v>
+<v>gfv_lab2\spi_master_btn\spi_master_btn.cydwr\System</v>
+<v>gfv_lab2\spi_master_btn\spi_master_btn.cydwr\Directives</v>
+<v>gfv_lab2\spi_master_btn\spi_master_btn.cydwr\Flash Security</v>
+<v>gfv_lab2\spi_master_btn\spi_master_btn.cydwr\EEPROM</v>
+<v>gfv_lab2\spi_master_btn\Header Files</v>
+<v>gfv_lab2\spi_master_btn\Header Files\cyapicallbacks.h</v>
+<v>gfv_lab2\spi_master_btn\Source Files</v>
+<v>gfv_lab2\spi_master_btn\Source Files\main.c</v>
+<v>gfv_lab2\spi_master_btn\Generated_Source</v>
+<v>gfv_lab2\spi_master_btn\Generated_Source\PSoC5</v>
+<v>gfv_lab2\spi_slave</v>
+<v>gfv_lab2\spi_slave\TopDesign</v>
+<v>gfv_lab2\spi_slave\spi_slave.cydwr</v>
+<v>gfv_lab2\spi_slave\spi_slave.cydwr\Pins</v>
+<v>gfv_lab2\spi_slave\spi_slave.cydwr\Analog</v>
+<v>gfv_lab2\spi_slave\spi_slave.cydwr\Clocks</v>
+<v>gfv_lab2\spi_slave\spi_slave.cydwr\Interrupts</v>
+<v>gfv_lab2\spi_slave\spi_slave.cydwr\DMA</v>
+<v>gfv_lab2\spi_slave\spi_slave.cydwr\System</v>
+<v>gfv_lab2\spi_slave\spi_slave.cydwr\Directives</v>
+<v>gfv_lab2\spi_slave\spi_slave.cydwr\Flash Security</v>
+<v>gfv_lab2\spi_slave\spi_slave.cydwr\EEPROM</v>
+<v>gfv_lab2\spi_slave\Header Files</v>
+<v>gfv_lab2\spi_slave\Header Files\cyapicallbacks.h</v>
+<v>gfv_lab2\spi_slave\Source Files</v>
+<v>gfv_lab2\spi_slave\Source Files\main.c</v>
+<v>gfv_lab2\spi_slave\Generated_Source</v>
+<v>gfv_lab2\spi_slave\Generated_Source\PSoC5</v>
+<v>gfv_lab2\spi_slave_btn</v>
+<v>gfv_lab2\spi_slave_btn\TopDesign</v>
+<v>gfv_lab2\spi_slave_btn\spi_slave_btn.cydwr</v>
+<v>gfv_lab2\spi_slave_btn\spi_slave_btn.cydwr\Pins</v>
+<v>gfv_lab2\spi_slave_btn\spi_slave_btn.cydwr\Analog</v>
+<v>gfv_lab2\spi_slave_btn\spi_slave_btn.cydwr\Clocks</v>
+<v>gfv_lab2\spi_slave_btn\spi_slave_btn.cydwr\Interrupts</v>
+<v>gfv_lab2\spi_slave_btn\spi_slave_btn.cydwr\DMA</v>
+<v>gfv_lab2\spi_slave_btn\spi_slave_btn.cydwr\System</v>
+<v>gfv_lab2\spi_slave_btn\spi_slave_btn.cydwr\Directives</v>
+<v>gfv_lab2\spi_slave_btn\spi_slave_btn.cydwr\Flash Security</v>
+<v>gfv_lab2\spi_slave_btn\spi_slave_btn.cydwr\EEPROM</v>
+<v>gfv_lab2\spi_slave_btn\Header Files</v>
+<v>gfv_lab2\spi_slave_btn\Header Files\cyapicallbacks.h</v>
+<v>gfv_lab2\spi_slave_btn\Source Files</v>
+<v>gfv_lab2\spi_slave_btn\Source Files\main.c</v>
+<v>gfv_lab2\spi_slave_btn\Generated_Source</v>
+<v>gfv_lab2\spi_slave_btn\Generated_Source\PSoC5</v>
+<v>gfv_lab2\weightSensor</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>gfv_lab2</v>
+<v>gfv_lab2\Design01</v>
+<v>gfv_lab2\Design01\TopDesign</v>
+<v>gfv_lab2\Design01\Design01.cydwr</v>
+<v>gfv_lab2\Design01\Design01.cydwr\Pins</v>
+<v>gfv_lab2\Design01\Design01.cydwr\Analog</v>
+<v>gfv_lab2\Design01\Design01.cydwr\Clocks</v>
+<v>gfv_lab2\Design01\Design01.cydwr\Interrupts</v>
+<v>gfv_lab2\Design01\Design01.cydwr\DMA</v>
+<v>gfv_lab2\Design01\Design01.cydwr\System</v>
+<v>gfv_lab2\Design01\Design01.cydwr\Directives</v>
+<v>gfv_lab2\Design01\Design01.cydwr\Flash Security</v>
+<v>gfv_lab2\Design01\Design01.cydwr\EEPROM</v>
+<v>gfv_lab2\Design01\Header Files</v>
+<v>gfv_lab2\Design01\Header Files\cyapicallbacks.h</v>
+<v>gfv_lab2\Design01\Source Files</v>
+<v>gfv_lab2\Design01\Source Files\main.c</v>
+<v>gfv_lab2\Design01\Generated_Source</v>
+<v>gfv_lab2\Design01\Generated_Source\PSoC5</v>
+<v>gfv_lab2\Design01\Generated_Source\PSoC5\cy_boot</v>
+<v>gfv_lab2\Design01\Generated_Source\PSoC5\Em_EEPROM_Dynamic</v>
+<v>gfv_lab2\Design01\Generated_Source\PSoC5\I2C</v>
+<v>gfv_lab2\Design01\Generated_Source\PSoC5\SCL_1</v>
+<v>gfv_lab2\Design01\Generated_Source\PSoC5\SDA_1</v>
+<v>gfv_lab2\Design01\Generated_Source\PSoC5\UART</v>
+<v>gfv_lab2\Design01\Generated_Source\PSoC5\UART_IntClock</v>
+<v>gfv_lab2\Design01\Generated_Source\PSoC5\cycodeshareexport.ld</v>
+<v>gfv_lab2\Design01\Generated_Source\PSoC5\cycodeshareimport.ld</v>
+<v>gfv_lab2\Design01\Generated_Source\PSoC5\cycodeshareimport.scat</v>
+<v>gfv_lab2\Design01\Generated_Source\PSoC5\cydevice.h</v>
+<v>gfv_lab2\Design01\Generated_Source\PSoC5\cydevice_trm.h</v>
+<v>gfv_lab2\Design01\Generated_Source\PSoC5\cydevicegnu.inc</v>
+<v>gfv_lab2\Design01\Generated_Source\PSoC5\cydevicegnu_trm.inc</v>
+<v>gfv_lab2\Design01\Generated_Source\PSoC5\cydeviceiar.inc</v>
+<v>gfv_lab2\Design01\Generated_Source\PSoC5\cydeviceiar_trm.inc</v>
+<v>gfv_lab2\Design01\Generated_Source\PSoC5\cydevicerv.inc</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>gfv_lab2</v>
+<v>gfv_lab2\Design01</v>
+<v>gfv_lab2\Design01\TopDesign</v>
+<v>gfv_lab2\Design01\TopDesign\TopDesign.cysch</v>
+<v>gfv_lab2\spi_master</v>
+<v>gfv_lab2\spi_master\TopDesign</v>
+<v>gfv_lab2\spi_master\TopDesign\TopDesign.cysch</v>
+<v>gfv_lab2\spi_master_btn</v>
+<v>gfv_lab2\spi_master_btn\TopDesign</v>
+<v>gfv_lab2\spi_master_btn\TopDesign\TopDesign.cysch</v>
+<v>gfv_lab2\spi_slave</v>
+<v>gfv_lab2\spi_slave\TopDesign</v>
+<v>gfv_lab2\spi_slave\TopDesign\TopDesign.cysch</v>
+<v>gfv_lab2\spi_slave_btn</v>
+<v>gfv_lab2\spi_slave_btn\TopDesign</v>
+<v>gfv_lab2\spi_slave_btn\TopDesign\TopDesign.cysch</v>
+<v>gfv_lab2\weightSensor</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>gfv_lab2</v>
+<v>gfv_lab2\Design01</v>
+<v>gfv_lab2\Design01\TopDesign</v>
+<v>gfv_lab2\Design01\TopDesign\TopDesign.cysch</v>
+<v>gfv_lab2\spi_master</v>
+<v>gfv_lab2\spi_master\TopDesign</v>
+<v>gfv_lab2\spi_master\TopDesign\TopDesign.cysch</v>
+<v>gfv_lab2\spi_master_btn</v>
+<v>gfv_lab2\spi_master_btn\TopDesign</v>
+<v>gfv_lab2\spi_master_btn\TopDesign\TopDesign.cysch</v>
+<v>gfv_lab2\spi_slave</v>
+<v>gfv_lab2\spi_slave\TopDesign</v>
+<v>gfv_lab2\spi_slave\TopDesign\TopDesign.cysch</v>
+<v>gfv_lab2\spi_slave_btn</v>
+<v>gfv_lab2\spi_slave_btn\TopDesign</v>
+<v>gfv_lab2\spi_slave_btn\TopDesign\TopDesign.cysch</v>
+<v>gfv_lab2\weightSensor</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>gfv_lab2</v>
+<v>gfv_lab2\Design01</v>
+<v>gfv_lab2\Design01\Design01.gpdsc</v>
+<v>gfv_lab2\Design01\Design01.rpt</v>
+<v>gfv_lab2\Design01\Design01_timing.html</v>
+<v>gfv_lab2\spi_master</v>
+<v>gfv_lab2\spi_master\spi_master.gpdsc</v>
+<v>gfv_lab2\spi_master\spi_master.rpt</v>
+<v>gfv_lab2\spi_master\spi_master_timing.html</v>
+<v>gfv_lab2\spi_master_btn</v>
+<v>gfv_lab2\spi_master_btn\spi_master_btn.gpdsc</v>
+<v>gfv_lab2\spi_master_btn\spi_master_btn.rpt</v>
+<v>gfv_lab2\spi_master_btn\spi_master_btn_timing.html</v>
+<v>gfv_lab2\spi_slave</v>
+<v>gfv_lab2\spi_slave\spi_slave.gpdsc</v>
+<v>gfv_lab2\spi_slave\spi_slave.rpt</v>
+<v>gfv_lab2\spi_slave\spi_slave_timing.html</v>
+<v>gfv_lab2\spi_slave_btn</v>
+<v>gfv_lab2\spi_slave_btn\spi_slave_btn.gpdsc</v>
+<v>gfv_lab2\spi_slave_btn\spi_slave_btn.rpt</v>
+<v>gfv_lab2\spi_slave_btn\spi_slave_btn_timing.html</v>
+<v>gfv_lab2\weightSensor</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>gfv_lab2</v>
+<v>gfv_lab2\Design01</v>
+<v>gfv_lab2\Design01\Design01.gpdsc</v>
+<v>gfv_lab2\Design01\Design01.rpt</v>
+<v>gfv_lab2\Design01\Design01_timing.html</v>
+<v>gfv_lab2\spi_master</v>
+<v>gfv_lab2\spi_master\spi_master.gpdsc</v>
+<v>gfv_lab2\spi_master\spi_master.rpt</v>
+<v>gfv_lab2\spi_master\spi_master_timing.html</v>
+<v>gfv_lab2\spi_master_btn</v>
+<v>gfv_lab2\spi_master_btn\spi_master_btn.gpdsc</v>
+<v>gfv_lab2\spi_master_btn\spi_master_btn.rpt</v>
+<v>gfv_lab2\spi_master_btn\spi_master_btn_timing.html</v>
+<v>gfv_lab2\spi_slave</v>
+<v>gfv_lab2\spi_slave\spi_slave.gpdsc</v>
+<v>gfv_lab2\spi_slave\spi_slave.rpt</v>
+<v>gfv_lab2\spi_slave\spi_slave_timing.html</v>
+<v>gfv_lab2\spi_slave_btn</v>
+<v>gfv_lab2\spi_slave_btn\spi_slave_btn.gpdsc</v>
+<v>gfv_lab2\spi_slave_btn\spi_slave_btn.rpt</v>
+<v>gfv_lab2\spi_slave_btn\spi_slave_btn_timing.html</v>
+<v>gfv_lab2\weightSensor</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+</TreeStates>
+<TreeKeysV2>
+<v>Datasheet</v>
+</TreeKeysV2>
+<TreeStatesV2>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>gfv_lab2</v>
+<v>gfv_lab2\Design01</v>
+<v>gfv_lab2\Design01\PSoC 5LP Architecture TRM</v>
+<v>gfv_lab2\Design01\CY8C58LP Family Datasheet</v>
+<v>gfv_lab2\Design01\System Reference Guides</v>
+<v>gfv_lab2\Design01\System Reference Guides\cy_boot_v5_90</v>
+<v>gfv_lab2\Design01\cy_pins_v2_20</v>
+<v>gfv_lab2\Design01\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>gfv_lab2\Design01\I2C_v3_50.pdf</v>
+<v>gfv_lab2\Design01\UART_v2_50.pdf</v>
+<v>gfv_lab2\spi_master</v>
+<v>gfv_lab2\spi_master\PSoC 5LP Architecture TRM</v>
+<v>gfv_lab2\spi_master\CY8C58LP Family Datasheet</v>
+<v>gfv_lab2\spi_master\System Reference Guides</v>
+<v>gfv_lab2\spi_master\System Reference Guides\cy_boot_v5_90</v>
+<v>gfv_lab2\spi_master\cy_isr_v1_70.pdf</v>
+<v>gfv_lab2\spi_master\cy_pins_v2_20</v>
+<v>gfv_lab2\spi_master\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>gfv_lab2\spi_master\SPI_Master_v2_50.pdf</v>
+<v>gfv_lab2\spi_master\UART_v2_50.pdf</v>
+<v>gfv_lab2\spi_master_btn</v>
+<v>gfv_lab2\spi_master_btn\PSoC 5LP Architecture TRM</v>
+<v>gfv_lab2\spi_master_btn\CY8C58LP Family Datasheet</v>
+<v>gfv_lab2\spi_master_btn\System Reference Guides</v>
+<v>gfv_lab2\spi_master_btn\System Reference Guides\cy_boot_v5_90</v>
+<v>gfv_lab2\spi_master_btn\cy_isr_v1_70.pdf</v>
+<v>gfv_lab2\spi_master_btn\cy_pins_v2_20</v>
+<v>gfv_lab2\spi_master_btn\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>gfv_lab2\spi_master_btn\SPI_Master_v2_50.pdf</v>
+<v>gfv_lab2\spi_master_btn\UART_v2_50.pdf</v>
+<v>gfv_lab2\spi_slave</v>
+<v>gfv_lab2\spi_slave\PSoC 5LP Architecture TRM</v>
+<v>gfv_lab2\spi_slave\CY8C58LP Family Datasheet</v>
+<v>gfv_lab2\spi_slave\System Reference Guides</v>
+<v>gfv_lab2\spi_slave\System Reference Guides\cy_boot_v5_90</v>
+<v>gfv_lab2\spi_slave\cy_constant_v1_0.pdf</v>
+<v>gfv_lab2\spi_slave\cy_isr_v1_70.pdf</v>
+<v>gfv_lab2\spi_slave\cy_pins_v2_20</v>
+<v>gfv_lab2\spi_slave\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>gfv_lab2\spi_slave\SPI_Slave_v2_70.pdf</v>
+<v>gfv_lab2\spi_slave\UART_v2_50.pdf</v>
+<v>gfv_lab2\spi_slave_btn</v>
+<v>gfv_lab2\spi_slave_btn\PSoC 5LP Architecture TRM</v>
+<v>gfv_lab2\spi_slave_btn\CY8C58LP Family Datasheet</v>
+<v>gfv_lab2\spi_slave_btn\System Reference Guides</v>
+<v>gfv_lab2\spi_slave_btn\System Reference Guides\cy_boot_v5_90</v>
+<v>gfv_lab2\spi_slave_btn\cy_constant_v1_0.pdf</v>
+<v>gfv_lab2\spi_slave_btn\cy_isr_v1_70.pdf</v>
+<v>gfv_lab2\spi_slave_btn\cy_pins_v2_20</v>
+<v>gfv_lab2\spi_slave_btn\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>gfv_lab2\spi_slave_btn\SPI_Slave_v2_70.pdf</v>
+<v>gfv_lab2\spi_slave_btn\UART_v2_50.pdf</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>gfv_lab2</v>
+<v>gfv_lab2\Design01</v>
+<v>gfv_lab2\Design01\PSoC 5LP Architecture TRM</v>
+<v>gfv_lab2\Design01\CY8C58LP Family Datasheet</v>
+<v>gfv_lab2\Design01\System Reference Guides</v>
+<v>gfv_lab2\Design01\System Reference Guides\cy_boot_v5_90</v>
+<v>gfv_lab2\Design01\cy_pins_v2_20</v>
+<v>gfv_lab2\Design01\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>gfv_lab2\Design01\I2C_v3_50.pdf</v>
+<v>gfv_lab2\Design01\UART_v2_50.pdf</v>
+<v>gfv_lab2\spi_master</v>
+<v>gfv_lab2\spi_master\PSoC 5LP Architecture TRM</v>
+<v>gfv_lab2\spi_master\CY8C58LP Family Datasheet</v>
+<v>gfv_lab2\spi_master\System Reference Guides</v>
+<v>gfv_lab2\spi_master\System Reference Guides\cy_boot_v5_90</v>
+<v>gfv_lab2\spi_master\cy_isr_v1_70.pdf</v>
+<v>gfv_lab2\spi_master\cy_pins_v2_20</v>
+<v>gfv_lab2\spi_master\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>gfv_lab2\spi_master\SPI_Master_v2_50.pdf</v>
+<v>gfv_lab2\spi_master\UART_v2_50.pdf</v>
+<v>gfv_lab2\spi_master_btn</v>
+<v>gfv_lab2\spi_master_btn\PSoC 5LP Architecture TRM</v>
+<v>gfv_lab2\spi_master_btn\CY8C58LP Family Datasheet</v>
+<v>gfv_lab2\spi_master_btn\System Reference Guides</v>
+<v>gfv_lab2\spi_master_btn\System Reference Guides\cy_boot_v5_90</v>
+<v>gfv_lab2\spi_master_btn\cy_isr_v1_70.pdf</v>
+<v>gfv_lab2\spi_master_btn\cy_pins_v2_20</v>
+<v>gfv_lab2\spi_master_btn\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>gfv_lab2\spi_master_btn\SPI_Master_v2_50.pdf</v>
+<v>gfv_lab2\spi_master_btn\UART_v2_50.pdf</v>
+<v>gfv_lab2\spi_slave</v>
+<v>gfv_lab2\spi_slave\PSoC 5LP Architecture TRM</v>
+<v>gfv_lab2\spi_slave\CY8C58LP Family Datasheet</v>
+<v>gfv_lab2\spi_slave\System Reference Guides</v>
+<v>gfv_lab2\spi_slave\System Reference Guides\cy_boot_v5_90</v>
+<v>gfv_lab2\spi_slave\cy_constant_v1_0.pdf</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+</TreeStatesV2>
+</CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35>
+</dataGuid>
+</userData>
+</CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
+<Unloaded>
+<project v="..\..\..\..\PRJ3-Group-13\Code\PRJ3_WeightSensor\weightSensor.cydsn\weightSensor.cyprj" />
+</Unloaded>
+<OpenDocs>
+<name v=".\Design01.cydsn\main.c" />
+</OpenDocs>
+<OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
+
+  Actipro Docking/MDI for WinForms
+  Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
+  http://www.actiprosoftware.com
+
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="979, 495" SelectedTabbedMdiWindow="c6fb7fb3-c14b-4f1f-8dda-0f8d0d6d9198"><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="9b3dfc4c-617f-46f0-98b2-8fd2aa975aa9" /><DocumentWindow Key="C:\Users\Rasmus\Documents\IKT\3. Semester\Semester3\GFV\LAB2\gfv_lab2\Design01.cydsn\main.c" Guid="c6fb7fb3-c14b-4f1f-8dda-0f8d0d6d9198" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+<config v="" />
+<AutoUpdate v="true" />
+</CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
+</CyXmlSerializer>
