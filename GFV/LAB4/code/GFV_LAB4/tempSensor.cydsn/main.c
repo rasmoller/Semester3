@@ -10,6 +10,7 @@
  * ========================================
 */
 #include "project.h"
+#include "I2C_temp.h"
 
 int main(void)
 {
@@ -17,8 +18,14 @@ int main(void)
 
     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
 
+    i2cInit();
+    
+    float temp = 0;    
+    
     for(;;)
     {
+       i2cRead(0x48, &temp, 500);
+        
         /* Place your application code here. */
     }
 }

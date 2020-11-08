@@ -68,4 +68,9 @@ float PIDControl_doStep(float systemOutput, float* proportionalPart, float* inte
     return output;
 }
 
+void PIDControl_reset()
+{
+    integral = 0;
+}
+
 /* [] END OF FILE */

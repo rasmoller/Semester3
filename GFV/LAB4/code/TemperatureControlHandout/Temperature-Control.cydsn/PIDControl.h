@@ -42,6 +42,8 @@ void PIDControl_changeSetPoint(float setPoint);
  */
 float PIDControl_doStep(float systemOutput, float* proportionalPart, float* integralPart, float* derivativePart);    
     
+void PIDControl_reset();
+
 #endif // PID_CONTROL_H
 
 /* [] END OF FILE */
