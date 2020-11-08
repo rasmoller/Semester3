@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CyXmlSerializer>
+<!--This file is machine generated and read. It is not intended to be edited by hand.-->
+<!--Due to this, there is no schema for this file.-->
+<CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtWrkspcCustomData" version="4">
+<CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997 type_name="CyDesigner.Common.Base.CyCustomData" version="2">
+<userData>
+<dataGuid v="1b906a0f-a7b6-4e4d-a428-82f98b53cb35">
+<CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35 type_name="CyDesigner.Common.ProjMgmt.GUI.CyExplorerWindow+CyExplorerWindowState" version="3" SelectedTab="Source">
+<TreeKeys>
+<v>Source</v>
+<v>Components</v>
+<v>Output</v>
+</TreeKeys>
+<TreeStates>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Temperature-Control\Temperature-Control\Source Files\main.c">
+<ExpandedNodeIds>
+<v>Temperature-Control</v>
+<v>Temperature-Control\Temperature-Control</v>
+<v>Temperature-Control\Temperature-Control\TopDesign</v>
+<v>Temperature-Control\Temperature-Control\Temperature-Control.cydwr</v>
+<v>Temperature-Control\Temperature-Control\Temperature-Control.cydwr\Pins</v>
+<v>Temperature-Control\Temperature-Control\Temperature-Control.cydwr\Analog</v>
+<v>Temperature-Control\Temperature-Control\Temperature-Control.cydwr\Clocks</v>
+<v>Temperature-Control\Temperature-Control\Temperature-Control.cydwr\Interrupts</v>
+<v>Temperature-Control\Temperature-Control\Temperature-Control.cydwr\DMA</v>
+<v>Temperature-Control\Temperature-Control\Temperature-Control.cydwr\System</v>
+<v>Temperature-Control\Temperature-Control\Temperature-Control.cydwr\Directives</v>
+<v>Temperature-Control\Temperature-Control\Temperature-Control.cydwr\Flash Security</v>
+<v>Temperature-Control\Temperature-Control\Temperature-Control.cydwr\EEPROM</v>
+<v>Temperature-Control\Temperature-Control\Header Files</v>
+<v>Temperature-Control\Temperature-Control\Header Files\cyapicallbacks.h</v>
+<v>Temperature-Control\Temperature-Control\Header Files\PIDControl.h</v>
+<v>Temperature-Control\Temperature-Control\Source Files</v>
+<v>Temperature-Control\Temperature-Control\Source Files\main.c</v>
+<v>Temperature-Control\Temperature-Control\Source Files\PIDControl.c</v>
+<v>Temperature-Control\Temperature-Control\Generated_Source</v>
+<v>Temperature-Control\Temperature-Control\Generated_Source\PSoC5</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>Temperature-Control</v>
+<v>Temperature-Control\Temperature-Control</v>
+<v>Temperature-Control\Temperature-Control\TopDesign</v>
+<v>Temperature-Control\Temperature-Control\Temperature-Control.cydwr</v>
+<v>Temperature-Control\Temperature-Control\Temperature-Control.cydwr\Pins</v>
+<v>Temperature-Control\Temperature-Control\Temperature-Control.cydwr\Analog</v>
+<v>Temperature-Control\Temperature-Control\Temperature-Control.cydwr\Clocks</v>
+<v>Temperature-Control\Temperature-Control\Temperature-Control.cydwr\Interrupts</v>
+<v>Temperature-Control\Temperature-Control\Temperature-Control.cydwr\DMA</v>
+<v>Temperature-Control\Temperature-Control\Temperature-Control.cydwr\System</v>
+<v>Temperature-Control\Temperature-Control\Temperature-Control.cydwr\Directives</v>
+<v>Temperature-Control\Temperature-Control\Temperature-Control.cydwr\Flash Security</v>
+<v>Temperature-Control\Temperature-Control\Temperature-Control.cydwr\EEPROM</v>
+<v>Temperature-Control\Temperature-Control\Header Files</v>
+<v>Temperature-Control\Temperature-Control\Header Files\cyapicallbacks.h</v>
+<v>Temperature-Control\Temperature-Control\Header Files\PIDControl.h</v>
+<v>Temperature-Control\Temperature-Control\Source Files</v>
+<v>Temperature-Control\Temperature-Control\Source Files\main.c</v>
+<v>Temperature-Control\Temperature-Control\Source Files\PIDControl.c</v>
+<v>Temperature-Control\Temperature-Control\Generated_Source</v>
+<v>Temperature-Control\Temperature-Control\Generated_Source\PSoC5</v>
+<v>Temperature-Control\Temperature-Control\Generated_Source\PSoC5\cy_boot</v>
+<v>Temperature-Control\Temperature-Control\Generated_Source\PSoC5\cycodeshareexport.ld</v>
+<v>Temperature-Control\Temperature-Control\Generated_Source\PSoC5\cycodeshareimport.ld</v>
+<v>Temperature-Control\Temperature-Control\Generated_Source\PSoC5\cycodeshareimport.scat</v>
+<v>Temperature-Control\Temperature-Control\Generated_Source\PSoC5\cydevice.h</v>
+<v>Temperature-Control\Temperature-Control\Generated_Source\PSoC5\cydevice_trm.h</v>
+<v>Temperature-Control\Temperature-Control\Generated_Source\PSoC5\cydevicegnu.inc</v>
+<v>Temperature-Control\Temperature-Control\Generated_Source\PSoC5\cydevicegnu_trm.inc</v>
+<v>Temperature-Control\Temperature-Control\Generated_Source\PSoC5\cydeviceiar.inc</v>
+<v>Temperature-Control\Temperature-Control\Generated_Source\PSoC5\cydeviceiar_trm.inc</v>
+<v>Temperature-Control\Temperature-Control\Generated_Source\PSoC5\cydevicerv.inc</v>
+<v>Temperature-Control\Temperature-Control\Generated_Source\PSoC5\cydevicerv_trm.inc</v>
+<v>Temperature-Control\Temperature-Control\Generated_Source\PSoC5\cydisabledsheets.h</v>
+<v>Temperature-Control\Temperature-Control\Generated_Source\PSoC5\cyfitter.h</v>
+<v>Temperature-Control\Temperature-Control\Generated_Source\PSoC5\cyfitter_cfg.c</v>
+<v>Temperature-Control\Temperature-Control\Generated_Source\PSoC5\cyfitter_cfg.h</v>
+<v>Temperature-Control\Temperature-Control\Generated_Source\PSoC5\cyfittergnu.inc</v>
+<v>Temperature-Control\Temperature-Control\Generated_Source\PSoC5\cyfitteriar.inc</v>
+<v>Temperature-Control\Temperature-Control\Generated_Source\PSoC5\cyfitterrv.inc</v>
+<v>Temperature-Control\Temperature-Control\Generated_Source\PSoC5\cymetadata.c</v>
+<v>Temperature-Control\Temperature-Control\Generated_Source\PSoC5\project.h</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>Temperature-Control</v>
+<v>Temperature-Control\Temperature-Control</v>
+<v>Temperature-Control\Temperature-Control\TopDesign</v>
+<v>Temperature-Control\Temperature-Control\TopDesign\TopDesign.cysch</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>Temperature-Control</v>
+<v>Temperature-Control\Temperature-Control</v>
+<v>Temperature-Control\Temperature-Control\TopDesign</v>
+<v>Temperature-Control\Temperature-Control\TopDesign\TopDesign.cysch</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>Temperature-Control</v>
+<v>Temperature-Control\Temperature-Control</v>
+<v>Temperature-Control\Temperature-Control\Temperature-Control.gpdsc</v>
+<v>Temperature-Control\Temperature-Control\Temperature-Control.rpt</v>
+<v>Temperature-Control\Temperature-Control\Temperature-Control_timing.html</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>Temperature-Control</v>
+<v>Temperature-Control\Temperature-Control</v>
+<v>Temperature-Control\Temperature-Control\Temperature-Control.gpdsc</v>
+<v>Temperature-Control\Temperature-Control\Temperature-Control.rpt</v>
+<v>Temperature-Control\Temperature-Control\Temperature-Control_timing.html</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+</TreeStates>
+<TreeKeysV2>
+<v>Datasheet</v>
+</TreeKeysV2>
+<TreeStatesV2>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>Temperature-Control</v>
+<v>Temperature-Control\Temperature-Control</v>
+<v>Temperature-Control\Temperature-Control\PSoC 5LP Architecture TRM</v>
+<v>Temperature-Control\Temperature-Control\CY8C58LP Family Datasheet</v>
+<v>Temperature-Control\Temperature-Control\System Reference Guides</v>
+<v>Temperature-Control\Temperature-Control\System Reference Guides\cy_boot_v5_50</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>Temperature-Control</v>
+<v>Temperature-Control\Temperature-Control</v>
+<v>Temperature-Control\Temperature-Control\PSoC 5LP Architecture TRM</v>
+<v>Temperature-Control\Temperature-Control\CY8C58LP Family Datasheet</v>
+<v>Temperature-Control\Temperature-Control\System Reference Guides</v>
+<v>Temperature-Control\Temperature-Control\System Reference Guides\cy_boot_v5_50</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+</TreeStatesV2>
+</CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35>
+</dataGuid>
+</userData>
+</CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
+<Unloaded />
+<OpenDocs>
+<name v=".\Temperature-Control.cydsn\Temperature-Control.cydwr" />
+<name v=".\Temperature-Control.cydsn\PIDControl.c" />
+<name v=".\Temperature-Control.cydsn\main.c" />
+</OpenDocs>
+<OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
+
+  Actipro Docking/MDI for WinForms
+  Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
+  http://www.actiprosoftware.com
+
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1352, 711" SelectedTabbedMdiWindow="1bd9568b-54f4-4c1b-9e95-d3695d1225ec"><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="305a7723-9217-4f66-a5f7-1a26a7d6133d" /><DocumentWindow Key="C:\Users\1chri\Documents\GitHub\Semester3\GFV\LAB4\code\TemperatureControlHandout\Temperature-Control.cydsn\Temperature-Control.cydwr" Guid="0780e36e-c45c-4896-8cac-53eadc270438" /><DocumentWindow Key="C:\Users\1chri\Documents\GitHub\Semester3\GFV\LAB4\code\TemperatureControlHandout\Temperature-Control.cydsn\PIDControl.c" Guid="cf08c16c-5953-4101-b493-0f46e05540f4" /><DocumentWindow Key="C:\Users\1chri\Documents\GitHub\Semester3\GFV\LAB4\code\TemperatureControlHandout\Temperature-Control.cydsn\main.c" Guid="1bd9568b-54f4-4c1b-9e95-d3695d1225ec" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+<config v="" />
+<AutoUpdate v="true" />
+</CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
+</CyXmlSerializer>

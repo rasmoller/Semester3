@@ -13,9 +13,10 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="gfv_lab2\spi_master_btn\Source Files\main.c">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="gfv_lab2\Design01\TopDesign">
 <ExpandedNodeIds>
 <v>gfv_lab2</v>
+<v>gfv_lab2\Design01</v>
 <v>gfv_lab2\Design01\TopDesign</v>
 <v>gfv_lab2\Design01\Design01.cydwr</v>
 <v>gfv_lab2\Design01\Design01.cydwr\Pins</v>
@@ -29,6 +30,7 @@
 <v>gfv_lab2\Design01\Design01.cydwr\EEPROM</v>
 <v>gfv_lab2\Design01\Header Files</v>
 <v>gfv_lab2\Design01\Header Files\cyapicallbacks.h</v>
+<v>gfv_lab2\Design01\Header Files\I2C_temp.h</v>
 <v>gfv_lab2\Design01\Source Files</v>
 <v>gfv_lab2\Design01\Source Files\main.c</v>
 <v>gfv_lab2\Design01\Generated_Source</v>
@@ -50,9 +52,7 @@
 <v>gfv_lab2\spi_master\Source Files\main.c</v>
 <v>gfv_lab2\spi_master\Generated_Source</v>
 <v>gfv_lab2\spi_master\Generated_Source\PSoC5</v>
-<v>gfv_lab2\spi_master_btn</v>
 <v>gfv_lab2\spi_master_btn\TopDesign</v>
-<v>gfv_lab2\spi_master_btn\spi_master_btn.cydwr</v>
 <v>gfv_lab2\spi_master_btn\spi_master_btn.cydwr\Pins</v>
 <v>gfv_lab2\spi_master_btn\spi_master_btn.cydwr\Analog</v>
 <v>gfv_lab2\spi_master_btn\spi_master_btn.cydwr\Clocks</v>
@@ -68,7 +68,6 @@
 <v>gfv_lab2\spi_master_btn\Source Files\main.c</v>
 <v>gfv_lab2\spi_master_btn\Generated_Source</v>
 <v>gfv_lab2\spi_master_btn\Generated_Source\PSoC5</v>
-<v>gfv_lab2\spi_slave</v>
 <v>gfv_lab2\spi_slave\TopDesign</v>
 <v>gfv_lab2\spi_slave\spi_slave.cydwr</v>
 <v>gfv_lab2\spi_slave\spi_slave.cydwr\Pins</v>
@@ -86,7 +85,6 @@
 <v>gfv_lab2\spi_slave\Source Files\main.c</v>
 <v>gfv_lab2\spi_slave\Generated_Source</v>
 <v>gfv_lab2\spi_slave\Generated_Source\PSoC5</v>
-<v>gfv_lab2\spi_slave_btn</v>
 <v>gfv_lab2\spi_slave_btn\TopDesign</v>
 <v>gfv_lab2\spi_slave_btn\spi_slave_btn.cydwr</v>
 <v>gfv_lab2\spi_slave_btn\spi_slave_btn.cydwr\Pins</v>
@@ -103,56 +101,7 @@
 <v>gfv_lab2\spi_slave_btn\Source Files</v>
 <v>gfv_lab2\spi_slave_btn\Source Files\main.c</v>
 </ExpandedNodeIds>
-<VisibleNodeIds>
-<v>gfv_lab2</v>
-<v>gfv_lab2\Design01</v>
-<v>gfv_lab2\spi_master</v>
-<v>gfv_lab2\spi_master_btn</v>
-<v>gfv_lab2\spi_master_btn\TopDesign</v>
-<v>gfv_lab2\spi_master_btn\spi_master_btn.cydwr</v>
-<v>gfv_lab2\spi_master_btn\spi_master_btn.cydwr\Pins</v>
-<v>gfv_lab2\spi_master_btn\spi_master_btn.cydwr\Analog</v>
-<v>gfv_lab2\spi_master_btn\spi_master_btn.cydwr\Clocks</v>
-<v>gfv_lab2\spi_master_btn\spi_master_btn.cydwr\Interrupts</v>
-<v>gfv_lab2\spi_master_btn\spi_master_btn.cydwr\DMA</v>
-<v>gfv_lab2\spi_master_btn\spi_master_btn.cydwr\System</v>
-<v>gfv_lab2\spi_master_btn\spi_master_btn.cydwr\Directives</v>
-<v>gfv_lab2\spi_master_btn\spi_master_btn.cydwr\Flash Security</v>
-<v>gfv_lab2\spi_master_btn\spi_master_btn.cydwr\EEPROM</v>
-<v>gfv_lab2\spi_master_btn\Header Files</v>
-<v>gfv_lab2\spi_master_btn\Header Files\cyapicallbacks.h</v>
-<v>gfv_lab2\spi_master_btn\Source Files</v>
-<v>gfv_lab2\spi_master_btn\Source Files\main.c</v>
-<v>gfv_lab2\spi_master_btn\Generated_Source</v>
-<v>gfv_lab2\spi_master_btn\Generated_Source\PSoC5</v>
-<v>gfv_lab2\spi_master_btn\Generated_Source\PSoC5\BTN</v>
-<v>gfv_lab2\spi_master_btn\Generated_Source\PSoC5\cy_boot</v>
-<v>gfv_lab2\spi_master_btn\Generated_Source\PSoC5\Em_EEPROM_Dynamic</v>
-<v>gfv_lab2\spi_master_btn\Generated_Source\PSoC5\isr_uart_rx</v>
-<v>gfv_lab2\spi_master_btn\Generated_Source\PSoC5\MISO</v>
-<v>gfv_lab2\spi_master_btn\Generated_Source\PSoC5\MOSI</v>
-<v>gfv_lab2\spi_master_btn\Generated_Source\PSoC5\SCLK</v>
-<v>gfv_lab2\spi_master_btn\Generated_Source\PSoC5\SPIM</v>
-<v>gfv_lab2\spi_master_btn\Generated_Source\PSoC5\SPIM_IntClock</v>
-<v>gfv_lab2\spi_master_btn\Generated_Source\PSoC5\UART</v>
-<v>gfv_lab2\spi_master_btn\Generated_Source\PSoC5\UART_IntClock</v>
-<v>gfv_lab2\spi_master_btn\Generated_Source\PSoC5\cycodeshareexport.ld</v>
-<v>gfv_lab2\spi_master_btn\Generated_Source\PSoC5\cycodeshareimport.ld</v>
-<v>gfv_lab2\spi_master_btn\Generated_Source\PSoC5\cycodeshareimport.scat</v>
-<v>gfv_lab2\spi_master_btn\Generated_Source\PSoC5\cydevice.h</v>
-<v>gfv_lab2\spi_master_btn\Generated_Source\PSoC5\cydevice_trm.h</v>
-<v>gfv_lab2\spi_master_btn\Generated_Source\PSoC5\cydevicegnu.inc</v>
-<v>gfv_lab2\spi_master_btn\Generated_Source\PSoC5\cydevicegnu_trm.inc</v>
-<v>gfv_lab2\spi_master_btn\Generated_Source\PSoC5\cydeviceiar.inc</v>
-<v>gfv_lab2\spi_master_btn\Generated_Source\PSoC5\cydeviceiar_trm.inc</v>
-<v>gfv_lab2\spi_master_btn\Generated_Source\PSoC5\cydevicerv.inc</v>
-<v>gfv_lab2\spi_master_btn\Generated_Source\PSoC5\cydevicerv_trm.inc</v>
-<v>gfv_lab2\spi_master_btn\Generated_Source\PSoC5\cydisabledsheets.h</v>
-<v>gfv_lab2\spi_master_btn\Generated_Source\PSoC5\cyfitter.h</v>
-<v>gfv_lab2\spi_master_btn\Generated_Source\PSoC5\cyfitter_cfg.c</v>
-<v>gfv_lab2\spi_master_btn\Generated_Source\PSoC5\cyfitter_cfg.h</v>
-<v>gfv_lab2\spi_master_btn\Generated_Source\PSoC5\cyfittergnu.inc</v>
-</VisibleNodeIds>
+<VisibleNodeIds />
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
 <ExpandedNodeIds>
@@ -173,24 +122,7 @@
 <v>gfv_lab2\spi_slave_btn\TopDesign</v>
 <v>gfv_lab2\spi_slave_btn\TopDesign\TopDesign.cysch</v>
 </ExpandedNodeIds>
-<VisibleNodeIds>
-<v>gfv_lab2</v>
-<v>gfv_lab2\Design01</v>
-<v>gfv_lab2\Design01\TopDesign</v>
-<v>gfv_lab2\Design01\TopDesign\TopDesign.cysch</v>
-<v>gfv_lab2\spi_master</v>
-<v>gfv_lab2\spi_master\TopDesign</v>
-<v>gfv_lab2\spi_master\TopDesign\TopDesign.cysch</v>
-<v>gfv_lab2\spi_master_btn</v>
-<v>gfv_lab2\spi_master_btn\TopDesign</v>
-<v>gfv_lab2\spi_master_btn\TopDesign\TopDesign.cysch</v>
-<v>gfv_lab2\spi_slave</v>
-<v>gfv_lab2\spi_slave\TopDesign</v>
-<v>gfv_lab2\spi_slave\TopDesign\TopDesign.cysch</v>
-<v>gfv_lab2\spi_slave_btn</v>
-<v>gfv_lab2\spi_slave_btn\TopDesign</v>
-<v>gfv_lab2\spi_slave_btn\TopDesign\TopDesign.cysch</v>
-</VisibleNodeIds>
+<VisibleNodeIds />
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
 <ExpandedNodeIds>
@@ -248,56 +180,7 @@
 <v>gfv_lab2\spi_slave_btn\spi_slave_btn.rpt</v>
 <v>gfv_lab2\spi_slave_btn\spi_slave_btn_timing.html</v>
 </ExpandedNodeIds>
-<VisibleNodeIds>
-<v>gfv_lab2</v>
-<v>gfv_lab2\Design01</v>
-<v>gfv_lab2\Design01\CortexM3</v>
-<v>gfv_lab2\Design01\CortexM3\ARM_GCC_541</v>
-<v>gfv_lab2\Design01\CortexM3\ARM_GCC_541\Debug</v>
-<v>gfv_lab2\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files</v>
-<v>gfv_lab2\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\Cm3Start.lst</v>
-<v>gfv_lab2\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
-<v>gfv_lab2\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
-<v>gfv_lab2\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\CyDmac.lst</v>
-<v>gfv_lab2\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
-<v>gfv_lab2\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
-<v>gfv_lab2\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\CyLib.lst</v>
-<v>gfv_lab2\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
-<v>gfv_lab2\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
-<v>gfv_lab2\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\CySpc.lst</v>
-<v>gfv_lab2\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
-<v>gfv_lab2\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C.lst</v>
-<v>gfv_lab2\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_BOOT.lst</v>
-<v>gfv_lab2\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_INT.lst</v>
-<v>gfv_lab2\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_MASTER.lst</v>
-<v>gfv_lab2\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_PM.lst</v>
-<v>gfv_lab2\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_SLAVE.lst</v>
-<v>gfv_lab2\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\main.lst</v>
-<v>gfv_lab2\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\SCL_1.lst</v>
-<v>gfv_lab2\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\SDA_1.lst</v>
-<v>gfv_lab2\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\UART.lst</v>
-<v>gfv_lab2\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_BOOT.lst</v>
-<v>gfv_lab2\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_INT.lst</v>
-<v>gfv_lab2\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_IntClock.lst</v>
-<v>gfv_lab2\Design01\CortexM3\ARM_GCC_541\Debug\Listing Files\UART_PM.lst</v>
-<v>gfv_lab2\Design01\CortexM3\ARM_GCC_541\Debug\Design01.elf</v>
-<v>gfv_lab2\Design01\CortexM3\ARM_GCC_541\Debug\Design01.hex</v>
-<v>gfv_lab2\Design01\CortexM3\ARM_GCC_541\Debug\Design01.map</v>
-<v>gfv_lab2\Design01\Design01.gpdsc</v>
-<v>gfv_lab2\Design01\Design01.rpt</v>
-<v>gfv_lab2\Design01\Design01_timing.html</v>
-<v>gfv_lab2\spi_master</v>
-<v>gfv_lab2\spi_master\spi_master.gpdsc</v>
-<v>gfv_lab2\spi_master\spi_master.rpt</v>
-<v>gfv_lab2\spi_master\spi_master_timing.html</v>
-<v>gfv_lab2\spi_master_btn</v>
-<v>gfv_lab2\spi_master_btn\spi_master_btn.gpdsc</v>
-<v>gfv_lab2\spi_master_btn\spi_master_btn.rpt</v>
-<v>gfv_lab2\spi_master_btn\spi_master_btn_timing.html</v>
-<v>gfv_lab2\spi_slave</v>
-<v>gfv_lab2\spi_slave\spi_slave.gpdsc</v>
-<v>gfv_lab2\spi_slave\spi_slave.rpt</v>
-</VisibleNodeIds>
+<VisibleNodeIds />
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>
 <TreeKeysV2>
@@ -359,56 +242,7 @@
 <v>gfv_lab2\spi_slave_btn\SPI_Slave_v2_70.pdf</v>
 <v>gfv_lab2\spi_slave_btn\UART_v2_50.pdf</v>
 </ExpandedNodeIds>
-<VisibleNodeIds>
-<v>gfv_lab2</v>
-<v>gfv_lab2\Design01</v>
-<v>gfv_lab2\Design01\PSoC 5LP Architecture TRM</v>
-<v>gfv_lab2\Design01\CY8C58LP Family Datasheet</v>
-<v>gfv_lab2\Design01\System Reference Guides</v>
-<v>gfv_lab2\Design01\System Reference Guides\cy_boot_v5_90</v>
-<v>gfv_lab2\Design01\cy_pins_v2_20</v>
-<v>gfv_lab2\Design01\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
-<v>gfv_lab2\Design01\I2C_v3_50.pdf</v>
-<v>gfv_lab2\Design01\UART_v2_50.pdf</v>
-<v>gfv_lab2\spi_master</v>
-<v>gfv_lab2\spi_master\PSoC 5LP Architecture TRM</v>
-<v>gfv_lab2\spi_master\CY8C58LP Family Datasheet</v>
-<v>gfv_lab2\spi_master\System Reference Guides</v>
-<v>gfv_lab2\spi_master\System Reference Guides\cy_boot_v5_90</v>
-<v>gfv_lab2\spi_master\cy_isr_v1_70.pdf</v>
-<v>gfv_lab2\spi_master\cy_pins_v2_20</v>
-<v>gfv_lab2\spi_master\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
-<v>gfv_lab2\spi_master\SPI_Master_v2_50.pdf</v>
-<v>gfv_lab2\spi_master\UART_v2_50.pdf</v>
-<v>gfv_lab2\spi_master_btn</v>
-<v>gfv_lab2\spi_master_btn\PSoC 5LP Architecture TRM</v>
-<v>gfv_lab2\spi_master_btn\CY8C58LP Family Datasheet</v>
-<v>gfv_lab2\spi_master_btn\System Reference Guides</v>
-<v>gfv_lab2\spi_master_btn\System Reference Guides\cy_boot_v5_90</v>
-<v>gfv_lab2\spi_master_btn\cy_isr_v1_70.pdf</v>
-<v>gfv_lab2\spi_master_btn\cy_pins_v2_20</v>
-<v>gfv_lab2\spi_master_btn\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
-<v>gfv_lab2\spi_master_btn\SPI_Master_v2_50.pdf</v>
-<v>gfv_lab2\spi_master_btn\UART_v2_50.pdf</v>
-<v>gfv_lab2\spi_slave</v>
-<v>gfv_lab2\spi_slave\PSoC 5LP Architecture TRM</v>
-<v>gfv_lab2\spi_slave\CY8C58LP Family Datasheet</v>
-<v>gfv_lab2\spi_slave\System Reference Guides</v>
-<v>gfv_lab2\spi_slave\System Reference Guides\cy_boot_v5_90</v>
-<v>gfv_lab2\spi_slave\cy_constant_v1_0.pdf</v>
-<v>gfv_lab2\spi_slave\cy_isr_v1_70.pdf</v>
-<v>gfv_lab2\spi_slave\cy_pins_v2_20</v>
-<v>gfv_lab2\spi_slave\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
-<v>gfv_lab2\spi_slave\SPI_Slave_v2_70.pdf</v>
-<v>gfv_lab2\spi_slave\UART_v2_50.pdf</v>
-<v>gfv_lab2\spi_slave_btn</v>
-<v>gfv_lab2\spi_slave_btn\PSoC 5LP Architecture TRM</v>
-<v>gfv_lab2\spi_slave_btn\CY8C58LP Family Datasheet</v>
-<v>gfv_lab2\spi_slave_btn\System Reference Guides</v>
-<v>gfv_lab2\spi_slave_btn\System Reference Guides\cy_boot_v5_90</v>
-<v>gfv_lab2\spi_slave_btn\cy_constant_v1_0.pdf</v>
-<v>gfv_lab2\spi_slave_btn\cy_isr_v1_70.pdf</v>
-</VisibleNodeIds>
+<VisibleNodeIds />
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStatesV2>
 </CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35>
@@ -417,9 +251,8 @@
 </CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
 <Unloaded />
 <OpenDocs>
-<name v=".\Design01.cydsn\main.c" />
-<name v=".\spi_master.cydsn\main.c" />
-<name v=".\spi_master_btn.cydsn\main.c" />
+<name v=".\Design01.cydsn\I2C_temp.h" />
+<name v=".\Design01.cydsn\TopDesign\TopDesign.cysch" />
 </OpenDocs>
 <OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
 
@@ -427,7 +260,7 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1352, 711" SelectedTabbedMdiWindow="234313fb-d3a6-4f49-af01-dc65137c02f0"><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="305a7723-9217-4f66-a5f7-1a26a7d6133d" /><DocumentWindow Key="C:\Users\1chri\Documents\GitHub\Semester3\GFV\LAB2\gfv_lab2\Design01.cydsn\main.c" Guid="845cf4bf-e5c7-4717-9c9d-e06ee6432c49" /><DocumentWindow Key="C:\Users\1chri\Documents\GitHub\Semester3\GFV\LAB2\gfv_lab2\spi_master.cydsn\main.c" Guid="0336f0b8-0612-4eee-8234-82d1ce1c1bf5" /><DocumentWindow Key="C:\Users\1chri\Documents\GitHub\Semester3\GFV\LAB2\gfv_lab2\spi_master_btn.cydsn\main.c" Guid="234313fb-d3a6-4f49-af01-dc65137c02f0" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1363, 711" SelectedTabbedMdiWindow="eb4cb695-02bd-488a-904c-b938e5a44b4f"><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="305a7723-9217-4f66-a5f7-1a26a7d6133d" /><DocumentWindow Key="C:\Users\1chri\Documents\GitHub\Semester3\GFV\LAB2\gfv_lab2\Design01.cydsn\I2C_temp.h" Guid="8579df5a-bd91-43c4-867e-2723f52650ce" /><DocumentWindow Key="C:\Users\1chri\Documents\GitHub\Semester3\GFV\LAB2\gfv_lab2\Design01.cydsn\TopDesign\TopDesign.cysch" Guid="eb4cb695-02bd-488a-904c-b938e5a44b4f" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>

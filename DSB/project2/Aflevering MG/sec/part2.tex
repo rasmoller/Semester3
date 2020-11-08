@@ -8,7 +8,7 @@
 \section{Opgave 3}
 I opgave 3 skal vi bestemme effekten for de lave frekvenser (Under 80Hz) og effekten for de høje frekvenser (over 80 Hz).
 Dette skal vi gøre for begge de signaler vi har brugt i opgave 1 og 2 (Vindmølle støj og computer blæser støj).
-Til dette bruger vi følgende metode i matlab:
+Til dette bruger vi følgende metode i MATLAB:
 
 \begin{lstlisting}[caption=Udregning af frekvens effekter, label=lst:freqEffect]
 %Opstiller frekvenser over 80 H< og under 80Hz
@@ -25,7 +25,7 @@ Dette gøres på følgende måde:
 \[
     \frac{P_{low}}{P_{high}}
 \]
-Følgende er koden i matlab brugt til at udregne effetkforholdet.
+Følgende er koden i MATLAB brugt til at udregne effetkforholdet.
 \begin{lstlisting}[caption=Udregning af effektforhold, label=lst:effectRel]
 % Calculate the effekt relation
 sound(i).effect_rel = abs(sound(i).effect_low)/abs(sound(i).effect_high);
@@ -35,14 +35,14 @@ Efter at disse 2 ovenstående stykker kode er kørt kan vi gå ind og kigge på 
 
 \begin{table}[h]
     \centering
-    \resizebox{\textwidth}{!}{%
-    \begin{tabular}{|l|lll|}
+    %\resizebox{\textwidth}{!}{%
+    \begin{tabular}{|p{6cm}|lll|}
     \hline
     Lydnavn                                     & \multicolumn{1}{c|}{$P_{Low}$}       & \multicolumn{1}{c|}{$P_{High}$}      & $P_{Rel}$        \\ \hline
     Wind turbine sound - high quality audio.mp3 & 159.06 & 165.56 & 0.96 \\ \hline
     Computer Fan - Sound Effect.mp3             & 91774990.50  & 91779089.50 & 0.99 \\ \hline
     \end{tabular}%
-    }
+    %}
     \caption{Tabel over frekvenseffekter og effektforhold}
     \label{tab:effectTabel}
 \end{table}
@@ -63,7 +63,7 @@ sound(i).freq_res = sound(i).freq_sample/length(sound(i).samples);
 På listing \ref{lst:freqRes} kan man se at vi bruger nedenstående formel til udregningen af frekvensopløsningen.
 \[res = \frac{f_{samples}}{N}\]
 
-Ved bagefter så at aflæse værdierne fra matlab for man at svarene bliver som følgende:
+Ved bagefter så at aflæse værdierne fra MATLAB for man at svarene bliver som følgende:
 
 \begin{table}[h]
     \centering

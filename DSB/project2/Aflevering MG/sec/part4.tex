@@ -33,20 +33,18 @@ end
 I koden på listing \ref{lst:Opg3.12} løber vi en forløkke igennem med længden 2, for at sikre os at vi har flere resultater, der viser det samme resultat.
 Først får vi DFT'en ved hjælp af \textit{fft()} funktionen og herefter laver vi udregninger for summen af DFT'en og N gange med den første værdi i x(n).
 
-<<<<<<< Updated upstream
-
-\section{Opgave 3.15}
-=======
 \section{Opgave 3.15}
 I opgave 3.15 er der givet et signal med en længde på 902 samples (x(n)). Denne sekvens er lyden af "A3" ("A"(220 Hz) tonen lige under det midterste "C"(262 Hz)) fra en akustisk guitar. 
 Guitaren er samplet ved en samplingfrekvens på 22,255 kHz.
 
 \pic{opg3_15a.png}{0.9}{Plot af x(n)}{fig:plot3.15}
+
 På ovenstående billede kan man se x(n), som var guitaren der spillede en "A3" tone.
 
 Herefter laver vi en frekvensanalyse på signalet og finder DFT'en.
 
 \pic{opg3_15b.png}{0.9}{}{fig:DFT3.15}
+
 På Billede \ref{fig:DFT3.15} kan man se X(m), fourier transformationen af x(n).
 
 \subsection{a)}
@@ -78,13 +76,15 @@ Herefter kan vi stille os selv spørgsmålet om vores A3 tone er indenfor disse 
 Fra ovenstående udregning kan vi konkludere, at A3 tonen ligger i denne frekvens bin.
 
 \subsection{b)}
+
 \pic{opg3_15c.png}{0.9}{}{fig:logDFT3.15}
+
 Næste spørgsmål går ud på, at vi skal finde den højeste ikke nul frekvens bin.
 Ved at aflæse på Figure \ref{fig:logDFT3.15} kan man se, at vores 9'ende bin ligger på 0 dB. Hertil kan man se, at den næsthøjeste
 frekvens bin med et spectral komponent er bin 18. Denne bin ligger i følgende interval: 
 \[[419.39 , 444.06[\] 
 Denne udregning er gjort med samme metode som i forrige del af 3.15.
 Vi ved, at anden harmonik vil ligge ved den dobbelte frekvens, som ville være 440 Hz og det passer med at den ligger indenfor rammerne af vores interval.
->>>>>>> Stashed changes
+
 
 \end{document}
