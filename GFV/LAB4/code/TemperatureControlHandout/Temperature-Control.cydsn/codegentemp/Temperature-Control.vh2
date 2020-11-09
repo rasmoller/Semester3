@@ -2,7 +2,7 @@
 --	Conversion of Temperature-Control.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Wed Nov 04 13:51:43 2020
+--	Mon Nov 09 16:45:16 2020
 --
 
 USE cypress.cypress.all;

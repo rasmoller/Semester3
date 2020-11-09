@@ -63,8 +63,8 @@ int main(void)
 
     isr_uart_rx_StartEx(isr_uart_rx_handler);
     
-    float Kp = 3.0f;
-    float Ki = 1.0f/15.0f;
+    float Kp = 6.0f; 
+    float Ki = 1.0f/10.0f; 
     float Kd = 0.0f;
     float integralMax = 3000;
     float integralMin = -3000;
