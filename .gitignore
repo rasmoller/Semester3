@@ -14,6 +14,11 @@
 *.sln.docstates
 *.o
 
+# PSoC creator specific
+*.cywrk.*
+
+
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
