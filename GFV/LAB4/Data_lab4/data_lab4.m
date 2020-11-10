@@ -1,52 +1,40 @@
 clc; clear;
-
-%Imports datasets
-d1 = importdata('capture.txt');
-d2 = importdata('captureP2I0.txt');
-d3 = importdata('captureP10I0.txt');
-
 %Array of names of values
 names = ["setPoint" "temp" "error" "controlSignal" "Kp" "Ki" "Kd" "proportionalPart" "integralPart" "derivativePart"];
 
-%Creatings structs
-importdata1 = struct('name', [], 'values', []);
-importdataP2I0 = struct('name', [], 'values', []);
-importdataP10I0 = struct('name', [], 'values', []);
+for i = 1:3
+    filename = sprintf('data%d.txt',i);
+    importeddata = importdata(filename);
+    data = struct('name', [], 'values', []);
+    
+    for d = 1:10
+        data(d).name = names(d);
+        data(d).values = importeddata(:,d);
+    end
+    
+    %Plots of temp and setPoint
+    figure
+    x = linspace(1,length(data(2).values)/3,length(data(2).values));
+    plot(x,data(2).values,'b','Linewidth',1)
+    hold on
+    plot(x, data(1).values,'r','Linewidth',1)
+    title("Plot of temp. Kp = " + data(5).values(1) + ", Ki = " + data(6).values(1) + ", Kd = " + data(7).values(1))
+    xlabel('Time(s)')
+    ylabel('temperature(Celsius)')
+    legend('Temp', 'setPoint', 'Location', 'best')
+    hold off
+    
+    %Plots of Ki, Kp, Kd
+    figure
+    plot(x,data(8).values,'b','Linewidth',1)
+    hold on
+    plot(x, data(9).values,'r','Linewidth',1)
+    plot(x, data(10).values, 'y', 'Linewidth',1)
+    plot(x, data(4).values, 'g', 'Linewidth',1)
+    title("Plot of Kp, Ki og Kd. Kp = " + data(5).values(1) + ", Ki = " + data(6).values(1) + ", Kd = " + data(7).values(1))
+    xlabel('Time(s)')
+    ylabel('Amplitude(~)')
+    legend(data(5).name, data(6).name, data(7).name, data(4).name, 'Location', 'best')
+    hold off
 
-%Loading data into structs
-for i = 1 : 10
-    importdata1(i).name = names(i);
-    importdata1(i).values = d1(:,i);
-    
-    importdataP2I0(i).name = names(i);
-    importdataP2I0(i).values = d2(:,i);
-    
-    importdataP10I0(i).name = names(i);
-    importdataP10I0(i).values = d3(:,i);
 end
-
-%plots
-figure(1)
-x = linspace(1,2*872,872);
-plot(x,importdata1(2).values,'b','Linewidth',1)
-title('Plot of temp')
-xlabel('Time(s)')
-ylabel('temperature(Celsius)')
-legend('Temp', 'Location', 'northwest')
-
-figure(2)
-x = linspace(1,2*569,569);
-plot(x,importdataP2I0(2).values,'r','Linewidth',1)
-title('Plot of P2I0 temp')
-xlabel('Time(s)')
-ylabel('temperature(Celsius)')
-legend('Temp', 'Location', 'northwest')
-
-figure(3)
-x = linspace(1,2*275,275);
-plot(x,importdataP10I0(2).values,'black','Linewidth',1)
-title('Plot of P10I0 temp')
-xlabel('Time(s)')
-ylabel('temperature(Celsius)')
-legend('Temp', 'Location', 'northwest')
-
