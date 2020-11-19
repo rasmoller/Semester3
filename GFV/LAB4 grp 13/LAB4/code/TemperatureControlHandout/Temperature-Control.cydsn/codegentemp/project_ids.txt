@@ -1,0 +1,6 @@
+C:\Users\Gustav\source\Semester3\GFV\LAB4\code\TemperatureControlHandout\Temperature-Control.cydsn\Temperature-Control.cyprj|45a57296-a9dd-443f-b8af-40c96e3de30c
+E:\Programmer\Cypres\PSoC Creator\4.3\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|4ca581c0-dfdd-4870-871b-43b08783d48e
+C:\Users\Gustav\Documents\PSoC Creator\4.3\Downloads ( 4.3).cylib\Downloads ( 4.3).cyprj|e24df280-5b9a-4cc8-99f9-e24f2573aa22
+E:\Programmer\Cypres\PSoC Creator\4.3\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|1dc9b89a-f1cc-4254-ab6d-1694d6927203
+E:\Programmer\Cypres\PSoC Creator\4.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|521a46cb-2c50-415b-8ba1-25adc8184121
+E:\Programmer\Cypres\PSoC Creator\4.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|0b15532c-536a-44c6-acb9-8094f1bdb769
