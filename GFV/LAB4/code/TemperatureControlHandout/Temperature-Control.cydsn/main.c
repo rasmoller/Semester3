@@ -29,17 +29,17 @@ CY_ISR(isr_uart_rx_handler){
         //UART_WriteTxData(byteReceived); // echo back
         
         switch(byteReceived){
-            case '0':
+            case '0': // Reset
             flag = 0;
             break;
-            case '1':
+            case '1': // Start
             flag = 1;
             break;
-            case '2':
+            case '2': // Starting state
             setPoint = 30;
             PIDControl_changeSetPoint(setPoint);
             break;
-            case '3':
+            case '3': // Target state
             setPoint = 50;
             PIDControl_changeSetPoint(setPoint);
             break;
@@ -75,15 +75,10 @@ int main(void)
     PIDControl_init(Kp, Ki, Kd, integralMax, integralMin, dt);
     PIDControl_changeSetPoint(setPoint);
 
-//    UART_1_PutString("Temperature control application started\r\n");
-
     for(;;)
     {
-        /* Place your application code here. */
         i2cRead(0x48, &temp, 1);
-        //i2cPrintTemp(temp);
-        
-        
+
         float error = setPoint - temp;
         float proportionalPart = 0;
         float integralPart = 0;
@@ -98,8 +93,7 @@ int main(void)
         {
             PWM_1_WriteCompare((uint8)controlSignal);
         }
-        // Reset all
-        else 
+        else // Reset all
         {
             PWM_1_WriteCompare(0);
             PIDControl_reset();
@@ -113,5 +107,3 @@ int main(void)
         CyDelay(sampleWaitTimeInMilliseconds);
     }
 }
-
-/* [] END OF FILE */
