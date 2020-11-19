@@ -1,0 +1,5 @@
+Loading plugins phase: Elapsed time ==> 0s.152ms
+<CYPRESSTAG name="CyDsfit arguments...">
+cydsfit arguments: -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -.fdsreffile=referenced_files.txt -p C:\Users\Gustav\source\Semester3\GFV\Scale.cydsn\Scale.cyprj -d CY8C5888LTI-LP097 -s C:\Users\Gustav\source\Semester3\GFV\Scale.cydsn\Generated_Source\PSoC5 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE
+</CYPRESSTAG>
+Error: fit.M0040: Scale.cyprj: The fitter could not open the project specified on the command line: (Unable to load project: C:\Users\Gustav\source\Semester3\GFV\Scale.cydsn\Scale.cyprj). (File=C:\Users\Gustav\source\Semester3\GFV\Scale.cydsn\Scale.cyprj)

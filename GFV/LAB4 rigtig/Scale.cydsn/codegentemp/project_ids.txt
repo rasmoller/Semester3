@@ -1,0 +1,6 @@
+C:\Users\Gustav\source\Semester3\GFV\LAB4 rigtig\Scale.cydsn\Scale.cyprj|f0448e4f-2866-4e6c-9336-9e43689e642e
+E:\Programmer\Cypres\PSoC Creator\4.3\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|3c409701-f7ca-4a11-9e83-4a5997a12f7c
+C:\Users\Gustav\Documents\PSoC Creator\4.3\Downloads ( 4.3).cylib\Downloads ( 4.3).cyprj|a2a991c5-9709-440a-8b6f-d19659f5dec8
+E:\Programmer\Cypres\PSoC Creator\4.3\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|3835e705-d76c-4454-9c39-39b44d778c7e
+E:\Programmer\Cypres\PSoC Creator\4.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|f4cdc9e2-bee7-48f5-9ec9-2b8cdb2f6085
+E:\Programmer\Cypres\PSoC Creator\4.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|eb177684-afaa-4fb3-a158-de7e774a5736
