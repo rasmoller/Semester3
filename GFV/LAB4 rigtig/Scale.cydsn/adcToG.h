@@ -6,7 +6,7 @@ float per_gram = 1.9853;
 float correct_adc(uint16_t input)
 {
     // Calculate correct grams
-    float corrected_output = (input + offset_err)/per_gram - offset_err;
+    float corrected_output = (input - offset_err)/per_gram;
     corrected_output = (corrected_output >= 0) ? corrected_output : 0;
     return (corrected_output) - 3;
 }
