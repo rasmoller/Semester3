@@ -46,18 +46,30 @@ hold on
 b = [aud_fft_1_100, aud_fft_101_500, aud_fft_501_1500, aud_fft(1501*samples_per_Hz:3000*samples_per_Hz), aud_fft_3001_6000, aud_fft_6001_10000, aud_fft_10001_20000];
 fft_axis = [1:freq_sample/length(aud_fft):freq_sample-1];
 
+%figure
+%plot(fft_axis(1:length(b)),b)
+%title("penis")
+
 f = ifft(b);
 
-soundsc(abs(f),freq_sample)
-
+%soundsc(abs(f),freq_sample)
+figure
 semilogx(fft_axis(1:length(b)), 20*log10(abs((2/length(b))*b(1:length(b)))))
+title("DFT af signalet efter bit-filter")
+xlabel("Frekvens(Hz)")
+ylabel("Amplitude(~)")
+
 figure
 plot(real(f))
 title("real")
 
 figure
 plot(imag(f))
-title("imaginary")
+title("Bohemian Rhapsody efter bit-filter")
+xlabel("Time(s)");
+ylabel("Amplitude(~)")
+
+soundsc(imag(f),0.5*freq_sample)
 %% Opgave 3
 
 bits = 22050 * 16
@@ -162,8 +174,8 @@ title("DFT af signal på logaritmiske akser")
 
 %Design af filter
 f_cutoff0 = 0.5;
-f_cutoff60 = 60;
-f_cutoff200 = 200;
+f_cutoff60 = 1;
+f_cutoff200 = 500;
 f_cutoff1000 = 1000;
 f_cutoff8000 = 8000;
 
@@ -176,13 +188,13 @@ grpdelay(filt60_200)
 impz(filt60_200)
 zplane(filt60_200)
 
-%% Hanning vindue
+%% Kode for FIR-filter
 
-freq_cutoff1 = 1200;
-freq_cutoff2 = 3600;
+freq_cutoff1 = 2000;
+freq_cutoff2 = 4000;
 freq_sample = 48000;
 
-M = 500;
+M = 600;
 
 freq_res = freq_sample/M;
 
@@ -207,6 +219,7 @@ H_with_win = fft(h_win,freq_sample);
 
 figure(1); clf
 stem(H_left)
+title("Ideel overføringsfunktion")
 
 figure(2); clf
 plot(h)
@@ -215,6 +228,7 @@ hold on
 plot(w_hanning*max(abs(h)),'g','linewidth',2)
 plot(h_win,'r','linewidth',2)
 title('Impulsrespons med vinduesfunktion')
+legend("Impulsrespons uden filter", "Hanning-vindue", "Impulsrespons med filter")
 
 figure(3); clf
 plot(abs(H_without_win(1:freq_sample/2)))
@@ -222,7 +236,7 @@ hold on
 plot(abs(H_with_win(1:freq_sample/2)),'r','linewidth',2)
 grid on
 title('Resulterende overføringsfunktion')
-
+legend("Uden FIR-filter","Med FIR-filter")
 
 
 
