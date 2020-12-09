@@ -27,30 +27,30 @@ Sfilt_freq = S.*H;
 sfilt_freq = real(ifft(Sfilt_freq));
 sfilt_freq = sfilt_freq(1:length(s));
 
-VSTF(STF(s,fs,256,220));
+%VSTF(STF(s,fs,256,220));
 
 
 
 %plots
-%figure
-%plot(s)
-%title("s")
+figure
+plot(s)
+title("s")
 
-%figure
-%plot(h)
-%title("impulsrespons")
+figure
+plot(h)
+title("impulsrespons")
 
-%figure
-%plot(S)
-%title("s - DFT")
+figure
+plot(S)
+title("s - DFT")
 
-%figure
-%plot(H)
-%title("h - DFT")
+figure
+plot(H)
+title("h - DFT")
 
-%figure
-%plot(sfilt_time)
-%title("filter")
+figure
+plot(sfilt_time)
+title("filter")
 
 %% Opgave 4.7
 
